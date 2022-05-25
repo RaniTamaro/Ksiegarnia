@@ -1,0 +1,184 @@
+﻿<UserControl x:Class="Firma.Views.NowyTowarView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Firma.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="StyleZakladekResources.xaml"/>
+    </UserControl.Resources>
+    <Grid>
+        <TabControl>
+            <TabItem Header="1. Ogólne">
+                <ScrollViewer>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Expander Header="Dane Ogólne" IsExpanded="True">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <Label Content="Kod:"/>
+                                <TextBox Text="KSIĄŻKA" Grid.Column="1" Grid.ColumnSpan="2"/>
+
+                                <Label Grid.Row="1" Content="Nr katalogowy:"/>
+                                <TextBox Text="" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>
+
+                                <Button Content="Grupa:" Grid.Row="2" HorizontalContentAlignment="Center"/>
+                                <ComboBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
+                                    <ComboBoxItem Content="Fantasy" IsSelected="True"/>
+                                    <ComboBoxItem Content="Romans"/>
+                                    <ComboBoxItem Content="Horror"/>
+                                    <ComboBoxItem Content="Młodzieżowa"/>
+                                </ComboBox>
+
+                                <Label Grid.Row="3" Content="Typ:"/>
+                                <ComboBox Grid.Row="3" Grid.Column="1" IsEnabled="False">
+                                    <ComboBoxItem Content="Towar" IsSelected="True"/>
+                                    <ComboBoxItem Content="Usługa"/>
+                                </ComboBox>
+                                <ComboBox Grid.Row="3" Grid.Column="2" IsEnabled="False">
+                                    <ComboBoxItem Content="Prosty" IsSelected="True"/>
+                                    <ComboBoxItem Content="Złożony"/>
+                                </ComboBox>
+
+                            </Grid>
+                        </Expander>
+
+                        <Expander Header="VAT, EAN, PKWiU, CN" IsExpanded="True" Grid.Column="1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="25"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <Button Content="EAN:"/>
+                                <TextBox Grid.Column="1" Grid.ColumnSpan="2"/>
+
+                                <Label Grid.Row="1" Content="PKWiU: "/>
+                                <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>
+
+                                <Button Grid.Row="2" Content="Kod CN:"/>
+                                <ComboBox Grid.Row="2" Grid.Column="1">
+                                    <ComboBoxItem Content="4901 10 00"/>
+                                </ComboBox>
+                                <Button Grid.Row="2" Grid.Column="2" Background="AliceBlue"/>
+
+                                <Label Grid.Row="3" Content="Stawka VAT: "/>
+                                <ComboBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2">
+                                    <ComboBoxItem Content="5%" IsSelected="True"/>
+                                    <ComboBoxItem Content="8%"/>
+                                    <ComboBoxItem Content="23%"/>
+                                </ComboBox>
+
+                                <Label Grid.Row="4" Content="Cena domyślna:"/>
+                                <ComboBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2">
+                                    <ComboBoxItem Content="Zakupu" IsSelected="True"/>
+                                    <ComboBoxItem Content="Hurtowa 1"/>
+                                    <ComboBoxItem Content="Detaliczna"/>
+                                </ComboBox>
+
+                            </Grid>
+                        </Expander>
+
+                        <Expander Header="Nazwa, kategorie" Grid.Row="1" Grid.ColumnSpan="2" IsExpanded="True">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="1.5*"/>
+                                    <ColumnDefinition Width="450"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <Label Content="Nazwa:"/>
+                                <TextBox Text="Harry Potter i Kamień Filozoficzny" Grid.Column="1" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Visible"/>
+
+                                <Button Content="Kategoria sprzedaży:" Grid.Row="1"/>
+                                <ComboBox Grid.Row="1" Grid.Column="1">
+                                    <ComboBoxItem Content="Kategoria 1"/>
+                                    <ComboBoxItem Content="Kategoria 2"/>
+                                    <ComboBoxItem Content="Kategoria 3"/>
+                                </ComboBox>
+                                <TextBox Grid.Row="1" Grid.Column="2" IsEnabled="False"/>
+
+                                <Button Content="Kategoria zakupu:" Grid.Row="2"/>
+                                <ComboBox Grid.Row="2" Grid.Column="1">
+                                    <ComboBoxItem Content="Kategoria 1"/>
+                                    <ComboBoxItem Content="Kategoria 2"/>
+                                    <ComboBoxItem Content="Kategoria 3"/>
+                                </ComboBox>
+                                <TextBox Grid.Row="2" Grid.Column="2" IsEnabled="False"/>
+                            </Grid>
+                        </Expander>
+
+                        <Expander Header="Jednoska miary, opakowania" Grid.Row="2" Grid.ColumnSpan="2" IsExpanded="True">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Jedn. podstawowa:" Width="130"/>
+                                <ComboBox Width="100">
+                                    <ComboBoxItem Content="Szt" IsSelected="True"/>
+                                    <ComboBoxItem Content="Zest"/>
+                                </ComboBox>
+                                <CheckBox Content="Format całkwity" Width="150"/>
+                            </StackPanel>
+                        </Expander>
+
+                        <Expander Header="Ceny" Grid.Row="3" Grid.ColumnSpan="2" IsExpanded="True">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="200"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                            </Grid>
+                            <TabControl>
+                                
+                            </TabControl>
+                            
+                        </Expander>
+                        
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="2. Dodatkowe">
+
+            </TabItem>
+            <TabItem Header="3. Grupy">
+                
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

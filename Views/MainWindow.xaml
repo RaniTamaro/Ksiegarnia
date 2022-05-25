@@ -1,0 +1,131 @@
+﻿<Window x:Class="Firma.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Firma"
+        mc:Ignorable="d"
+        Title="Księgarnia" Height="450" Width="800"
+        WindowState="Maximized">
+    <Window.Resources>
+        <ResourceDictionary Source="MainWindowResources.xaml"/>
+    </Window.Resources>
+
+    <!--<Window.DataContext>
+        <ViewModels:MainWindowViewModel/>
+    </Window.DataContext>-->
+
+    <Window.InputBindings>
+        <KeyBinding Key="T" Modifiers="Ctrl" Command="{Binding TowaryCommand}"/>
+    </Window.InputBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0" Grid.Column="0" Margin="3">
+            <MenuItem Header="_Plik">
+                <MenuItem Header="Zamknij" Command="{Binding ZamknijAplikacje}"/>
+            </MenuItem>
+            <MenuItem Header="_Magazyn">
+                <MenuItem Header="Towary">
+                    <MenuItem Header="Wszystkie" Command="{Binding TowaryCommand}" InputGestureText="ctr+t"/>
+                    <MenuItem Header="Dodawanie" Command="{Binding NowyTowarCommand}"/>
+                </MenuItem>
+                <MenuItem Header="Przyjecie zewnetrzne (PZ)" Command="{Binding PrzyjecieCommand}"/>
+                <MenuItem Header="Wydanie zewnetrzne (WZ)" Command="{Binding WydanieCommand}"/>
+            </MenuItem>
+            <MenuItem Header="Pracownicy">
+                <MenuItem Header="Pracownik">
+                    <MenuItem Header="Dodaj" Command="{Binding NowyPracownikCommand}"/>
+                    <MenuItem Header="Edytuj"/>
+                </MenuItem>
+                <MenuItem Header="Wyswietl wszystkich" Command="{Binding PracownicyCommand}"/>
+            </MenuItem>
+            <MenuItem Header="_Ksiegowosc">
+                <MenuItem Header="Faktury">
+                    <MenuItem Header="Dodaj nową" Command="{Binding NowaFakturaCommand}"/>
+                    <MenuItem Header="Wyświetl wszystkie" Command="{Binding FakturyCommand}"/>
+                </MenuItem>
+                <MenuItem Header="Wyplaty"/>
+            </MenuItem>
+        </Menu>
+
+        <ToolBar Grid.Row="1" Grid.Column="0">
+            <ToggleButton Width="32" Height="32" Margin="2">
+                <Image Source="/Views/24dp.png" >
+                    <Image.OpacityMask>
+                        <ImageBrush ImageSource="/Views/Home.png"/>
+                    </Image.OpacityMask>
+                </Image>
+            </ToggleButton>
+            <Separator/>
+            <ToggleButton Width="32" Height="32" Margin="2" Command="{Binding NowyTowarCommand}">
+                <ToggleButton.Background>
+                    <ImageBrush ImageSource="/Views/Description.png"/>
+                </ToggleButton.Background>
+            </ToggleButton>
+            <ToggleButton Width="32" Height="32" Margin="2" Command="{Binding PrzyjecieCommand}">
+                <ToggleButton.Background>
+                    <ImageBrush ImageSource="/Views/Bookmark.png"/>
+                </ToggleButton.Background>
+            </ToggleButton>
+            <ToggleButton Width="32" Height="32" Margin="2" Command="{Binding WydanieCommand}">
+                <ToggleButton.Background>
+                    <ImageBrush ImageSource="/Views/Favourite.png"/>
+                </ToggleButton.Background>
+            </ToggleButton>
+            <Separator/>
+            <ToggleButton Width="32" Height="32" Margin="2" Command="{Binding NowaFakturaCommand}">
+                <ToggleButton.Background>
+                    <ImageBrush ImageSource="/Views/Logout.png"/>
+                </ToggleButton.Background>
+            </ToggleButton>
+            <ToggleButton Width="32" Height="32" Margin="2" Command="{Binding FakturyCommand}">
+                <ToggleButton.Background>
+                    <ImageBrush ImageSource="/Views/Info.png" />
+                </ToggleButton.Background>
+            </ToggleButton>
+        </ToolBar>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0">
+                <Expander x:Name="Menu" ExpandDirection="Right">
+                    <HeaderedContentControl
+                        Header="Operacje"
+                        Background="Aqua"
+                        Content="{Binding Path=Commands}"
+                        ContentTemplate="{StaticResource CommandsTemplate}"
+                        Style="{StaticResource MainHCCStyle}"
+                        />
+                </Expander>
+            </Border>
+            <Border Grid.Column="1">
+                <HeaderedContentControl
+                    Header="Przestrzeń robocza"
+                    Background="Aqua"
+                    Content="{Binding Path=Workspaces}"
+                    ContentTemplate="{StaticResource WorkspacesTemplate}"
+                    Style="{StaticResource MainHCCStyle}"
+                    />
+            </Border>
+        </Grid>
+
+        <StatusBar Grid.Row="3">
+            <StatusBarItem>
+                <TextBlock>Klaudia Kurela</TextBlock>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <TextBlock>WSB-NLU</TextBlock>
+            </StatusBarItem>
+        </StatusBar>
+
+    </Grid>
+</Window>
