@@ -2,11 +2,190 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:restab="clr-namespace:Firma.ViewResources"
              xmlns:local="clr-namespace:Firma.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+    <UserControl.Resources>
+        <ResourceDictionary Source="StyleZakladekResources.xaml"/>
+    </UserControl.Resources>
+    
+    <Grid Style="{StaticResource TloGlowne}">
+        <TabControl>
+            <TabItem Header="1. Ogólne">
+                <ScrollViewer>
+                    <Grid Style="{StaticResource TloGlowne}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource TloExpanderS}">
+                            <Border Width="80" Style="{StaticResource BorderStylizacja}">
+                                <Label Content="Dokument:" Style="{StaticResource LabelStylizowanyPogrubiony}"/>
+                            </Border>
+                            <ComboBox Width="70" Style="{StaticResource ComboBoxStandardowy}">
+                                <ComboBoxItem Content="PZ" IsSelected="True"/>
+                                <ComboBoxItem Content="PZ2"/>
+                                <ComboBoxItem Content="PZ3"/>
+                            </ComboBox>
+                            <Label Width="40"/>
+                            <Label Content="Numer" Width="50" Style="{StaticResource LabelStandardowy}"/>
+                            <TextBox Text="PZ" Width="70" Style="{StaticResource TBStZablokowany}"/>
+                            <TextBox Text="Auto" Width="70" Style="{StaticResource TBStandPrawo}"/>
+                            <TextBox Text="2018" Width="40" Style="{StaticResource TBStZablokowany}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="1" Orientation="Horizontal" Style="{StaticResource TloExpanderS}">
+                            <Label Content="Numer obcy:" Width="80" Style="{StaticResource LabelStPogrubiony}"/>
+                            <TextBox Width="380" Style="{StaticResource TextBoxStandardowy}"/>
+                            <Label Width="95"/>
+                            <Label Content="Data wpływu" Width="80" Style="{StaticResource LabelStandardowy}"/>
+                            <DatePicker Width="120" Style="{StaticResource DatePickerStandard}"/>
+                        </StackPanel>
+
+                        <Expander Header="Nagłówek" Grid.Row="2" Style="{StaticResource Expander}">
+                            <Grid Style="{StaticResource TloExpanderG}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <ComboBox Style="{StaticResource CBStylizowany}">
+                                    <ComboBoxItem Content="Kontrahent" IsSelected="True"/>
+                                    <ComboBoxItem Content="Kontrahent1"/>
+                                    <ComboBoxItem Content="Kontrahent2"/>
+                                </ComboBox>
+                                <ComboBox Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
+                                    <ComboBoxItem Content="Waneko" IsSelected="True"/>
+                                    <ComboBoxItem Content="SJG"/>
+                                </ComboBox>
+                                <TextBox Text="Wydawnictwo Waneko" Grid.Column="2" Style="{StaticResource TBStZablokowany}"/>
+
+                                <Border Grid.Row="1" Style="{StaticResource BorderStylizacja}">
+                                    <Label Content="Kategoria" Style="{StaticResource LabelStylizowany}"/>
+                                </Border>
+                                <ComboBox Grid.Row="1" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
+                                    <ComboBoxItem Content="M Waneko" IsSelected="True"/>
+                                    <ComboBoxItem Content="M SJG"/>
+                                </ComboBox>
+                                <TextBox Text="Mangi wydawnictwa Waneko" Grid.Row="1" Grid.Column="2" Style="{StaticResource TextBoxStandardowy}"/>
+
+                                <Border Grid.Row="2" Style="{StaticResource BorderStylizacja}">
+                                    <Label Content="Magazyn" Style="{StaticResource LabelStylizowany}"/>
+                                </Border>
+                                <ComboBox Grid.Row="2" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
+                                    <ComboBoxItem Content="Magazyn" IsSelected="True"/>
+                                    <ComboBoxItem Content="Magazyn Z"/>
+                                </ComboBox>
+                                <TextBox Text="Magazyn główny" Grid.Row="2" Grid.Column="2" Style="{StaticResource TBStZablokowany}"/>
+
+                            </Grid>
+                        </Expander>
+
+                        <Expander Header="Daty i Wartości" Grid.Row="3" Style="{StaticResource Expander}">
+                            <Grid Style="{StaticResource TloExpanderG}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <GroupBox Style="{StaticResource GroupBoxStandardowy}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1.55*"/>
+                                            <ColumnDefinition Width="0.5*"/>
+                                            <ColumnDefinition Width="1.5*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+
+                                        <Label Content="Data wystawienia:" Style="{StaticResource LabelStandardowy}"/>
+                                        <DatePicker Grid.Column="2" Style="{StaticResource DatePickerStandard}"/>
+                                        
+                                        <Label Content="Data przyjęcia:" Grid.Row="1" Style="{StaticResource LabelStandardowy}"/>
+                                        <DatePicker Grid.Row="1" Grid.Column="2" Style="{StaticResource DatePickerStandard}"/>
+
+                                        <Label Content="Data przyjęcia:" Grid.Row="2" Style="{StaticResource LabelStandardowy}"/>
+                                        <ComboBox Grid.Row="2" Grid.Column="2" Style="{StaticResource CBStZablokowany}">
+                                            <ComboBoxItem Content="Netto" IsSelected="True"/>
+                                            <ComboBoxItem Content="Brutto"/>
+                                        </ComboBox>
+
+                                    </Grid>
+                                </GroupBox>
+
+                                <GroupBox Grid.Column="1" Style="{StaticResource GroupBoxStandardowy}" Height="35" VerticalAlignment="Top">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Content="Rabat:" Style="{StaticResource LabelStandardowy}"/>
+                                        <TextBox Text="0.00%" Grid.Column="2" Style="{StaticResource TBStandPrawo}"/>
+                                    </Grid>
+                                </GroupBox>
+
+                                <GroupBox Grid.Column="2" Style="{StaticResource GroupBoxStandardowy}" Height="60" VerticalAlignment="Top">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="1.5*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+
+                                        <Label Content="Netto:" Style="{StaticResource LabelStandardowy}"/>
+                                        <TextBox Text="1468,24 PLN" Grid.Column="2" Style="{StaticResource TBStZablokowanyPrawo}"/>
+
+                                        <Label Content="Razem" Grid.Row="1" Style="{StaticResource LabelStPogrubiony}"/>
+                                        <TextBox Text="1541,65 PLN" Grid.Row="1" Grid.Column="2" Style="{StaticResource TBStZablokowanyPrawo}" FontWeight="Bold"/>
+                                    </Grid>
+                                </GroupBox>
+                            </Grid>
+                        </Expander>
+
+                        <DataGrid Grid.Row="4" Style="{StaticResource TabelaStandard}">
+                            <DataGrid.Columns>
+                                <DataGridCheckBoxColumn Header="" Width="20"/>
+                                <DataGridTextColumn Header="Lp." Width="30" Binding="{Binding Path=LP}"/>
+                                <DataGridTextColumn Header="Nazwa" Width="100" Binding="{Binding Path=NazwaTowaru}"/>
+                                <DataGridTextColumn Header="Ilość" Width="120" Binding="{Binding Path=Ilosc}"/>
+                                <DataGridTextColumn Header="Jm" Width="50" Binding="{Binding Path=JM}"/>
+                                <DataGridTextColumn Header="C.pocz." Width="100" Binding="{Binding Path=CenaPoczatkowa}"/>
+                                <DataGridTextColumn Header="Rabat" Width="60" Binding="{Binding Path=Rabat}"/>
+                                <DataGridTextColumn Header="Cena" Width="120" Binding="{Binding Path=Cena}"/>
+                                <DataGridTextColumn Header="Wartość" Width="120" Binding="{Binding Path=Wartosc}"/>
+                            </DataGrid.Columns>
+
+                            <restab:TowaryTable LP="1" NazwaTowaru="Jujutsu Kaisen #1" Ilosc="50" Jm="SZT" CenaPoczatkowa="22.99" Rabat="40.00" Cena="13.79" Wartosc="689.5"/>
+                            <restab:TowaryTable LP="2" NazwaTowaru="Jujutsu Kaisen #2" Ilosc="30" Jm="SZT" CenaPoczatkowa="22.99" Rabat="40.00" Cena="13.79" Wartosc="551.6"/>
+                            <restab:TowaryTable LP="3" NazwaTowaru="Tokyo Ghoul #1" Ilosc="25" Jm="SZT" CenaPoczatkowa="19.99" Rabat="40.00" Cena="11.99" Wartosc="299.75"/>
+                            <restab:TowaryTable LP="4" NazwaTowaru="Kasane #1" Ilosc="20" Jm="SZT" CenaPoczatkowa="24.99" Rabat="40.00" Cena="14.99" Wartosc="299.80"/>
+                        </DataGrid>
+                        
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
     </Grid>
 </UserControl>

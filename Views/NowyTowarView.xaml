@@ -2,18 +2,19 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:restab="clr-namespace:Firma.ViewResources"
              xmlns:local="clr-namespace:Firma.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <ResourceDictionary Source="StyleZakladekResources.xaml"/>
     </UserControl.Resources>
-    <Grid>
+    <Grid Style="{StaticResource TloGlowne}">
         <TabControl>
             <TabItem Header="1. Ogólne">
                 <ScrollViewer>
-                    <Grid>
+                    <Grid Style="{StaticResource TloGlowne}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -26,41 +27,43 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
-                        <Expander Header="Dane Ogólne" IsExpanded="True">
-                            <Grid>
+                        <Expander Header="Dane Ogólne" Style="{StaticResource Expander}">
+                            <Grid Style="{StaticResource TloExpanderG}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
 
-                                <Label Content="Kod:"/>
-                                <TextBox Text="KSIĄŻKA" Grid.Column="1" Grid.ColumnSpan="2"/>
+                                <Label Content="Kod:" Style="{StaticResource LabelStPogrubiony}"/>
+                                <TextBox Text="KSIĄŻKA" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}"/>
 
-                                <Label Grid.Row="1" Content="Nr katalogowy:"/>
-                                <TextBox Text="" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>
+                                <Label Grid.Row="1" Content="Nr katalogowy:" Style="{StaticResource LabelStandardowy}"/>
+                                <TextBox Text="" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}"/>
 
-                                <Button Content="Grupa:" Grid.Row="2" HorizontalContentAlignment="Center"/>
-                                <ComboBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
+                                <Border Grid.Row="2" Style="{StaticResource BorderStylizacja}">
+                                    <Label Content="Grupa:" Style="{StaticResource LabelStylizowany}"/>
+                                </Border>
+                                <ComboBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource ComboBoxStandardowy}">
                                     <ComboBoxItem Content="Fantasy" IsSelected="True"/>
                                     <ComboBoxItem Content="Romans"/>
                                     <ComboBoxItem Content="Horror"/>
                                     <ComboBoxItem Content="Młodzieżowa"/>
                                 </ComboBox>
 
-                                <Label Grid.Row="3" Content="Typ:"/>
-                                <ComboBox Grid.Row="3" Grid.Column="1" IsEnabled="False">
+                                <Label Grid.Row="3" Content="Typ:" Style="{StaticResource LabelStandardowy}"/>
+                                <ComboBox Grid.Row="3" Grid.Column="1" IsEnabled="False" Style="{StaticResource ComboBoxStandardowy}">
                                     <ComboBoxItem Content="Towar" IsSelected="True"/>
                                     <ComboBoxItem Content="Usługa"/>
                                 </ComboBox>
-                                <ComboBox Grid.Row="3" Grid.Column="2" IsEnabled="False">
+                                <ComboBox Grid.Row="3" Grid.Column="2" IsEnabled="False" Style="{StaticResource ComboBoxStandardowy}">
                                     <ComboBoxItem Content="Prosty" IsSelected="True"/>
                                     <ComboBoxItem Content="Złożony"/>
                                 </ComboBox>
@@ -68,42 +71,46 @@
                             </Grid>
                         </Expander>
 
-                        <Expander Header="VAT, EAN, PKWiU, CN" IsExpanded="True" Grid.Column="1">
-                            <Grid>
+                        <Expander Header="VAT, EAN, PKWiU, CN" Grid.Column="1" Style="{StaticResource Expander}">
+                            <Grid Style="{StaticResource TloExpanderG}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
-                                    <ColumnDefinition Width="25"/>
+                                    <ColumnDefinition Width="40"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
 
-                                <Button Content="EAN:"/>
-                                <TextBox Grid.Column="1" Grid.ColumnSpan="2"/>
+                                <Border Style="{StaticResource BorderStylizacja}">
+                                    <Label Content="EAN:" Style="{StaticResource LabelStylizowany}"/>
+                                </Border>
+                                <TextBox Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}"/>
 
-                                <Label Grid.Row="1" Content="PKWiU: "/>
-                                <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>
+                                <Label Grid.Row="1" Content="PKWiU:" Style="{StaticResource LabelStandardowy}"/>
+                                <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}"/>
 
-                                <Button Grid.Row="2" Content="Kod CN:"/>
-                                <ComboBox Grid.Row="2" Grid.Column="1">
+                                <Border Grid.Row="2" Style="{StaticResource BorderStylizacja}">
+                                    <Label Content="Kod CN:" Style="{StaticResource LabelStylizowany}"/>
+                                </Border>
+                                <ComboBox Grid.Row="2" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
                                     <ComboBoxItem Content="4901 10 00"/>
                                 </ComboBox>
-                                <Button Grid.Row="2" Grid.Column="2" Background="AliceBlue"/>
+                                <Button Grid.Row="2" Grid.Column="2" Background="AliceBlue" Style="{StaticResource ButtonStandard}"/>
 
-                                <Label Grid.Row="3" Content="Stawka VAT: "/>
-                                <ComboBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2">
+                                <Label Grid.Row="3" Content="Stawka VAT:" Style="{StaticResource LabelStPogrubiony}"/>
+                                <ComboBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource ComboBoxStandardowy}">
                                     <ComboBoxItem Content="5%" IsSelected="True"/>
                                     <ComboBoxItem Content="8%"/>
                                     <ComboBoxItem Content="23%"/>
                                 </ComboBox>
 
-                                <Label Grid.Row="4" Content="Cena domyślna:"/>
-                                <ComboBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2">
+                                <Label Grid.Row="4" Content="Cena domyślna:" Style="{StaticResource LabelStandardowy}"/>
+                                <ComboBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource ComboBoxStandardowy}">
                                     <ComboBoxItem Content="Zakupu" IsSelected="True"/>
                                     <ComboBoxItem Content="Hurtowa 1"/>
                                     <ComboBoxItem Content="Detaliczna"/>
@@ -112,8 +119,8 @@
                             </Grid>
                         </Expander>
 
-                        <Expander Header="Nazwa, kategorie" Grid.Row="1" Grid.ColumnSpan="2" IsExpanded="True">
-                            <Grid>
+                        <Expander Header="Nazwa, kategorie" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource Expander}">
+                            <Grid Style="{StaticResource TloExpanderG}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
                                     <ColumnDefinition Width="1.5*"/>
@@ -125,59 +132,274 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
 
-                                <Label Content="Nazwa:"/>
-                                <TextBox Text="Harry Potter i Kamień Filozoficzny" Grid.Column="1" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Visible"/>
+                                <Label Content="Nazwa:" Style="{StaticResource LabelStPogrubiony}"/>
+                                <TextBox Text="Harry Potter i Kamień Filozoficzny" Grid.Column="1" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Visible" Style="{StaticResource TextBoxStandardowy}"/>
 
-                                <Button Content="Kategoria sprzedaży:" Grid.Row="1"/>
-                                <ComboBox Grid.Row="1" Grid.Column="1">
+                                <Border Grid.Row="1" Style="{StaticResource BorderStylizacja}">
+                                    <Label Content="Kategoria sprzedaży:" Style="{StaticResource LabelStylizowany}"/>
+                                </Border>
+                                <ComboBox Grid.Row="1" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
                                     <ComboBoxItem Content="Kategoria 1"/>
                                     <ComboBoxItem Content="Kategoria 2"/>
                                     <ComboBoxItem Content="Kategoria 3"/>
                                 </ComboBox>
-                                <TextBox Grid.Row="1" Grid.Column="2" IsEnabled="False"/>
+                                <TextBox Grid.Row="1" Grid.Column="2" Style="{StaticResource TBStZablokowany}"/>
 
-                                <Button Content="Kategoria zakupu:" Grid.Row="2"/>
-                                <ComboBox Grid.Row="2" Grid.Column="1">
+                                <Border Grid.Row="2" Style="{StaticResource BorderStylizacja}">
+                                    <Label Content="Kategoria zakupu:" Style="{StaticResource LabelStylizowany}"/>
+                                </Border>
+                                <ComboBox Grid.Row="2" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
                                     <ComboBoxItem Content="Kategoria 1"/>
                                     <ComboBoxItem Content="Kategoria 2"/>
                                     <ComboBoxItem Content="Kategoria 3"/>
                                 </ComboBox>
-                                <TextBox Grid.Row="2" Grid.Column="2" IsEnabled="False"/>
+                                <TextBox Grid.Row="2" Grid.Column="2" Style="{StaticResource TBStZablokowany}"/>
                             </Grid>
                         </Expander>
 
-                        <Expander Header="Jednoska miary, opakowania" Grid.Row="2" Grid.ColumnSpan="2" IsExpanded="True">
-                            <StackPanel Orientation="Horizontal">
-                                <Label Content="Jedn. podstawowa:" Width="130"/>
-                                <ComboBox Width="100">
+                        <Expander Header="Jednoska miary, opakowania" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource Expander}">
+                            <StackPanel Orientation="Horizontal" Style="{StaticResource TloExpanderS}">
+                                <Label Content="Jedn. podstawowa:" Width="130" Style="{StaticResource LabelStPogrubiony}"/>
+                                <ComboBox Width="100" Style="{StaticResource ComboBoxStandardowy}">
                                     <ComboBoxItem Content="Szt" IsSelected="True"/>
                                     <ComboBoxItem Content="Zest"/>
                                 </ComboBox>
-                                <CheckBox Content="Format całkwity" Width="150"/>
+                                <CheckBox Content="Format całkwity" Width="150" Style="{StaticResource ChBStStackPanel}"/>
                             </StackPanel>
                         </Expander>
 
-                        <Expander Header="Ceny" Grid.Row="3" Grid.ColumnSpan="2" IsExpanded="True">
-                            <Grid>
+                        <Expander Header="Ceny" Grid.Row="3" Grid.ColumnSpan="2" Style="{StaticResource Expander}">
+                            <Grid Style="{StaticResource TloExpanderG}">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="200"/>
+                                    <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
+
+                                <DataGrid Style="{StaticResource TabelaStandard}">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Numer ceny" IsReadOnly="True" Width="90" CanUserSort="True" Binding="{Binding Path=Nazwa}"/>
+                                        <DataGridTextColumn Header="Typ ceny" IsReadOnly="True" Width="80"  Binding="{Binding Path=Typ}"/>
+                                        <DataGridTextColumn Header="Akt." Width="50" Binding="{Binding Path=Akt}"/>
+                                        <DataGridTextColumn Header="Marża" Binding="{Binding Path=Marza}"/>
+                                        <DataGridTextColumn Header="Zaokr." Binding="{Binding Path=Zaokr}"/>
+                                        <DataGridTextColumn Header="Offset" Binding="{Binding Path=Off}"/>
+                                        <DataGridTextColumn Header="Cena netto" Width="100" Binding="{Binding Path=CenaN}"/>
+                                        <DataGridTextColumn Header="Cena brutto" Width="100" Binding="{Binding Path=CenaB}"/>
+                                        <DataGridTextColumn Header="Waluta" Binding="{Binding Path=Waluta}"/>
+                                        <!--<DataGridTextColumn Header="Numer ceny"/>-->
+                                    </DataGrid.Columns>
+
+                                    <restab:TowaryTable Nazwa="Zakupu" Typ="Netto" Akt="----" Marza="----" Zaokr="0,01" Off="0,00" CenaN="0.00" CenaB="0.00" Waluta="PLN"/>
+                                    <restab:TowaryTable Nazwa="Hurtowa 1" Typ="Netto" Akt="Nie" Marza="5%" Zaokr="0,01" Off="0,00" CenaN="0.00" CenaB="0.00" Waluta="PLN"/>
+                                    <restab:TowaryTable Nazwa="Hurtowa 2" Typ="Netto" Akt="Nie" Marza="10%" Zaokr="0,01" Off="0,00" CenaN="0.00" CenaB="0.00" Waluta="PLN"/>
+                                    <restab:TowaryTable Nazwa="Detaliczna" Typ="Brutto" Akt="Nie" Marza="15%" Zaokr="0,01" Off="0,00" CenaN="0.00" CenaB="0.00" Waluta="PLN"/>
+                                </DataGrid>
+
+                                <Border Grid.Row="1" Style="{StaticResource BorderStandardowy}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="Granica ceny:" Width="100" Style="{StaticResource LabelStandardowy}"/>
+                                        <ComboBox Width="60" Style="{StaticResource ComboBoxStandardowy}">
+                                            <ComboBoxItem Content="Brak" IsSelected="True"/>
+                                            <ComboBoxItem Content="1"/>
+                                            <ComboBoxItem Content="2"/>
+                                        </ComboBox>
+
+                                        <TextBox Text="0,00%" IsEnabled="False" Width="100" Style="{StaticResource TBStZablokowanyPrawo}"/>
+                                        <CheckBox Content="Ceny nieaktywne" Style="{StaticResource ChBStStackPanel}"/>
+                                    </StackPanel>
+                                </Border>
                             </Grid>
-                            <TabControl>
-                                
-                            </TabControl>
-                            
                         </Expander>
                         
                     </Grid>
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="2. Dodatkowe">
+                <ScrollViewer>
+                    <Grid Style="{StaticResource TloGlowne}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1.75*"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
 
+                        <Expander Header="Opis, URL" Grid.ColumnSpan="2" Style="{StaticResource Expander}">
+                            <Grid Style="{StaticResource TloExpanderG}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="60"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="60"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <Label Content="URL:" Style="{StaticResource LabelStandardowy}"/>
+                                <TextBox Grid.Column="1" Style="{StaticResource TextBoxStandardowy}"/>
+                                <Button Grid.Column="2" Style="{StaticResource ButtonStandard}"/>
+
+                                <Label Content="Opis" Grid.Row="1" Style="{StaticResource LabelStandardowy}"/>
+                                <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TBRozciągnięty}"/>
+                            </Grid>
+                        </Expander>
+
+                        <Expander Header="Parametry" Grid.Row="1" Style="{StaticResource Expander}">
+                            <Grid Style="{StaticResource TloExpanderG}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <CheckBox Content="Kopiuj opis na fakturę" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
+                                <CheckBox Content="Pozwól na edycję nazwy na fakturze" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
+
+                                <CheckBox Content="Udostępniaj w cenniku zewnętrznym" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
+                                <CheckBox Content="Pozwól na edycję opisu na fakturze" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
+
+                                <CheckBox Content="Karta nieaktywna" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
+
+                                <Border Grid.Row="3" Style="{StaticResource BorderStylizacja}">
+                                    <Label Content="Wydawca:" Style="{StaticResource LabelStylizowany}"/>
+                                </Border>
+                                <ComboBox Grid.Row="3" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
+                                    <ComboBoxItem Content="Mięta"/>
+                                    <ComboBoxItem Content="Media Rodzina"/>
+                                    <ComboBoxItem Content="We Need Ya"/>
+                                    <ComboBoxItem Content="Waneko"/>
+                                    <ComboBoxItem Content="Studio JG"/>
+                                </ComboBox>
+                                <TextBox Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource TBStZablokowany}"/>
+
+                                <Label Content="Kod producenta" Grid.Row="4" Style="{StaticResource LabelStandardowy}"/>
+                                <TextBox Grid.Row="4" Grid.Column="1" Style="{StaticResource TextBoxStandardowy}"/>
+                                <Border Grid.Row="4" Grid.Column="2" Style="{StaticResource BorderStylizacja}">
+                                    <Label Content="Marka" Style="{StaticResource LabelStylizowany}"/>
+                                </Border>
+                                <ComboBox Grid.Row="4" Grid.Column="3" Style="{StaticResource ComboBoxStandardowy}">
+                                    <ComboBoxItem Content="Marka 1"/>
+                                    <ComboBoxItem Content="Marka 2"/>
+                                    <ComboBoxItem Content="Marka 3"/>
+                                </ComboBox>
+                            </Grid>
+                        </Expander>
+
+                        <Expander Header="Koszt" Grid.Row="1" Grid.Column="1" Style="{StaticResource Expander}">
+                            <Grid Style="{StaticResource TloExpanderG}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <GroupBox Header="Typ kosztu usługi:" Grid.Column="1" Style="{StaticResource GroupBoxStandardowy}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <RadioButton Content="Procentowy"/>
+                                        <RadioButton Content="Kwotowy"/>
+                                    </StackPanel>
+                                </GroupBox>
+
+                                <Label Content="Koszt usługi:" Grid.Row="1" Style="{StaticResource LabelStandardowy}"/>
+                                <TextBox Text="0.00%" Grid.Row="1" Grid.Column="1" Style="{StaticResource TBStZablokowanyPrawo}"/>
+                            </Grid>
+                        </Expander>
+
+                        <Expander Header="Zamówienia" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource Expander}">
+                            <Grid Style="{StaticResource TloExpanderG}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="110"/>
+                                    <ColumnDefinition Width="110"/>
+                                    <ColumnDefinition Width="110"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="110"/>
+                                    <ColumnDefinition Width="200"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <Label Content="Ilość minimalna:" Style="{StaticResource LabelStandardowy}"/>
+                                <TextBox Text="500" Grid.Column="1" Style="{StaticResource TBStandPrawo}"/>
+                                <ComboBox Grid.Column="2" Style="{StaticResource ComboBoxStandardowy}">
+                                    <ComboBoxItem Content="Szt" IsSelected="True"/>
+                                    <ComboBoxItem Content="Zest"/>
+                                </ComboBox>
+                                <Border Grid.Column="4" Style="{StaticResource BorderStylizacja}">
+                                    <Label Content="Kontrahent" Style="{StaticResource LabelStylizowany}"/>
+                                </Border>
+                                <ComboBox Grid.Column="5" Style="{StaticResource ComboBoxStandardowy}">
+                                    <ComboBoxItem Content="Muza" IsSelected="True"/>
+                                    <ComboBoxItem Content="Matras"/>
+                                    <ComboBoxItem Content="Yatta"/>
+                                </ComboBox>
+
+                                <Label Content="Ilość maksymalna:" Grid.Row="1" Style="{StaticResource LabelStandardowy}"/>
+                                <TextBox Text="1.000" Grid.Column="1" Grid.Row="1" Style="{StaticResource TBStandPrawo}"/>
+                                <ComboBox Grid.Column="2" Grid.Row="1" Style="{StaticResource ComboBoxStandardowy}">
+                                    <ComboBoxItem Content="Szt" IsSelected="True"/>
+                                    <ComboBoxItem Content="Zest"/>
+                                </ComboBox>
+                                <TextBox Text="Matras SA" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource TBStZablokowany}"/>
+
+                                <Label Content="Zamawiać po:" Grid.Row="2" Style="{StaticResource LabelStandardowy}"/>
+                                <TextBox Text="2" Grid.Column="1" Grid.Row="2" Style="{StaticResource TBStandPrawo}"/>
+                                <ComboBox Grid.Column="2" Grid.Row="2" Style="{StaticResource ComboBoxStandardowy}">
+                                    <ComboBoxItem Content="Szt" IsSelected="True"/>
+                                    <ComboBoxItem Content="Zest"/>
+                                </ComboBox>
+                                <Label Content="Kod u nadawcy" Grid.Column="4" Grid.Row="2" Style="{StaticResource LabelStandardowy}"/>
+                                <TextBox Grid.Row="2" Grid.Column="5" Style="{StaticResource TextBoxStandardowy}"/>
+
+                            </Grid>
+                        </Expander>
+
+                        <Expander Header="Urządzenia fiskalne" Grid.Row="3" Grid.ColumnSpan="2" Style="{StaticResource Expander}">
+                            <StackPanel Orientation="Horizontal" Style="{StaticResource TloExpanderS}">
+                                <Label Content="PLU:" Width="50" Style="{StaticResource LabelStandardowy}"/>
+                                <TextBox Width="180" Style="{StaticResource TextBoxStandardowy}"/>
+                                <Button Width="40" Style="{StaticResource ButtonStandard}"/>
+                                <Label Width="83"/>
+                                <Label Content="Nazwa:" Width="50" Style="{StaticResource LabelStandardowy}"/>
+                                <TextBox Width="300" Style="{StaticResource TextBoxStandardowy}"/>
+                                <Button Width="40" Style="{StaticResource ButtonStandard}"/>
+                            </StackPanel>
+                        </Expander>
+
+                    </Grid>
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="3. Grupy">
-                
+                <ScrollViewer>
+                    <DataGrid Style="{StaticResource TabelaStandard}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Kod" IsReadOnly="True" Width="140" CanUserSort="True" Binding="{Binding Path=Kod}"/>
+                            <DataGridTextColumn Header="Nazwa" IsReadOnly="True" Width="400"  Binding="{Binding Path=NazwaDluga}"/>
+                        </DataGrid.Columns>
+
+                        <restab:TowaryTable Kod="Kod1" NazwaDluga="Dluga nazwa1"/>
+                        <restab:TowaryTable Kod="Kod2" NazwaDluga="Dluga nazwa2"/>
+                        <restab:TowaryTable Kod="Kod3" NazwaDluga="Dluga nazwa3"/>
+                    </DataGrid>
+                </ScrollViewer>
             </TabItem>
         </TabControl>
     </Grid>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Firma"
         mc:Ignorable="d"
-        Title="Księgarnia" Height="450" Width="800"
+        Title="Księgarnia" Height="450" Width="1000"
         WindowState="Maximized">
     <Window.Resources>
         <ResourceDictionary Source="MainWindowResources.xaml"/>
@@ -32,8 +32,8 @@
             </MenuItem>
             <MenuItem Header="_Magazyn">
                 <MenuItem Header="Towary">
-                    <MenuItem Header="Wszystkie" Command="{Binding TowaryCommand}" InputGestureText="ctr+t"/>
                     <MenuItem Header="Dodawanie" Command="{Binding NowyTowarCommand}"/>
+                    <MenuItem Header="Wszystkie" Command="{Binding TowaryCommand}" InputGestureText="ctr+t"/>
                 </MenuItem>
                 <MenuItem Header="Przyjecie zewnetrzne (PZ)" Command="{Binding PrzyjecieCommand}"/>
                 <MenuItem Header="Wydanie zewnetrzne (WZ)" Command="{Binding WydanieCommand}"/>
