@@ -16,7 +16,16 @@
     </Window.DataContext>-->
 
     <Window.InputBindings>
+        <KeyBinding Key="Z" Modifiers="Ctrl+Alt" Command="{Binding ZamknijAplikacje}"/>
+        <KeyBinding Key="P" Modifiers="Ctrl+Shift" Command="{Binding PrzyjecieCommand}"/>
+        <KeyBinding Key="W" Modifiers="Ctrl+Shift" Command="{Binding WydanieCommand}"/>
+        <KeyBinding Key="T" Modifiers="Ctrl+Alt" Command="{Binding NowyTowarCommand}"/>
         <KeyBinding Key="T" Modifiers="Ctrl" Command="{Binding TowaryCommand}"/>
+        <KeyBinding Key="P" Modifiers="Ctrl+Alt" Command="{Binding NowyPracownikCommand}"/>
+        <KeyBinding Key="P" Modifiers="Ctrl" Command="{Binding PracownicyCommand}"/>
+        <KeyBinding Key="F" Modifiers="Ctrl+Alt" Command="{Binding NowaFakturaCommand}"/>
+        <KeyBinding Key="F" Modifiers="Ctrl" Command="{Binding FakturyCommand}"/>
+        <KeyBinding Key="W" Modifiers="Ctrl" Command="{Binding NowaWyplataCommand}"/>
     </Window.InputBindings>
     <Grid>
         <Grid.RowDefinitions>
@@ -27,31 +36,62 @@
         </Grid.RowDefinitions>
 
         <Menu Grid.Row="0" Grid.Column="0" Margin="3">
-            <MenuItem Header="_Plik">
-                <MenuItem Header="Zamknij" Command="{Binding ZamknijAplikacje}"/>
+            <MenuItem Header="Plik">
+                <MenuItem Header="_Zamknij" Command="{Binding ZamknijAplikacje}" InputGestureText="Ctrl+Alt+Z">
+                    <MenuItem.Icon>
+                        <Image Source="/Views/IconZamknij.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="_Magazyn">
                 <MenuItem Header="Towary">
-                    <MenuItem Header="Dodawanie" Command="{Binding NowyTowarCommand}"/>
-                    <MenuItem Header="Wszystkie" Command="{Binding TowaryCommand}" InputGestureText="ctr+t"/>
+                    <MenuItem Header="Dodawanie" Command="{Binding NowyTowarCommand}" InputGestureText="Ctrl+Alt+T">
+                        <MenuItem.Icon>
+                            <Image Source="/Views/IconNowyTowar.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Wszystkie" Command="{Binding TowaryCommand}" InputGestureText="Ctr+T"/>
                 </MenuItem>
-                <MenuItem Header="Przyjecie zewnetrzne (PZ)" Command="{Binding PrzyjecieCommand}"/>
-                <MenuItem Header="Wydanie zewnetrzne (WZ)" Command="{Binding WydanieCommand}"/>
+                <MenuItem Header="Przyjecie zewnetrzne (PZ)" Command="{Binding PrzyjecieCommand}" InputGestureText="Ctrl+Shift+P">
+                    <MenuItem.Icon>
+                        <Image Source="/Views/IconPrzyjecie.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Wydanie zewnetrzne (WZ)" Command="{Binding WydanieCommand}" InputGestureText="Ctrl+Shift+W">
+                    <MenuItem.Icon>
+                        <Image Source="/Views/IconWydanie.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="Pracownicy">
                 <MenuItem Header="Pracownik">
-                    <MenuItem Header="Dodaj" Command="{Binding NowyPracownikCommand}"/>
-                    <MenuItem Header="Edytuj"/>
+                    <MenuItem Header="Dodaj" Command="{Binding NowyPracownikCommand}" InputGestureText="Ctrl+Alt+P">
+                        <MenuItem.Icon>
+                            <Image Source="/Views/IconDodajPracownika.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
-                <MenuItem Header="Wyswietl wszystkich" Command="{Binding PracownicyCommand}"/>
+                <MenuItem Header="Wyswietl wszystkich" Command="{Binding PracownicyCommand}" InputGestureText="Ctrl+P">
+                    <MenuItem.Icon>
+                        <Image Source="/Views/IconPracownicy.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="_Ksiegowosc">
                 <MenuItem Header="Faktury">
-                    <MenuItem Header="Dodaj nową" Command="{Binding NowaFakturaCommand}"/>
-                    <MenuItem Header="Wyświetl wszystkie" Command="{Binding FakturyCommand}"/>
+                    <MenuItem Header="Dodaj nową" Command="{Binding NowaFakturaCommand}" InputGestureText="Ctrl+Alt+F">
+                        <MenuItem.Icon>
+                            <Image Source="/Views/IconNowaFaktura.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Wyświetl wszystkie" Command="{Binding FakturyCommand}" InputGestureText="Ctrl+F">
+                        <MenuItem.Icon>
+                            <Image Source="/Views/IconFaktury.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
                 <MenuItem Header="Wyplaty">
-                    <MenuItem Header="Dodaj wypłatę" Command="{Binding NowaWyplataCommand}"/>
+                    <MenuItem Header="Dodaj wypłatę" Command="{Binding NowaWyplataCommand}" InputGestureText="Ctrl+W"/>
                 </MenuItem>
             </MenuItem>
         </Menu>
@@ -67,28 +107,28 @@
             <Separator/>
             <ToggleButton Width="32" Height="32" Margin="2" Command="{Binding NowyTowarCommand}">
                 <ToggleButton.Background>
-                    <ImageBrush ImageSource="/Views/Description.png"/>
+                    <ImageBrush ImageSource="/Views/IconNowyTowar.png"/>
                 </ToggleButton.Background>
             </ToggleButton>
             <ToggleButton Width="32" Height="32" Margin="2" Command="{Binding PrzyjecieCommand}">
                 <ToggleButton.Background>
-                    <ImageBrush ImageSource="/Views/Bookmark.png"/>
+                    <ImageBrush ImageSource="/Views/IconPrzyjecie.png"/>
                 </ToggleButton.Background>
             </ToggleButton>
             <ToggleButton Width="32" Height="32" Margin="2" Command="{Binding WydanieCommand}">
                 <ToggleButton.Background>
-                    <ImageBrush ImageSource="/Views/Favourite.png"/>
+                    <ImageBrush ImageSource="/Views/IconWydanie.png"/>
                 </ToggleButton.Background>
             </ToggleButton>
             <Separator/>
             <ToggleButton Width="32" Height="32" Margin="2" Command="{Binding NowaFakturaCommand}">
                 <ToggleButton.Background>
-                    <ImageBrush ImageSource="/Views/Logout.png"/>
+                    <ImageBrush ImageSource="/Views/IconNowaFaktura.png"/>
                 </ToggleButton.Background>
             </ToggleButton>
             <ToggleButton Width="32" Height="32" Margin="2" Command="{Binding FakturyCommand}">
                 <ToggleButton.Background>
-                    <ImageBrush ImageSource="/Views/Info.png" />
+                    <ImageBrush ImageSource="/Views/IconFaktury.png" />
                 </ToggleButton.Background>
             </ToggleButton>
         </ToolBar>

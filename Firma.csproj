@@ -13,8 +13,17 @@
     <None Remove="Views\Description.png" />
     <None Remove="Views\Favourite.png" />
     <None Remove="Views\Home.png" />
+    <None Remove="Views\IconDodajPracownika.png" />
+    <None Remove="Views\IconFaktury.png" />
+    <None Remove="Views\IconNowaFaktura.png" />
+    <None Remove="Views\IconNowyTowar.png" />
+    <None Remove="Views\IconPracownicy.png" />
+    <None Remove="Views\IconPrzyjecie.png" />
+    <None Remove="Views\IconWydanie.png" />
+    <None Remove="Views\IconZamknij.png" />
     <None Remove="Views\Info.png" />
     <None Remove="Views\Logout.png" />
+    <None Remove="Views\Plik.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,8 +36,17 @@
     <Resource Include="Views\Description.png" />
     <Resource Include="Views\Favourite.png" />
     <Resource Include="Views\Home.png" />
+    <Resource Include="Views\IconDodajPracownika.png" />
+    <Resource Include="Views\IconFaktury.png" />
+    <Resource Include="Views\IconNowaFaktura.png" />
+    <Resource Include="Views\IconNowyTowar.png" />
+    <Resource Include="Views\IconPracownicy.png" />
+    <Resource Include="Views\IconPrzyjecie.png" />
+    <Resource Include="Views\IconWydanie.png" />
+    <Resource Include="Views\IconZamknij.png" />
     <Resource Include="Views\Info.png" />
     <Resource Include="Views\Logout.png" />
+    <Resource Include="Views\Plik.png" />
   </ItemGroup>
 
   <ItemGroup>
