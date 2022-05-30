@@ -36,6 +36,10 @@
     <DataTemplate DataType="{x:Type vm:WydanieViewModel}">
         <vw:WydanieView/>
     </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:NowaWyplataViewModel}">
+        <vw:NowaWyplataView/>
+    </DataTemplate>
     <!--tu jest koniec laczenia View z ViewModel zakladek-->
     
     <Style x:Key="MainHCCStyle" TargetType="{x:Type HeaderedContentControl}">

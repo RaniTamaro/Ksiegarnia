@@ -50,7 +50,9 @@
                     <MenuItem Header="Dodaj nową" Command="{Binding NowaFakturaCommand}"/>
                     <MenuItem Header="Wyświetl wszystkie" Command="{Binding FakturyCommand}"/>
                 </MenuItem>
-                <MenuItem Header="Wyplaty"/>
+                <MenuItem Header="Wyplaty">
+                    <MenuItem Header="Dodaj wypłatę" Command="{Binding NowaWyplataCommand}"/>
+                </MenuItem>
             </MenuItem>
         </Menu>
 

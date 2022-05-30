@@ -140,5 +140,14 @@ namespace Firma.ViewResources {
                 return ResourceManager.GetString("Wydanie", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dodaj Wypłatę.
+        /// </summary>
+        internal static string Wyplata {
+            get {
+                return ResourceManager.GetString("Wyplata", resourceCulture);
+            }
+        }
     }
 }

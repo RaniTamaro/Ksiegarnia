@@ -186,7 +186,6 @@
                                         <DataGridTextColumn Header="Cena netto" Width="100" Binding="{Binding Path=CenaN}"/>
                                         <DataGridTextColumn Header="Cena brutto" Width="100" Binding="{Binding Path=CenaB}"/>
                                         <DataGridTextColumn Header="Waluta" Binding="{Binding Path=Waluta}"/>
-                                        <!--<DataGridTextColumn Header="Numer ceny"/>-->
                                     </DataGrid.Columns>
 
                                     <restab:TowaryTable Nazwa="Zakupu" Typ="Netto" Akt="----" Marza="----" Zaokr="0,01" Off="0,00" CenaN="0.00" CenaB="0.00" Waluta="PLN"/>

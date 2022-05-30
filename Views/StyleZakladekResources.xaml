@@ -82,6 +82,7 @@
     <Style x:Key="TBRozciągnięty" BasedOn="{StaticResource TextBoxStandardowy}" TargetType="TextBox">
         <Setter Property="Height" Value="50"/>
         <Setter Property="VerticalScrollBarVisibility" Value="Visible"/>
+        <Setter Property="VerticalContentAlignment" Value="Top"/>
     </Style>
     
     <Style x:Key="TBStandPrawo" BasedOn="{StaticResource TextBoxStandardowy}" TargetType="TextBox">
@@ -117,8 +118,17 @@
 
     <Style x:Key="CheckBoxStandardowy" TargetType="CheckBox">
         <Setter Property="Margin" Value="3"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
     </Style>
-    
+
+    <Style x:Key="CBSPogrubiony" BasedOn="{StaticResource CheckBoxStandardowy}" TargetType="CheckBox">
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <Style x:Key="CBSZablokowany" BasedOn="{StaticResource CheckBoxStandardowy}" TargetType="CheckBox">
+        <Setter Property="IsEnabled" Value="False"/>
+    </Style>
+
     <Style x:Key="ChBStStackPanel" BasedOn="{StaticResource CheckBoxStandardowy}" TargetType="CheckBox">
         <Setter Property="Height" Value="15"/>
     </Style>
@@ -139,6 +149,10 @@
 
     <Style x:Key="DPStZablokowany" BasedOn="{StaticResource DatePickerStandard}" TargetType="DatePicker">
         <Setter Property="IsEnabled" Value="False"/>
+    </Style>
+
+    <Style x:Key="RadioButtonStandardowy" TargetType="RadioButton">
+        <Setter Property="Margin" Value="3"/>
     </Style>
 
 </ResourceDictionary>

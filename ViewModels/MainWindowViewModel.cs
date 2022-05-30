@@ -85,6 +85,14 @@ namespace Firma.ViewModels
                 return new BaseCommand(() => createView(new WydanieViewModel()));
             }
         }
+
+        public ICommand NowaWyplataCommand
+        {
+            get
+            {
+                return new BaseCommand(() => createView(new NowaWyplataViewModel()));
+            }
+        }
         #endregion
 
         #region Przyciski w menu z lewej strony

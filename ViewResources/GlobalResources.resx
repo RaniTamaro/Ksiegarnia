@@ -144,4 +144,7 @@
   <data name="Wydanie" xml:space="preserve">
     <value>Nowe wydanie</value>
   </data>
+  <data name="Wyplata" xml:space="preserve">
+    <value>Dodaj Wypłatę</value>
+  </data>
 </root>
