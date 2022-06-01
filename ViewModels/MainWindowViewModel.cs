@@ -95,31 +95,31 @@ namespace Firma.ViewModels
         }
         #endregion
 
-        #region Przyciski w menu z lewej strony
-        private ReadOnlyCollection<CommandViewModel> _Commands; //To jest kolekcja komend w menu lewym
-        public ReadOnlyCollection<CommandViewModel> Commands
-        {
-            get 
-            {
-                if (_Commands == null)//Sprawdzam, czy przyciski z lewej strony menu nie zostaly zainicjalizowane
-                {
-                    List<CommandViewModel> cmds = this.CreateCommands();//Tworze liste przyciskowza pomoca funkcji CreateCommands
-                    _Commands = new ReadOnlyCollection<CommandViewModel>(cmds);//Te liste przypisuje do ReadOnlyCollection, bo ReadOnlyCollection mozna tylko tworzyc, nie mozna jej dodawac
-                }
-                return _Commands;
-            }
-        }
-        private List<CommandViewModel> CreateCommands()//Tu decydujemy, jakie przyciski sa w lewym menu
-        {
-            return new List<CommandViewModel>
-            {
-                new CommandViewModel("Towary", new BaseCommand(showAllTowar)), //To tworzy pierwszy przycisk o nazwie Towary, ktory pokaze zakladke WszystkieTowary
-                new CommandViewModel("Towar", new BaseCommand(()=>createView(new NowyTowarViewModel()))),
-                new CommandViewModel("Faktura", new BaseCommand(()=>createView(new NowaFakturaViewModel()))),
-                new CommandViewModel("Faktury", new BaseCommand(showAllFaktury)),
-            };
-        }
-        #endregion
+        //#region Przyciski w menu z lewej strony
+        //private ReadOnlyCollection<CommandViewModel> _Commands; //To jest kolekcja komend w menu lewym
+        //public ReadOnlyCollection<CommandViewModel> Commands
+        //{
+        //    get 
+        //    {
+        //        if (_Commands == null)//Sprawdzam, czy przyciski z lewej strony menu nie zostaly zainicjalizowane
+        //        {
+        //            List<CommandViewModel> cmds = this.CreateCommands();//Tworze liste przyciskowza pomoca funkcji CreateCommands
+        //            _Commands = new ReadOnlyCollection<CommandViewModel>(cmds);//Te liste przypisuje do ReadOnlyCollection, bo ReadOnlyCollection mozna tylko tworzyc, nie mozna jej dodawac
+        //        }
+        //        return _Commands;
+        //    }
+        //}
+        //private List<CommandViewModel> CreateCommands()//Tu decydujemy, jakie przyciski sa w lewym menu
+        //{
+        //    return new List<CommandViewModel>
+        //    {
+        //        new CommandViewModel("Towary", new BaseCommand(showAllTowar)), //To tworzy pierwszy przycisk o nazwie Towary, ktory pokaze zakladke WszystkieTowary
+        //        new CommandViewModel("Towar", new BaseCommand(()=>createView(new NowyTowarViewModel()))),
+        //        new CommandViewModel("Faktura", new BaseCommand(()=>createView(new NowaFakturaViewModel()))),
+        //        new CommandViewModel("Faktury", new BaseCommand(showAllFaktury)),
+        //    };
+        //}
+        //#endregion
 
         #region Zakładki
         private ObservableCollection<WorkspaceViewModel> _Workspaces;//To jest kolekcja zakladek

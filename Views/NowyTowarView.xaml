@@ -124,16 +124,16 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
                                     <ColumnDefinition Width="1.5*"/>
-                                    <ColumnDefinition Width="450"/>
+                                    <ColumnDefinition Width="2.8*"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
 
                                 <Label Content="Nazwa:" Style="{StaticResource LabelStPogrubiony}"/>
-                                <TextBox Text="Harry Potter i Kamień Filozoficzny" Grid.Column="1" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Visible" Style="{StaticResource TextBoxStandardowy}"/>
+                                <TextBox Text="Harry Potter i Kamień Filozoficzny" Grid.Column="1" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Visible" Style="{StaticResource TextBoxStandardowyGora}"/>
 
                                 <Border Grid.Row="1" Style="{StaticResource BorderStylizacja}">
                                     <Label Content="Kategoria sprzedaży:" Style="{StaticResource LabelStylizowany}"/>

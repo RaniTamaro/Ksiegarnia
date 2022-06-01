@@ -46,23 +46,6 @@
         <Setter Property="HeaderTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <!--<Border 
-                    Background="LightBlue" 
-                    BorderBrush="LightGray" 
-                    BorderThickness="0" 
-                    CornerRadius="5" 
-                    Margin="4" 
-                    Padding="4" 
-                    SnapsToDevicePixels="True" 
-                    >-->
-                        <!--<TextBlock 
-                        FontSize="14"
-                        FontWeight="Bold"
-                        Foreground="White" 
-                        HorizontalAlignment="Center"  
-                        Text="{TemplateBinding Content}" 
-                         />-->
-                    <!--</Border>-->
                 </DataTemplate>
             </Setter.Value>
         </Setter>
@@ -109,12 +92,7 @@
         <ItemsControl IsTabStop="False" ItemsSource="{Binding}" Margin="6,2">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button Content="{Binding DisplayName}" Command="{Binding Path=Command}" Margin="6" Padding="4" Background="LightPink" BorderThickness="0"/>
-                    <!--<TextBlock Margin="2,6">
-                        <Hyperlink Command="{Binding Path=Command}">
-                            <TextBlock Text="{Binding Path=DisplayName}" />
-                        </Hyperlink>
-                    </TextBlock>-->
+                    <Button Content="{Binding DisplayName}" Command="{Binding Path=Command}" Margin="6" Padding="4" Background="#E4E6C3" BorderThickness="0"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
@@ -124,7 +102,7 @@
     This template explains how to render 
     a tab item with a close button.
     -->
-    <DataTemplate x:Key="ClosableTabItemTemplate">
+    <!--<DataTemplate x:Key="ClosableTabItemTemplate">
         <DockPanel Width="120">
             <Button 
             Command="{Binding Path=CloseCommand}"
@@ -140,6 +118,40 @@
             VerticalContentAlignment="Bottom"
             Width="16" Height="16" 
             />
+            <ContentPresenter 
+        Content="{Binding Path=DisplayName}" 
+        VerticalAlignment="Center" 
+        />
+        </DockPanel>
+    </DataTemplate>-->
+
+    <DataTemplate x:Key="ClosableTabItemTemplate">
+        <DockPanel Width="120">
+            <Button 
+            Command="{Binding Path=CloseCommand}"
+            Content="X"
+            Cursor="Hand"
+            DockPanel.Dock="Right"
+            Focusable="False"
+            FontFamily="Courier" 
+            FontSize="9"
+            FontWeight="Bold"  
+            Margin="0,1,0,0"
+            Padding="0"
+            VerticalContentAlignment="Bottom"
+            Width="16" Height="16"
+            />
+            <!--<Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderThickness="0"/>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>-->
             <ContentPresenter 
         Content="{Binding Path=DisplayName}" 
         VerticalAlignment="Center" 
@@ -162,55 +174,100 @@
     
     
     <!--Tu robimy ciąg dalszy resources!-->
-    <Style x:Key="BaseDatePicker" TargetType="{x:Type DatePicker}">
-        <Setter Property="Width" Value="150"/>
-        <Setter Property="Margin" Value="2 2 2 2"/>
+    <Style x:Key="{x:Type ToolBar}" TargetType="{x:Type ToolBar}">
+        <Setter Property="Background" Value="#E4E6C3"/>
     </Style>
 
-    <Style x:Key="BlueDatePicker" BasedOn="{StaticResource BaseDatePicker}" TargetType="{x:Type DatePicker}">
-        <Setter Property="Foreground" Value="Blue"/> 
+    <Style x:Key="{x:Type StatusBar}" TargetType="{x:Type StatusBar}">
+        <Setter Property="Background" Value="#E4E6C3"/>
     </Style>
 
-    <Style x:Key="BaseExpander" TargetType="{x:Type Expander}">
-        <Setter Property="BorderBrush" Value="Blue"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Margin" Value="2"/>
-        <Setter Property="Foreground" Value="Blue"/>
-    </Style>
 
-    <Style x:Key="BaseButton" TargetType="{x:Type Button}">
-        <Setter Property="Background" Value="LightBlue"/>
-        <Setter Property="Foreground" Value="Blue"/>
+    <Style x:Key="TextBlockStandard" TargetType="TextBlock">
         <Setter Property="Margin" Value="2"/>
     </Style>
 
-    <Style x:Key="DisenabledButton" BasedOn="{StaticResource BaseButton}" TargetType="{x:Type Button}">
-        <Setter Property="IsEnabled" Value="False"/>
-        <!--Zadziala, jesli mamy ustawione enabled na false-->
+    <Style x:Key="TBBezRamki" TargetType="ToggleButton">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border Background="{TemplateBinding Background}" BorderThickness="0">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
         <Style.Triggers>
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Foreground" Value="LightBlue"/>
-                <Setter Property="BorderThickness" Value="1"/>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#899878"/>
             </Trigger>
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="BaseComboBox" TargetType="{x:Type ComboBox}">
-        <Setter Property="Margin" Value="2 2 2 2"/>
-        <Setter Property="Background" Value="LightBlue"/>
-        <Setter Property="Foreground" Value="Blue"/>
-        <Setter Property="IsEditable" Value="True"/>
-        <Setter Property="Width" Value="auto"/>
+    <Style x:Key="TBMenu" BasedOn="{StaticResource TBBezRamki}" TargetType="ToggleButton">
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
     </Style>
 
-    <Style x:Key="BaseGrid" TargetType="{x:Type Grid}">
-        <Setter Property="Background" Value="Azure"/>
+    <Style x:Key="ButtonMenuBoczne" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" BorderThickness="0">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="Transparent"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
-    <Style x:Key="BaseLabel" TargetType="Label">
-        <Setter Property="Foreground" Value="Blue"/>
-        <Setter Property="Margin" Value="2"/>
+    <Style x:Key="ButtonMenuBoczneText" BasedOn="{StaticResource ButtonMenuBoczne}" TargetType="Button">
+        <Setter Property="Margin" Value="2,0,0,0"/>
     </Style>
 
+    <Style x:Key="ListViewItemMenuBoczne" TargetType="ListViewItem">
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                    <Border Background="{TemplateBinding Background}" BorderThickness="0">
+                        <ContentPresenter Margin="3,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#899878"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--AllowsTransparency="True" Margin="15" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" Height="150"-->
+    <Style x:Key="PopUp" TargetType="Popup">
+        <Setter Property="AllowsTransparency" Value="True"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Width" Value="300"/>
+        <Setter Property="Height" Value="150"/>
+        <Setter Property="Placement" Value="Top"/>
+    </Style>
+    
+    <!--CornerRadius="10" Background="#E4E6C3"-->
+    <Style x:Key="BorderPopUP" TargetType="Border">
+        <Setter Property="Background" Value="#E4E6C3"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="BorderBrush" Value="White"/>
+        <!--<Setter Property="BorderBrush" Value="#222725"/>-->
+    </Style>
 
 </ResourceDictionary>

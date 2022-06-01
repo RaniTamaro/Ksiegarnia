@@ -30,7 +30,7 @@
     <Style x:Key="Expander" TargetType="{x:Type Expander}">
         <Setter Property="Margin" Value="3"/>
         <Setter Property="IsExpanded" Value="True"/>
-        <Setter Property="Background" Value="#E4E6C3"/>
+        <!--<Setter Property="Background" Value="#E4E6C3"/>-->
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="#222725"/>
         <Setter Property="Background" Value="#899878"/>
@@ -74,6 +74,10 @@
     <Style x:Key="TextBoxStandardowy" TargetType="TextBox">
         <Setter Property="Margin" Value="3"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="TextBoxStandardowyGora" BasedOn="{StaticResource TextBoxStandardowy}" TargetType="TextBox">
+        <Setter Property="VerticalContentAlignment" Value="Top"/>
     </Style>
 
     <Style x:Key="TBStPogrubiony" BasedOn="{StaticResource TextBoxStandardowy}" TargetType="TextBox">

@@ -76,3 +76,5 @@ C:\Users\klaku\Desktop\Studia i praca\WSB-NLU\Rok 2\Semestr 4\Interfejsy\Projekt
 C:\Users\klaku\Desktop\Studia i praca\WSB-NLU\Rok 2\Semestr 4\Interfejsy\Projekt\Firma\Firma\obj\Debug\net6.0-windows\Views\WszyscyPracownicyView.baml
 C:\Users\klaku\Desktop\Studia i praca\WSB-NLU\Rok 2\Semestr 4\Interfejsy\Projekt\Firma\Firma\obj\Debug\net6.0-windows\Views\NowaWyplataView.g.cs
 C:\Users\klaku\Desktop\Studia i praca\WSB-NLU\Rok 2\Semestr 4\Interfejsy\Projekt\Firma\Firma\obj\Debug\net6.0-windows\Views\NowaWyplataView.baml
+C:\Users\klaku\Desktop\Studia i praca\WSB-NLU\Rok 2\Semestr 4\Interfejsy\Projekt\Firma\Firma\bin\Debug\net6.0-windows\HamburgerMenu.dll
+C:\Users\klaku\Desktop\Studia i praca\WSB-NLU\Rok 2\Semestr 4\Interfejsy\Projekt\Firma\Firma\obj\Debug\net6.0-windows\Firma.csproj.CopyComplete

@@ -54,7 +54,7 @@ namespace Firma.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Firma;component/views/wydanieview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Firma;V1.0.0.0;component/views/wydanieview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\WydanieView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
