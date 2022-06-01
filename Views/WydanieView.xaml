@@ -11,6 +11,10 @@
         <ResourceDictionary Source="StyleZakladekResources.xaml"/>
     </UserControl.Resources>
     <Grid Style="{StaticResource TloGlowne}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="50"/>
+        </Grid.ColumnDefinitions>
         <TabControl>
             <TabItem Header="1. Ogólne">
                 <ScrollViewer>
@@ -224,5 +228,15 @@
                 </ScrollViewer>
             </TabItem>
         </TabControl>
+
+        <StackPanel Grid.Column="1">
+            <Label Height="25"/>
+            <Button Style="{StaticResource ButtonStandard}" ToolTip="Zapis">
+                <Image Source="/Views/IconZapisz.png"/>
+            </Button>
+            <Button Style="{StaticResource ButtonStandard}" ToolTip="Anuluj">
+                <Image Source="/Views/IconAnuluj.png"/>
+            </Button>
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -11,6 +11,10 @@
         <ResourceDictionary Source="StyleZakladekResources.xaml"/>
     </UserControl.Resources>
     <Grid Style="{StaticResource TloGlowne}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="50"/>
+        </Grid.ColumnDefinitions>
         <TabControl>
             <TabItem Header="1. Ogólne">
                 <ScrollViewer>
@@ -100,7 +104,9 @@
                                 <ComboBox Grid.Row="2" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
                                     <ComboBoxItem Content="4901 10 00"/>
                                 </ComboBox>
-                                <Button Grid.Row="2" Grid.Column="2" Background="AliceBlue" Style="{StaticResource ButtonStandard}"/>
+                                <Button Grid.Row="2" Grid.Column="2" Height="25" Style="{StaticResource ButtonStandard}">
+                                    <Image Source="/Views/IconFiltr.png"/>
+                                </Button>
 
                                 <Label Grid.Row="3" Content="Stawka VAT:" Style="{StaticResource LabelStPogrubiony}"/>
                                 <ComboBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource ComboBoxStandardowy}">
@@ -401,5 +407,14 @@
                 </ScrollViewer>
             </TabItem>
         </TabControl>
+        <StackPanel Grid.Column="1">
+            <Label Height="25"/>
+            <Button Style="{StaticResource ButtonStandard}" ToolTip="Zapis">
+                <Image Source="/Views/IconZapisz.png"/>
+            </Button>
+            <Button Style="{StaticResource ButtonStandard}" ToolTip="Anuluj">
+                <Image Source="/Views/IconAnuluj.png"/>
+            </Button>
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -10,434 +10,448 @@
         <ResourceDictionary Source="StyleZakladekResources.xaml"/>
     </UserControl.Resources>
 
-    <TabControl>
-        <TabItem Header="1. Ogólne">
-            <ScrollViewer>
-                <Grid Style="{StaticResource TloGlowne}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="1.6*"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
+    <Grid Style="{StaticResource TloGlowne}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="50"/>
+        </Grid.ColumnDefinitions>
+        <TabControl>
+            <TabItem Header="1. Ogólne">
+                <ScrollViewer>
+                    <Grid Style="{StaticResource TloGlowne}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="1.6*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
 
-                    <Border Style="{StaticResource BorderStandardowy}">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.2*"/>
-                                <ColumnDefinition Width="0.05*"/>
-                                <ColumnDefinition Width="0.4*"/>
-                                <ColumnDefinition Width="0.5*"/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="0.5*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
+                        <Border Style="{StaticResource BorderStandardowy}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.2*"/>
+                                    <ColumnDefinition Width="0.05*"/>
+                                    <ColumnDefinition Width="0.4*"/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
 
-                            <Label Content="Nazwa:" Style="{StaticResource LabelStPogrubiony}"/>
-                            <TextBox Text="Premia sprzedażowa" Grid.Column="2" Grid.ColumnSpan="3" Style="{StaticResource TBStPogrubiony}"/>
-                            <CheckBox Content="Nieaktywny" Grid.Column="5" Style="{StaticResource CheckBoxStandardowy}"/>
+                                <Label Content="Nazwa:" Style="{StaticResource LabelStPogrubiony}"/>
+                                <TextBox Text="Premia sprzedażowa" Grid.Column="2" Grid.ColumnSpan="3" Style="{StaticResource TBStPogrubiony}"/>
+                                <CheckBox Content="Nieaktywny" Grid.Column="5" Style="{StaticResource CheckBoxStandardowy}"/>
 
-                            <Label Content="Skrót:" Grid.Row="1" Style="{StaticResource LabelStPogrubiony}"/>
-                            <TextBox Text="Pr.Sprzed." Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" Style="{StaticResource TBStPogrubiony}"/>
+                                <Label Content="Skrót:" Grid.Row="1" Style="{StaticResource LabelStPogrubiony}"/>
+                                <TextBox Text="Pr.Sprzed." Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" Style="{StaticResource TBStPogrubiony}"/>
 
-                            <CheckBox Content="Potrącenie" Grid.Row="2" Grid.Column="2" Style="{StaticResource CheckBoxStandardowy}"/>
-                            <CheckBox Content="Przychód PPK dla umów cywilnoprawnych" Grid.Row="2" Grid.Column="4" Style="{StaticResource CheckBoxStandardowy}"/>
+                                <CheckBox Content="Potrącenie" Grid.Row="2" Grid.Column="2" Style="{StaticResource CheckBoxStandardowy}"/>
+                                <CheckBox Content="Przychód PPK dla umów cywilnoprawnych" Grid.Row="2" Grid.Column="4" Style="{StaticResource CheckBoxStandardowy}"/>
 
-                            <Label Content="Rodzaj:" Grid.Row="3" Style="{StaticResource LabelStandardowy}"/>
-                            <ComboBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="Wypłata" IsSelected="True"/>
-                                <ComboBoxItem Content="Dodatek"/>
-                            </ComboBox>
-                        </Grid>
-                    </Border>
+                                <Label Content="Rodzaj:" Grid.Row="3" Style="{StaticResource LabelStandardowy}"/>
+                                <ComboBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource ComboBoxStandardowy}">
+                                    <ComboBoxItem Content="Wypłata" IsSelected="True"/>
+                                    <ComboBoxItem Content="Dodatek"/>
+                                </ComboBox>
+                            </Grid>
+                        </Border>
 
-                    <Expander Header="Algorytm naliczania wartości" Grid.Row="1" Style="{StaticResource Expander}">
-                        <Grid Style="{StaticResource TloExpanderG}">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.1*"/>
-                                <ColumnDefinition Width="0.05*"/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
+                        <Expander Header="Algorytm naliczania wartości" Grid.Row="1" Style="{StaticResource Expander}">
+                            <Grid Style="{StaticResource TloExpanderG}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.1*"/>
+                                    <ColumnDefinition Width="0.05*"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
 
-                            <Border Style="{StaticResource BorderStylizacja}">
-                                <Label Content="Algorytm" Style="{StaticResource LabelStylizowanyPogrubiony}"/>
-                            </Border>
-                            <TextBox Text="2" Grid.Column="1" Style="{StaticResource TBStandPrawo}"/>
-                            <Label Content="Procent wynagrodzenia" Grid.Column="2" Style="{StaticResource LabelStPogrubiony}"/>
-
-                            <TabControl Grid.Row="1" Grid.ColumnSpan="3">
-                                <TabItem Header="Definicja">
-                                    <Grid Style="{StaticResource TloExpanderG}">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="0.2*"/>
-                                            <ColumnDefinition Width="0.3*"/>
-                                            <ColumnDefinition Width="1.2*"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition/>
-                                        </Grid.RowDefinitions>
-
-                                        <Label Content="Procent:" Style="{StaticResource LabelStandardowy}"/>
-                                        <TextBox Text="0,00%" Grid.Column="1" Style="{StaticResource TBStandPrawo}"/>
-                                        <ComboBox Grid.Column="2" Style="{StaticResource ComboBoxStandardowy}">
-                                            <ComboBoxItem Content="Zasadniczego" IsSelected="True"/>
-                                            <ComboBoxItem Content="Zasadniczego bez nadgodzin"/>
-                                            <ComboBoxItem Content="Zasadniczego z nadgodzinami"/>
-                                        </ComboBox>
-                                    </Grid>
-                                </TabItem>
-                            </TabControl>
-
-                        </Grid>
-                    </Expander>
-
-                    <Expander Header="Automatyczne korygowanie / składnik związany / PPK" Grid.Row="2" Style="{StaticResource Expander}">
-                        <Grid Style="{StaticResource TloExpanderG}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.6*"/>
-                                <ColumnDefinition Width="0.5*"/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="0.2*"/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-
-                            <CheckBox Content="Automatycznie korygować wynagrodzenie z tytułu:" Grid.ColumnSpan="3" Style="{StaticResource CBSPogrubiony}"/>
-                            <CheckBox Content="Urlopu, nieobecności płatnej" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
-                            <CheckBox Content="Zwolnienia lekarskiego" Grid.Row="1" Grid.Column="2" Style="{StaticResource CheckBoxStandardowy}"/>
-
-                            <CheckBox Content="Nieobecności usprawiedliwionej" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
-                            <CheckBox Content="Odchyłek od normy" Grid.Row="2" Grid.Column="2" Style="{StaticResource CheckBoxStandardowy}"/>
-
-                            <CheckBox Content="Nieobecności nieusprawiedliwionej" Grid.Row="3" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
-
-                            <GroupBox Header="Pomniejszenie za zwolnienie lekarskie" Grid.Row="1" Grid.RowSpan="3" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource GroupBoxStandardowy}">
-
-                                <Border Grid.ColumnSpan="2" Style="{StaticResource BorderStandardowy}">
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition/>
-                                            <RowDefinition/>
-                                        </Grid.RowDefinitions>
-                                        <RadioButton Content="Proporcjonalnie" Style="{StaticResource RadioButtonStandardowy}"/>
-                                        <RadioButton Content="1/30" Grid.Row="1" Style="{StaticResource RadioButtonStandardowy}"/>
-                                    </Grid>
+                                <Border Style="{StaticResource BorderStylizacja}">
+                                    <Label Content="Algorytm" Style="{StaticResource LabelStylizowanyPogrubiony}"/>
                                 </Border>
-                            </GroupBox>
+                                <TextBox Text="2" Grid.Column="1" Style="{StaticResource TBStandPrawo}"/>
+                                <Label Content="Procent wynagrodzenia" Grid.Column="2" Style="{StaticResource LabelStPogrubiony}"/>
 
-                            <Border Grid.Row="4" Style="{StaticResource BorderStylizacja}">
-                                <Label Content="Składnik związany" Style="{StaticResource LabelStylizowany}"/>
-                            </Border>
-                            <ComboBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="Brak" IsSelected="True"/>
-                                <ComboBoxItem Content="Opcja1"/>
-                                <ComboBoxItem Content="Opcja2"/>
-                            </ComboBox>
-                            <CheckBox Content="Tylko za okres zwolnienia" Grid.Row="4" Grid.Column="4" Style="{StaticResource CBSZablokowany}"/>
+                                <TabControl Grid.Row="1" Grid.ColumnSpan="3">
+                                    <TabItem Header="Definicja">
+                                        <Grid Style="{StaticResource TloExpanderG}">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="0.2*"/>
+                                                <ColumnDefinition Width="0.3*"/>
+                                                <ColumnDefinition Width="1.2*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
 
-                            <Border Grid.Row="5" Style="{StaticResource BorderStylizacja}">
-                                <Label Content="Przychód PPK" IsEnabled="False" Style="{StaticResource LabelStylizowany}"/>
-                            </Border>
-                            <ComboBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource CBStZablokowany}">
-                                <ComboBoxItem Content="Opcja1"/>
-                                <ComboBoxItem Content="Opcja1"/>
-                                <ComboBoxItem Content="Opcja2"/>
-                            </ComboBox>
+                                            <Label Content="Procent:" Style="{StaticResource LabelStandardowy}"/>
+                                            <TextBox Text="0,00%" Grid.Column="1" Style="{StaticResource TBStandPrawo}"/>
+                                            <ComboBox Grid.Column="2" Style="{StaticResource ComboBoxStandardowy}">
+                                                <ComboBoxItem Content="Zasadniczego" IsSelected="True"/>
+                                                <ComboBoxItem Content="Zasadniczego bez nadgodzin"/>
+                                                <ComboBoxItem Content="Zasadniczego z nadgodzinami"/>
+                                            </ComboBox>
+                                        </Grid>
+                                    </TabItem>
+                                </TabControl>
 
-                        </Grid>
-                    </Expander>
-                </Grid>
-            </ScrollViewer>
-        </TabItem>
-        <TabItem Header="2. Podatki/Nieobecności">
-            <ScrollViewer>
-                <Grid Style="{StaticResource TloGlowne}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
+                            </Grid>
+                        </Expander>
 
-                    <Expander Header="Świadczenia socjalne" Style="{StaticResource Expander}">
-                        <Grid Style="{StaticResource TloExpanderG}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <CheckBox Content="Wliczaj do limitu zwolnienia z opodatkowania ZFŚS" Style="{StaticResource CheckBoxStandardowy}"/>
-                            <CheckBox Content="Wykazuj jako świadczenie socjalne na wydrukach" Grid.Column="1" Style="{StaticResource CheckBoxStandardowy}"/>
-                        </Grid>
-                    </Expander>
+                        <Expander Header="Automatyczne korygowanie / składnik związany / PPK" Grid.Row="2" Style="{StaticResource Expander}">
+                            <Grid Style="{StaticResource TloExpanderG}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.6*"/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="0.2*"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
 
-                    <Expander Header="Sposób naliczania" Grid.Row="1" Style="{StaticResource Expander}">
-                        <Grid Style="{StaticResource TloExpanderG}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="0.5*"/>
-                                <ColumnDefinition Width="0.5*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
+                                <CheckBox Content="Automatycznie korygować wynagrodzenie z tytułu:" Grid.ColumnSpan="3" Style="{StaticResource CBSPogrubiony}"/>
+                                <CheckBox Content="Urlopu, nieobecności płatnej" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
+                                <CheckBox Content="Zwolnienia lekarskiego" Grid.Row="1" Grid.Column="2" Style="{StaticResource CheckBoxStandardowy}"/>
 
-                            <Border Style="{StaticResource BorderStylizacja}">
-                                <Label Content="Pozycja na deklaracji PIT" Style="{StaticResource LabelStylizowany}"/>
-                            </Border>
-                            <TextBox Text="PIT-4 1. Wynagrodzenie ze stosunku: pracy." Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource TextBoxStandardowy}"/>
+                                <CheckBox Content="Nieobecności usprawiedliwionej" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
+                                <CheckBox Content="Odchyłek od normy" Grid.Row="2" Grid.Column="2" Style="{StaticResource CheckBoxStandardowy}"/>
 
-                            <Label Content="Sposób naliczania zaliczki podatku" Grid.Row="1" Style="{StaticResource LabelStandardowy}"/>
-                            <ComboBox Grid.Row="1" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="Naliczać wg progów" IsSelected="True"/>
-                                <ComboBoxItem Content="Nie naliczać"/>
-                            </ComboBox>
+                                <CheckBox Content="Nieobecności nieusprawiedliwionej" Grid.Row="3" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
 
-                            <CheckBox Content="Zawsze naliczaj ulgę podatkową" Grid.Row="2" IsChecked="True" Style="{StaticResource CheckBoxStandardowy}"/>
+                                <GroupBox Header="Pomniejszenie za zwolnienie lekarskie" Grid.Row="1" Grid.RowSpan="3" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource GroupBoxStandardowy}">
 
-                            <Label Content="Sposób naliczania zaliczki podatku:" Grid.Row="3" Style="{StaticResource LabelStandardowy}"/>
-                            <ComboBox Grid.Row="3" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="Naliczać wg progów"/>
-                                <ComboBoxItem Content="Nie naliczać" IsSelected="True"/>
-                            </ComboBox>
+                                    <Border Grid.ColumnSpan="2" Style="{StaticResource BorderStandardowy}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                            <RadioButton Content="Proporcjonalnie" Style="{StaticResource RadioButtonStandardowy}"/>
+                                            <RadioButton Content="1/30" Grid.Row="1" Style="{StaticResource RadioButtonStandardowy}"/>
+                                        </Grid>
+                                    </Border>
+                                </GroupBox>
 
-                            <Border Grid.Row="4" Style="{StaticResource BorderStylizacja}">
-                                <Label Content="Pozycja na deklaracji ZUS" Style="{StaticResource LabelStylizowany}"/>
-                            </Border>
-                            <TextBox Text="Nie dotyczy" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource TextBoxStandardowy}"/>
+                                <Border Grid.Row="4" Style="{StaticResource BorderStylizacja}">
+                                    <Label Content="Składnik związany" Style="{StaticResource LabelStylizowany}"/>
+                                </Border>
+                                <ComboBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource ComboBoxStandardowy}">
+                                    <ComboBoxItem Content="Brak" IsSelected="True"/>
+                                    <ComboBoxItem Content="Opcja1"/>
+                                    <ComboBoxItem Content="Opcja2"/>
+                                </ComboBox>
+                                <CheckBox Content="Tylko za okres zwolnienia" Grid.Row="4" Grid.Column="4" Style="{StaticResource CBSZablokowany}"/>
 
-                            <Label Content="Sposób naliczania składek ZUS:" Grid.Row="5" Style="{StaticResource LabelStandardowy}"/>
-                            <ComboBox Grid.Row="5" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="Naliczać wg progów"/>
-                                <ComboBoxItem Content="Naliczać" IsSelected="True"/>
-                                <ComboBoxItem Content="Nie naliczać"/>
-                            </ComboBox>
+                                <Border Grid.Row="5" Style="{StaticResource BorderStylizacja}">
+                                    <Label Content="Przychód PPK" IsEnabled="False" Style="{StaticResource LabelStylizowany}"/>
+                                </Border>
+                                <ComboBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource CBStZablokowany}">
+                                    <ComboBoxItem Content="Opcja1"/>
+                                    <ComboBoxItem Content="Opcja1"/>
+                                    <ComboBoxItem Content="Opcja2"/>
+                                </ComboBox>
 
-                            <Label Content="Sposób naliczania skł.na ub.zdrow.:" Grid.Row="6" Style="{StaticResource LabelStandardowy}"/>
-                            <ComboBox Grid.Row="6" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="Naliczać wg progów"/>
-                                <ComboBoxItem Content="Naliczać" IsSelected="True"/>
-                                <ComboBoxItem Content="Nie naliczać"/>
-                            </ComboBox>
+                            </Grid>
+                        </Expander>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="2. Podatki/Nieobecności">
+                <ScrollViewer>
+                    <Grid Style="{StaticResource TloGlowne}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
 
-                            <Label Content="Okres wypłaty:" Grid.Row="7" Style="{StaticResource LabelStandardowy}"/>
-                            <ComboBox Grid.Row="7" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="Co 1 tydzień"/>
-                                <ComboBoxItem Content="Co 2 tygodnie"/>
-                                <ComboBoxItem Content="Co 1 miesiąc" IsSelected="True"/>
-                                <ComboBoxItem Content="Co 3 miesiące"/>
-                            </ComboBox>
-                            <CheckBox Content="Korygowana" Grid.Row="7" Grid.Column="4" Style="{StaticResource CheckBoxStandardowy}"/>
-                        </Grid>
-                    </Expander>
+                        <Expander Header="Świadczenia socjalne" Style="{StaticResource Expander}">
+                            <Grid Style="{StaticResource TloExpanderG}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Content="Wliczaj do limitu zwolnienia z opodatkowania ZFŚS" Style="{StaticResource CheckBoxStandardowy}"/>
+                                <CheckBox Content="Wykazuj jako świadczenie socjalne na wydrukach" Grid.Column="1" Style="{StaticResource CheckBoxStandardowy}"/>
+                            </Grid>
+                        </Expander>
 
-                    <Expander Grid.Row="2" Header="Wliczać do podstawy naliczania" Style="{StaticResource Expander}">
-                        <Grid Style="{StaticResource TloExpanderG}">
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
+                        <Expander Header="Sposób naliczania" Grid.Row="1" Style="{StaticResource Expander}">
+                            <Grid Style="{StaticResource TloExpanderG}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
 
-                            <Label Content="Zasiłków chorobowych:" Style="{StaticResource  LabelStandardowy}"/>
-                            <ComboBox Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="Wliczać" IsSelected="True"/>
-                                <ComboBoxItem Content="Wliczać wg progu"/>
-                                <ComboBoxItem Content="Nie wliczać"/>
-                            </ComboBox>
+                                <Border Style="{StaticResource BorderStylizacja}">
+                                    <Label Content="Pozycja na deklaracji PIT" Style="{StaticResource LabelStylizowany}"/>
+                                </Border>
+                                <TextBox Text="PIT-4 1. Wynagrodzenie ze stosunku: pracy." Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource TextBoxStandardowy}"/>
 
-                            <CheckBox Content="Dodatek okresowy - wliczać w podwójnej wysokości, gdy nie wypłacono go za ostatni okres" Grid.Row="1" Grid.ColumnSpan="3"/>
+                                <Label Content="Sposób naliczania zaliczki podatku" Grid.Row="1" Style="{StaticResource LabelStandardowy}"/>
+                                <ComboBox Grid.Row="1" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
+                                    <ComboBoxItem Content="Naliczać wg progów" IsSelected="True"/>
+                                    <ComboBoxItem Content="Nie naliczać"/>
+                                </ComboBox>
 
-                            <Label Content="Wynagrodzenie za czas urlopu:" Grid.Row="2" Style="{StaticResource  LabelStandardowy}"/>
-                            <ComboBox Grid.Row="2" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="Wliczać"/>
-                                <ComboBoxItem Content="Wliczać wg progu"/>
-                                <ComboBoxItem Content="Nie wliczać" IsSelected="True"/>
-                            </ComboBox>
+                                <CheckBox Content="Zawsze naliczaj ulgę podatkową" Grid.Row="2" IsChecked="True" Style="{StaticResource CheckBoxStandardowy}"/>
 
-                            <Border Grid.Row="3" IsEnabled="False" Style="{StaticResource BorderStylizacja}">
-                                <Label Content="Stała okresowa" IsEnabled="False" Style="{StaticResource LabelStylizowany}"/>
-                            </Border>
-                            <TextBox Text="Brak" Grid.Row="3" Grid.Column="1" Style="{StaticResource TBStZablokowany}"/>
+                                <Label Content="Sposób naliczania zaliczki podatku:" Grid.Row="3" Style="{StaticResource LabelStandardowy}"/>
+                                <ComboBox Grid.Row="3" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
+                                    <ComboBoxItem Content="Naliczać wg progów"/>
+                                    <ComboBoxItem Content="Nie naliczać" IsSelected="True"/>
+                                </ComboBox>
 
-                            <Label Content="Ekwiwalentu za czas urlopu:" Grid.Row="4" Style="{StaticResource  LabelStandardowy}"/>
-                            <ComboBox Grid.Row="4" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="Wliczać"/>
-                                <ComboBoxItem Content="Wliczać wg progu"/>
-                                <ComboBoxItem Content="Nie wliczać" IsSelected="True"/>
-                            </ComboBox>
+                                <Border Grid.Row="4" Style="{StaticResource BorderStylizacja}">
+                                    <Label Content="Pozycja na deklaracji ZUS" Style="{StaticResource LabelStylizowany}"/>
+                                </Border>
+                                <TextBox Text="Nie dotyczy" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource TextBoxStandardowy}"/>
 
-                        </Grid>
-                    </Expander>
+                                <Label Content="Sposób naliczania składek ZUS:" Grid.Row="5" Style="{StaticResource LabelStandardowy}"/>
+                                <ComboBox Grid.Row="5" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
+                                    <ComboBoxItem Content="Naliczać wg progów"/>
+                                    <ComboBoxItem Content="Naliczać" IsSelected="True"/>
+                                    <ComboBoxItem Content="Nie naliczać"/>
+                                </ComboBox>
 
-                    <Border Grid.Row="3" Style="{StaticResource BorderStandardowy}">
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Wprowadził:" Style="{StaticResource LabelStandardowy}"/>
-                            <TextBox Text="Administrator" IsEnabled="False" Style="{StaticResource TextBoxStandardowy}"/>
-                            <DatePicker IsEnabled="False" Style="{StaticResource DPStZablokowany}"/>
-                            <Label Content="Zmodyfikował:" Style="{StaticResource LabelStandardowy}"/>
-                            <TextBox Text="Administrator" IsEnabled="False" Style="{StaticResource TextBoxStandardowy}"/>
-                            <DatePicker IsEnabled="False" Style="{StaticResource DPStZablokowany}"/>
-                            
-                        </StackPanel>
-                    </Border>
+                                <Label Content="Sposób naliczania skł.na ub.zdrow.:" Grid.Row="6" Style="{StaticResource LabelStandardowy}"/>
+                                <ComboBox Grid.Row="6" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
+                                    <ComboBoxItem Content="Naliczać wg progów"/>
+                                    <ComboBoxItem Content="Naliczać" IsSelected="True"/>
+                                    <ComboBoxItem Content="Nie naliczać"/>
+                                </ComboBox>
 
-                </Grid>
-            </ScrollViewer>
-        </TabItem>
-        <TabItem Header="3. Szczegółowe">
-            <ScrollViewer>
-                <Grid Style="{StaticResource TloGlowne}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
+                                <Label Content="Okres wypłaty:" Grid.Row="7" Style="{StaticResource LabelStandardowy}"/>
+                                <ComboBox Grid.Row="7" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
+                                    <ComboBoxItem Content="Co 1 tydzień"/>
+                                    <ComboBoxItem Content="Co 2 tygodnie"/>
+                                    <ComboBoxItem Content="Co 1 miesiąc" IsSelected="True"/>
+                                    <ComboBoxItem Content="Co 3 miesiące"/>
+                                </ComboBox>
+                                <CheckBox Content="Korygowana" Grid.Row="7" Grid.Column="4" Style="{StaticResource CheckBoxStandardowy}"/>
+                            </Grid>
+                        </Expander>
 
-                    <Expander Header="Szczegółowe informacje o wypłacie" Style="{StaticResource Expander}">
-                        <Grid Style="{StaticResource TloExpanderG}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.4*"/>
-                                <ColumnDefinition Width="0.1*"/>
-                                <ColumnDefinition Width="0.3*"/>
-                                <ColumnDefinition Width="0.5*"/>
-                                <ColumnDefinition Width="0.5*"/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
+                        <Expander Grid.Row="2" Header="Wliczać do podstawy naliczania" Style="{StaticResource Expander}">
+                            <Grid Style="{StaticResource TloExpanderG}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
 
-                            <Label Content="Zaokrąglenie:" Style="{StaticResource LabelStandardowy}"/>
-                            <TextBox Text="0,01" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TBStandPrawo}"/>
-                            <Label Content="zł" Grid.Column="3" Style="{StaticResource LabelStandardowy}"/>
-                            <Label Content="Sposób zaokrąglania:" Grid.Column="4" Style="{StaticResource LabelStandardowy}"/>
-                            <ComboBox Grid.Column="5" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="Standardowo" IsSelected="True"/>
-                                <ComboBoxItem Content="W górę"/>
-                                <ComboBoxItem Content="W dół"/>
-                            </ComboBox>
+                                <Label Content="Zasiłków chorobowych:" Style="{StaticResource  LabelStandardowy}"/>
+                                <ComboBox Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
+                                    <ComboBoxItem Content="Wliczać" IsSelected="True"/>
+                                    <ComboBoxItem Content="Wliczać wg progu"/>
+                                    <ComboBoxItem Content="Nie wliczać"/>
+                                </ComboBox>
 
-                            <CheckBox Content="Przyrównuj do najniższego wynagrodzenia" Grid.Row="1" Grid.ColumnSpan="4" Style="{StaticResource CheckBoxStandardowy}"/>
-                            <CheckBox Content="Uwzględnij przy dopłatach za nadgodziny" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
+                                <CheckBox Content="Dodatek okresowy - wliczać w podwójnej wysokości, gdy nie wypłacono go za ostatni okres" Grid.Row="1" Grid.ColumnSpan="3"/>
 
-                            <CheckBox Content="Wpływa na kwotę do wypłaty" IsChecked="True" Grid.Row="2" Grid.ColumnSpan="4" Style="{StaticResource CheckBoxStandardowy}"/>
-                            <CheckBox Content="Wpływa na podstawę liczenia zaliczki podatku" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
+                                <Label Content="Wynagrodzenie za czas urlopu:" Grid.Row="2" Style="{StaticResource  LabelStandardowy}"/>
+                                <ComboBox Grid.Row="2" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
+                                    <ComboBoxItem Content="Wliczać"/>
+                                    <ComboBoxItem Content="Wliczać wg progu"/>
+                                    <ComboBoxItem Content="Nie wliczać" IsSelected="True"/>
+                                </ComboBox>
 
-                            <CheckBox Content="Wliczaj do wynagrodzenia na deklaracji PFRON" IsChecked="True" Grid.Row="3" Grid.ColumnSpan="4" Style="{StaticResource CheckBoxStandardowy}"/>
-                            <CheckBox Content="Stanowi koszt pracodawcy" IsChecked="True" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
+                                <Border Grid.Row="3" IsEnabled="False" Style="{StaticResource BorderStylizacja}">
+                                    <Label Content="Stała okresowa" IsEnabled="False" Style="{StaticResource LabelStylizowany}"/>
+                                </Border>
+                                <TextBox Text="Brak" Grid.Row="3" Grid.Column="1" Style="{StaticResource TBStZablokowany}"/>
 
-                            <CheckBox Content="Opis analityczny zgodny z opisem czasu pracy" Grid.Row="4" Grid.ColumnSpan="4" Style="{StaticResource CheckBoxStandardowy}"/>
-                            <CheckBox Content="Nie zapisuj w wypłacie zerowych elementów" Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
+                                <Label Content="Ekwiwalentu za czas urlopu:" Grid.Row="4" Style="{StaticResource  LabelStandardowy}"/>
+                                <ComboBox Grid.Row="4" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
+                                    <ComboBoxItem Content="Wliczać"/>
+                                    <ComboBoxItem Content="Wliczać wg progu"/>
+                                    <ComboBoxItem Content="Nie wliczać" IsSelected="True"/>
+                                </ComboBox>
 
-                            <CheckBox Content="Doliczany po ograniczeniu potrąceń" Grid.Row="5" Grid.ColumnSpan="4" Style="{StaticResource CheckBoxStandardowy}"/>
-                            <CheckBox Content="Wykaż na ZUS RPA/RIA jako element wypłacany obok zasiłków" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
+                            </Grid>
+                        </Expander>
 
-                            <Label Content="Priorytet naliczania:" Grid.Row="6" Grid.ColumnSpan="2"/>
-                            <TextBox Text="0" Grid.Row="6" Grid.Column="2" Style="{StaticResource TBStandPrawo}"/>
-                            <Label Content="Wliczany do GUS:" Grid.Row="6" Grid.Column="4" Style="{StaticResource LabelStandardowy}"/>
-                            <ComboBox Grid.Row="6" Grid.Column="5" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="Nie wliczać" IsSelected="True"/>
-                                <ComboBoxItem Content="Wliczać"/>
-                            </ComboBox>
+                        <Border Grid.Row="3" Style="{StaticResource BorderStandardowy}">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Wprowadził:" Style="{StaticResource LabelStandardowy}"/>
+                                <TextBox Text="Administrator" IsEnabled="False" Style="{StaticResource TextBoxStandardowy}"/>
+                                <DatePicker IsEnabled="False" Style="{StaticResource DPStZablokowany}"/>
+                                <Label Content="Zmodyfikował:" Style="{StaticResource LabelStandardowy}"/>
+                                <TextBox Text="Administrator" IsEnabled="False" Style="{StaticResource TextBoxStandardowy}"/>
+                                <DatePicker IsEnabled="False" Style="{StaticResource DPStZablokowany}"/>
 
-                            <Label Content="PKZP:" Grid.Row="7" Style="{StaticResource LabelStandardowy}"/>
-                            <ComboBox Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="Nie dotyczy" IsSelected="True"/>
-                                <ComboBoxItem Content="Opcja 1"/>
-                                <ComboBoxItem Content="Opcja 2"/>
-                                <ComboBoxItem Content="Opcja 3"/>
-                            </ComboBox>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="3. Szczegółowe">
+                <ScrollViewer>
+                    <Grid Style="{StaticResource TloGlowne}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
 
-                        </Grid>
-                    </Expander>
+                        <Expander Header="Szczegółowe informacje o wypłacie" Style="{StaticResource Expander}">
+                            <Grid Style="{StaticResource TloExpanderG}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.4*"/>
+                                    <ColumnDefinition Width="0.1*"/>
+                                    <ColumnDefinition Width="0.3*"/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
 
-                    <Expander Header="Nazwy zmiennych na formularzu elementu wypłaty pracownika" Grid.Row="1" Style="{StaticResource Expander}">
-                        <Grid Style="{StaticResource TloExpanderG}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.4*"/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="0.6*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
+                                <Label Content="Zaokrąglenie:" Style="{StaticResource LabelStandardowy}"/>
+                                <TextBox Text="0,01" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TBStandPrawo}"/>
+                                <Label Content="zł" Grid.Column="3" Style="{StaticResource LabelStandardowy}"/>
+                                <Label Content="Sposób zaokrąglania:" Grid.Column="4" Style="{StaticResource LabelStandardowy}"/>
+                                <ComboBox Grid.Column="5" Style="{StaticResource ComboBoxStandardowy}">
+                                    <ComboBoxItem Content="Standardowo" IsSelected="True"/>
+                                    <ComboBoxItem Content="W górę"/>
+                                    <ComboBoxItem Content="W dół"/>
+                                </ComboBox>
 
-                            <Label Content="Parametr 1:" Style="{StaticResource LabelStandardowy}"/>
-                            <TextBox Text="Kwota" Grid.Column="1" Style="{StaticResource TextBoxStandardowy}"/>
+                                <CheckBox Content="Przyrównuj do najniższego wynagrodzenia" Grid.Row="1" Grid.ColumnSpan="4" Style="{StaticResource CheckBoxStandardowy}"/>
+                                <CheckBox Content="Uwzględnij przy dopłatach za nadgodziny" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
 
-                            <Label Content="Parametr 2:" Grid.Row="1" IsEnabled="False" Style="{StaticResource LabelStandardowy}"/>
-                            <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource TBStZablokowany}"/>
-                        </Grid>
-                    </Expander>
+                                <CheckBox Content="Wpływa na kwotę do wypłaty" IsChecked="True" Grid.Row="2" Grid.ColumnSpan="4" Style="{StaticResource CheckBoxStandardowy}"/>
+                                <CheckBox Content="Wpływa na podstawę liczenia zaliczki podatku" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
 
-                    <Expander Header="Wzór" Grid.Row="2" Style="{StaticResource Expander}">
-                        <StackPanel Style="{StaticResource TloExpanderS}">
-                            <TextBox Text="Treść przykładowa" IsEnabled="False" Style="{StaticResource TBRozciągnięty}"/>
-                        </StackPanel>
-                    </Expander>
+                                <CheckBox Content="Wliczaj do wynagrodzenia na deklaracji PFRON" IsChecked="True" Grid.Row="3" Grid.ColumnSpan="4" Style="{StaticResource CheckBoxStandardowy}"/>
+                                <CheckBox Content="Stanowi koszt pracodawcy" IsChecked="True" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
 
-                    <Expander Header="Raporty" Grid.Row="3" Style="{StaticResource Expander}">
-                        <Grid Style="{StaticResource TloExpanderG}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1.6*"/>
-                                <ColumnDefinition Width="0.4*"/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
+                                <CheckBox Content="Opis analityczny zgodny z opisem czasu pracy" Grid.Row="4" Grid.ColumnSpan="4" Style="{StaticResource CheckBoxStandardowy}"/>
+                                <CheckBox Content="Nie zapisuj w wypłacie zerowych elementów" Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
 
-                            <CheckBox Content="Typ wypłaty będący wskaźnikiem" Style="{StaticResource CheckBoxStandardowy}"/>
-                            <Label Content="Pozycja ERP-7:" Grid.Column="1" Style="{StaticResource LabelStandardowy}"/>
-                            <ComboBox Grid.Column="2" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="Nie wchodzi" IsSelected="True"/>
-                                <ComboBoxItem Content="Opcja 1"/>
-                                <ComboBoxItem Content="Opcja 2"/>
-                            </ComboBox>
-                        </Grid>
-                    </Expander>
-                    
-                </Grid>
-            </ScrollViewer>
-        </TabItem>
-    </TabControl>
+                                <CheckBox Content="Doliczany po ograniczeniu potrąceń" Grid.Row="5" Grid.ColumnSpan="4" Style="{StaticResource CheckBoxStandardowy}"/>
+                                <CheckBox Content="Wykaż na ZUS RPA/RIA jako element wypłacany obok zasiłków" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
+
+                                <Label Content="Priorytet naliczania:" Grid.Row="6" Grid.ColumnSpan="2"/>
+                                <TextBox Text="0" Grid.Row="6" Grid.Column="2" Style="{StaticResource TBStandPrawo}"/>
+                                <Label Content="Wliczany do GUS:" Grid.Row="6" Grid.Column="4" Style="{StaticResource LabelStandardowy}"/>
+                                <ComboBox Grid.Row="6" Grid.Column="5" Style="{StaticResource ComboBoxStandardowy}">
+                                    <ComboBoxItem Content="Nie wliczać" IsSelected="True"/>
+                                    <ComboBoxItem Content="Wliczać"/>
+                                </ComboBox>
+
+                                <Label Content="PKZP:" Grid.Row="7" Style="{StaticResource LabelStandardowy}"/>
+                                <ComboBox Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource ComboBoxStandardowy}">
+                                    <ComboBoxItem Content="Nie dotyczy" IsSelected="True"/>
+                                    <ComboBoxItem Content="Opcja 1"/>
+                                    <ComboBoxItem Content="Opcja 2"/>
+                                    <ComboBoxItem Content="Opcja 3"/>
+                                </ComboBox>
+
+                            </Grid>
+                        </Expander>
+
+                        <Expander Header="Nazwy zmiennych na formularzu elementu wypłaty pracownika" Grid.Row="1" Style="{StaticResource Expander}">
+                            <Grid Style="{StaticResource TloExpanderG}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.4*"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="0.6*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <Label Content="Parametr 1:" Style="{StaticResource LabelStandardowy}"/>
+                                <TextBox Text="Kwota" Grid.Column="1" Style="{StaticResource TextBoxStandardowy}"/>
+
+                                <Label Content="Parametr 2:" Grid.Row="1" IsEnabled="False" Style="{StaticResource LabelStandardowy}"/>
+                                <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource TBStZablokowany}"/>
+                            </Grid>
+                        </Expander>
+
+                        <Expander Header="Wzór" Grid.Row="2" Style="{StaticResource Expander}">
+                            <StackPanel Style="{StaticResource TloExpanderS}">
+                                <TextBox Text="Treść przykładowa" IsEnabled="False" Style="{StaticResource TBRozciągnięty}"/>
+                            </StackPanel>
+                        </Expander>
+
+                        <Expander Header="Raporty" Grid.Row="3" Style="{StaticResource Expander}">
+                            <Grid Style="{StaticResource TloExpanderG}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.6*"/>
+                                    <ColumnDefinition Width="0.4*"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <CheckBox Content="Typ wypłaty będący wskaźnikiem" Style="{StaticResource CheckBoxStandardowy}"/>
+                                <Label Content="Pozycja ERP-7:" Grid.Column="1" Style="{StaticResource LabelStandardowy}"/>
+                                <ComboBox Grid.Column="2" Style="{StaticResource ComboBoxStandardowy}">
+                                    <ComboBoxItem Content="Nie wchodzi" IsSelected="True"/>
+                                    <ComboBoxItem Content="Opcja 1"/>
+                                    <ComboBoxItem Content="Opcja 2"/>
+                                </ComboBox>
+                            </Grid>
+                        </Expander>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+
+        <StackPanel Grid.Column="1">
+            <Label Height="25"/>
+            <Button Style="{StaticResource ButtonStandard}" ToolTip="Zapis">
+                <Image Source="/Views/IconZapisz.png"/>
+            </Button>
+            <Button Style="{StaticResource ButtonStandard}" ToolTip="Anuluj">
+                <Image Source="/Views/IconAnuluj.png"/>
+            </Button>
+        </StackPanel>
+    </Grid>
 </UserControl>
