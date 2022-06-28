@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Firma.ViewModels
 {
-    public class NowaFakturaViewModel:WorkspaceViewModel //Bo wszystkie zakladki dziedzicza po workspaceVM
+    public class NowaFakturaViewModel:WorkspaceViewModel
     {
         #region Konstruktor
         public NowaFakturaViewModel()

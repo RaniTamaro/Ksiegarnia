@@ -13,12 +13,8 @@
         <ResourceDictionary Source="MainWindowResources.xaml"/>
     </Window.Resources>
 
-    <!--<Window.DataContext>
-        <ViewModels:MainWindowViewModel/>
-    </Window.DataContext>-->
-
     <Window.InputBindings>
-        <KeyBinding Key="Z" Modifiers="Ctrl+Alt" Command="{Binding ZamknijAplikacje}"/>
+        <KeyBinding Key="Z" Modifiers="Ctrl+Alt" Command="{Binding ZamknijAplikacjeCommand}"/>
         <KeyBinding Key="P" Modifiers="Ctrl+Shift" Command="{Binding PrzyjecieCommand}"/>
         <KeyBinding Key="W" Modifiers="Ctrl+Shift" Command="{Binding WydanieCommand}"/>
         <KeyBinding Key="T" Modifiers="Ctrl+Alt" Command="{Binding NowyTowarCommand}"/>
@@ -43,7 +39,7 @@
 
         <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="3">
             <MenuItem Header="Plik">
-                <MenuItem Header="_Zamknij" Command="{Binding ZamknijAplikacje}" InputGestureText="Ctrl+Alt+Z">
+                <MenuItem Header="_Zamknij" Command="{Binding ZamknijAplikacjeCommand}" InputGestureText="Ctrl+Alt+Z">
                     <MenuItem.Icon>
                         <Image Source="/Views/IconZamknij.png"/>
                     </MenuItem.Icon>
@@ -144,63 +140,24 @@
 
             <!--Menu Boczne-->
             <Grid Grid.Column="0">
-                <Grid x:Name="menuBoczne" Background="#E4E6C3" HorizontalAlignment="Left" Width="150">
+                <Grid x:Name="menuBoczne" Background="#E4E6C3" HorizontalAlignment="Left" Width="{Binding SzerokoscKolumnyMenu}">
                     <StackPanel>
                         <Grid Height="40">
-                            <ToggleButton Style="{StaticResource TBMenu}" Click="Klik">
+                            <ToggleButton Style="{StaticResource TBMenu}" Command="{Binding PokazUkryjMenuBoczneAsyncCommand, IsAsync=True}" IsEnabled="{Binding DostepnoscPrzycisku}" ToolTip="Rozwijanie menu boczne">
                                 <Image Source="/Views/IconMenu.png"/>
                             </ToggleButton>
                         </Grid>
-                        <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="Transparent" Background="Transparent" FontWeight="Bold">
-                            <ListViewItem Style="{StaticResource ListViewItemMenuBoczne}" ToolTip="Dodaj nowy towar">
-                                <StackPanel Orientation="Horizontal">
-                                    <Button Style="{StaticResource ButtonMenuBoczne}" Command="{Binding NowyTowarCommand}">
-                                        <Image Source="/Views/IconNowyTowar.png"/>
-                                    </Button>
-                                    <Button Content="Dodaj Towar" Style="{StaticResource ButtonMenuBoczneText}" Command="{Binding NowyTowarCommand}"/>
-                                </StackPanel>
-                            </ListViewItem>
-                            <ListViewItem Style="{StaticResource ListViewItemMenuBoczne}" ToolTip="Nowe przyjęcie zewnętrzne">
-                                <StackPanel Orientation="Horizontal">
-                                    <Button Style="{StaticResource ButtonMenuBoczne}" Command="{Binding PrzyjecieCommand}">
-                                        <Image Source="/Views/IconPrzyjecie.png"/>
-                                    </Button>
-                                    <Button Content="Nowe Przyjęcie" Style="{StaticResource ButtonMenuBoczneText}" Command="{Binding PrzyjecieCommand}"/>
-                                </StackPanel>
-                            </ListViewItem>
-                            <ListViewItem Style="{StaticResource ListViewItemMenuBoczne}" ToolTip="Nowe wydanie zewnętrzne">
-                                <StackPanel Orientation="Horizontal">
-                                    <Button Style="{StaticResource ButtonMenuBoczne}" Command="{Binding WydanieCommand}">
-                                        <Image Source="/Views/IconWydanie.png"/>
-                                    </Button>
-                                    <Button Content="Nowe Wydanie" Style="{StaticResource ButtonMenuBoczneText}" Command="{Binding WydanieCommand}"/>
-                                </StackPanel>
-                            </ListViewItem>
-                            <ListViewItem Style="{StaticResource ListViewItemMenuBoczne}" ToolTip="Dodaj nową fakturę">
-                                <StackPanel Orientation="Horizontal">
-                                    <Button Style="{StaticResource ButtonMenuBoczne}" Command="{Binding NowaFakturaCommand}">
-                                        <Image Source="/Views/IconNowaFaktura.png"/>
-                                    </Button>
-                                    <Button Content="Dodaj Fakturę" Style="{StaticResource ButtonMenuBoczneText}" Command="{Binding NowaFakturaCommand}"/>
-                                </StackPanel>
-                            </ListViewItem>
-                            <ListViewItem Style="{StaticResource ListViewItemMenuBoczne}" ToolTip="Wyświetl wszystkie faktury}">
-                                <StackPanel Orientation="Horizontal">
-                                    <Button Style="{StaticResource ButtonMenuBoczne}" Command="{Binding FakturyCommand}">
-                                        <Image Source="/Views/IconFaktury.png"/>
-                                    </Button>
-                                    <Button Content="Wyświetl Faktury" Style="{StaticResource ButtonMenuBoczneText}" Command="{Binding FakturyCommand}"/>
-                                </StackPanel>
-                            </ListViewItem>
-                            <ListViewItem Style="{StaticResource ListViewItemMenuBoczne}" ToolTip="Wyświetl wszystkie faktury}">
-                                <StackPanel Orientation="Horizontal">
-                                    <Button Style="{StaticResource ButtonMenuBoczne}" Command="{Binding ZamknijAplikacje}">
-                                        <Image Source="/Views/IconZamknij.png"/>
-                                    </Button>
-                                    <Button Content="Zamknij Program" Style="{StaticResource ButtonMenuBoczneText}" Command="{Binding ZamknijAplikacje}"/>
-                                </StackPanel>
-                            </ListViewItem>
-                        </ListView>
+                        <Border Width="150" BorderBrush="Transparent" Background="Transparent">
+                            <HeaderedContentControl
+                                Header="Operacje"
+                                Background="Transparent"
+                                FontWeight="Bold"
+                                VerticalContentAlignment="Center"
+                                Content="{Binding Commands}"
+                                ContentTemplate="{StaticResource CommandsTemplate}"
+                                Style="{StaticResource MainHCCStyle}"
+                                />
+                        </Border>
                     </StackPanel>
                 </Grid>
             </Grid>
@@ -209,7 +166,7 @@
             <Border Grid.Column="1">
                 <HeaderedContentControl
                     Header="Przestrzeń robocza"
-                    Background="Aqua"
+                    Background="Transparent"
                     Content="{Binding Path=Workspaces}"
                     ContentTemplate="{StaticResource WorkspacesTemplate}"
                     Style="{StaticResource MainHCCStyle}"
@@ -242,10 +199,6 @@
                         </Popup>
 
                     </Grid>
-
-                    <!--<Button Style="{StaticResource ButtonBezRamki}">
-                        <Image Source="/Views/IconAktywność.png"></Image>
-                    </Button>-->
                 </StackPanel>
             </StatusBarItem>
         </StatusBar>

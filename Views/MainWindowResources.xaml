@@ -43,7 +43,7 @@
     <!--tu jest koniec laczenia View z ViewModel zakladek-->
 
     
-    <!--Styl przeniesiony w górę, aby móc z niego korzystać w wyglądzie zakładki-->
+    <!--Style przeniesiony w górę, aby móc z niego korzystać w głównych resources okna-->
     <Style x:Key="TBBezRamki" TargetType="ToggleButton">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Template">
@@ -51,6 +51,25 @@
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                     <Border Background="{TemplateBinding Background}" BorderThickness="0">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#899878"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ButtonMenuBoczne" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" BorderThickness="0">
+                        <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -109,6 +128,20 @@
     This template explains how to render the list of commands on the left
     side in the main window (the 'Control Panel' area).
     -->
+    <DataTemplate x:Key="CommandsTemplate">
+        <ItemsControl IsTabStop="False" ItemsSource="{Binding}" Margin="6,2">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Command="{Binding Path=Command}" Style="{StaticResource ButtonMenuBoczne}">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding NazwaIkony}" Height="25" Width="25" Margin="0, 0, 5, 0"/>
+                            <TextBlock Text="{Binding DisplayName}" Height="25" Margin="0, 7, 0, 0"/>
+                        </StackPanel>
+                    </Button>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </DataTemplate>
 
     <DataTemplate x:Key="ClosableTabItemTemplate">
         <DockPanel Width="120">
@@ -162,53 +195,10 @@
         <Setter Property="Margin" Value="2"/>
     </Style>
 
-    
-
     <Style x:Key="TBMenu" BasedOn="{StaticResource TBBezRamki}" TargetType="ToggleButton">
         <Setter Property="HorizontalAlignment" Value="Right"/>
         <Setter Property="Height" Value="30"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
-    </Style>
-
-    <Style x:Key="ButtonMenuBoczne" TargetType="Button">
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Height" Value="25"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Background="{TemplateBinding Background}" BorderThickness="0">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="Transparent"/>
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-
-    <Style x:Key="ButtonMenuBoczneText" BasedOn="{StaticResource ButtonMenuBoczne}" TargetType="Button">
-        <Setter Property="Margin" Value="2,0,0,0"/>
-    </Style>
-
-    <Style x:Key="ListViewItemMenuBoczne" TargetType="ListViewItem">
-        <Setter Property="Height" Value="30"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ListViewItem}">
-                    <Border Background="{TemplateBinding Background}" BorderThickness="0">
-                        <ContentPresenter Margin="3,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#899878"/>
-            </Trigger>
-        </Style.Triggers>
     </Style>
 
     <Style x:Key="PopUp" TargetType="Popup">
