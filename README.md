@@ -1,5 +1,5 @@
 # Ksiegarnia
-<p>Project for my User Interface Development.
+<p>Project for my User Interface Development course.
 <br>This application it's only view in Model-View-ViewModel Pattern.</p>
 <hr>
 <p>Application has simple look like with tabs inspired Optima views.</p>
