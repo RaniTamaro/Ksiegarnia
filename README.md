@@ -1,6 +1,7 @@
 # Ksiegarnia
 Project for my User Interface Development course. This application it's only view in Model-View-ViewModel Pattern.
-<br>Application has simple look like with tabs inspired Optima views.
+
+Application has simple look like with tabs inspired Optima views.
 
 ## Table of Contents
 * [Technologies Used](#technologies-used)
