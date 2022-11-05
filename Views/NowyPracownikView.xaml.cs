@@ -18,7 +18,7 @@ namespace Firma.Views
     /// <summary>
     /// Interaction logic for NowyPracownikView.xaml
     /// </summary>
-    public partial class NowyPracownikView : UserControl
+    public partial class NowyPracownikView : NowyElementViewBase
     {
         public NowyPracownikView()
         {

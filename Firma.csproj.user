@@ -13,16 +13,28 @@
     <Compile Update="Views\NowaWyplataView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\NowyKontahentView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\NowyPracownikView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\NowyTowarView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\NowyWydawcaView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\PrzyjecieView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\WszyscyKontrahenciView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\WszyscyPracownicyView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\WszyscyWydawcyView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\WszystkieFakturyView.xaml.cs">
@@ -36,6 +48,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -48,10 +63,16 @@
     <Page Update="Views\NowaWyplataView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\NowyKontahentView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\NowyPracownikView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\NowyTowarView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\NowyWydawcaView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\PrzyjecieView.xaml">
@@ -60,7 +81,13 @@
     <Page Update="Views\StyleZakladekResources.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\WszyscyKontrahenciView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\WszyscyPracownicyView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\WszyscyWydawcyView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\WszystkieFakturyView.xaml">

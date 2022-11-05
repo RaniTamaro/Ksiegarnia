@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Firma.Views.WszystkieTowaryView"
+﻿<local:WszystkieViewBase x:Class="Firma.Views.WszystkieTowaryView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -131,4 +131,4 @@
         </Expander>
 
     </Grid>
-</UserControl>
+</local:WszystkieViewBase>

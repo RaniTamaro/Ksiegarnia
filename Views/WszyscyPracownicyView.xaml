@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Firma.Views.WszyscyPracownicyView"
+﻿<local:WszystkieViewBase x:Class="Firma.Views.WszyscyPracownicyView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -23,26 +23,16 @@
             </Grid.RowDefinitions>
 
             <Border Style="{StaticResource BorderStandardowy}">
-                <DataGrid Style="{StaticResource TabelaStandard}">
+                <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}" Style="{StaticResource TabelaStandard}">
                     <DataGrid.Columns>
-                        <DataGridCheckBoxColumn Width="30"/>
-                        <DataGridTextColumn Header="Akronim" CanUserSort="True" Width="100" Binding="{Binding Path=Akronim}"/>
-                        <DataGridTextColumn Header="Nazwisko" Width="90" Binding="{Binding Path=Nazwisko}"/>
-                        <DataGridTextColumn Header="Imię" Width="90" Binding="{Binding Path=Imie}"/>
-                        <DataGridTextColumn Header="PESEL" Width="120" Binding="{Binding Path=Pesel}"/>
-                        <DataGridTextColumn Header="Zatrudnienie" Width="100" Binding="{Binding Path=Zatrudnienie}"/>
+                        <DataGridTextColumn Header="Akronim" CanUserSort="True" Width="100" Binding="{Binding Path=Aktonim}"/>
+                        <DataGridTextColumn Header="Nazwisko" Width="150" Binding="{Binding Path=Nazwisko}"/>
+                        <DataGridTextColumn Header="Imię" Width="150" Binding="{Binding Path=Imie}"/>
+                        <DataGridTextColumn Header="PESEL" Width="120" Binding="{Binding Path=PeselPracownika}"/>
+                        <!--<DataGridTextColumn Header="Zatrudnienie" Width="100" Binding="{Binding Path=Zatrudnienie}"/>-->
                         <DataGridTextColumn Header="Stawka" Width="80" Binding="{Binding Path=Stawka}"/>
                         <DataGridTextColumn Header="Data zatrud." Width="140" Binding="{Binding Path=DataZatrudnienia}"/>
                     </DataGrid.Columns>
-
-                    <restab:TowaryTable Akronim="001/A" Nazwisko="Kowalski" Imie="Jan" Pesel="11223300674" Zatrudnienie="Umowa" Stawka="2500,00/mies." DataZatrudnienia="2022-05-20"/>
-                    <restab:TowaryTable Akronim="002/A" Nazwisko="Kowalski" Imie="Jan" Pesel="11223300674" Zatrudnienie="Zlecenie" Stawka="24,00/godz." DataZatrudnienia="2022-05-20"/>
-                    <restab:TowaryTable Akronim="003/A" Nazwisko="Kowalski" Imie="Jan" Pesel="11223300674" Zatrudnienie="Zlecenie" Stawka="20,00/godz." DataZatrudnienia="2022-05-20"/>
-                    <restab:TowaryTable Akronim="004/A" Nazwisko="Kowalski" Imie="Jan" Pesel="11223300674" Zatrudnienie="Umowa" Stawka="2800,00/mies." DataZatrudnienia="2022-05-20"/>
-                    <restab:TowaryTable Akronim="001/B" Nazwisko="Kowalski" Imie="Jan" Pesel="11223300674" Zatrudnienie="Umowa" Stawka="3000,00/mies." DataZatrudnienia="2022-05-20"/>
-                    <restab:TowaryTable Akronim="001/C" Nazwisko="Kowalski" Imie="Jan" Pesel="11223300674" Zatrudnienie="Zlecenie" Stawka="18,00/godz." DataZatrudnienia="2022-05-20"/>
-                    <restab:TowaryTable Akronim="002/B" Nazwisko="Kowalski" Imie="Jan" Pesel="11223300674" Zatrudnienie="Umowa" Stawka="2500,00/mies." DataZatrudnienia="2022-05-20"/>
-                    <restab:TowaryTable Akronim="003/B" Nazwisko="Kowalski" Imie="Jan" Pesel="11223300674" Zatrudnienie="Umowa" Stawka="2200,00/mies." DataZatrudnienia="2022-05-20"/>
                 </DataGrid>
             </Border>
 
@@ -69,7 +59,7 @@
                         <ComboBoxItem Content="Zlecenie"/>
                         <ComboBoxItem Content="Umowa"/>
                     </ComboBox>
-                    <CheckBox Content="Pokaż archiwalnych" Grid.Column="2" Grid.ColumnSpan="2" IsChecked="True" Style="{StaticResource CheckBoxStandardowy}"/>
+                    <CheckBox Content="Pokaż archiwalnych" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
                     <Label Content="Data aktualności:" Grid.Column="5" Style="{StaticResource LabelStandardowy}"/>
                     <DatePicker Grid.Column="6" Style="{StaticResource DatePickerStandard}"/>
 
@@ -104,4 +94,4 @@
 
         </Grid>
     </ScrollViewer>
-</UserControl>
+</local:WszystkieViewBase>

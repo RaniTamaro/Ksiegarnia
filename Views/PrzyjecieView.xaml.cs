@@ -18,7 +18,7 @@ namespace Firma.Views
     /// <summary>
     /// Interaction logic for PrzyjecieView.xaml
     /// </summary>
-    public partial class PrzyjecieView : UserControl
+    public partial class PrzyjecieView : NowyElementViewBase
     {
         public PrzyjecieView()
         {

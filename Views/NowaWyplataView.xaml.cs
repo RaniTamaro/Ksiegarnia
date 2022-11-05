@@ -18,7 +18,7 @@ namespace Firma.Views
     /// <summary>
     /// Interaction logic for NowaWyplataView.xaml
     /// </summary>
-    public partial class NowaWyplataView : UserControl
+    public partial class NowaWyplataView : NowyElementViewBase
     {
         public NowaWyplataView()
         {

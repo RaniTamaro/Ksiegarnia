@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\klaku\Desktop\Studia i praca\WSB-NLU\Rok 2\Semestr 4\Interfejsy\Projekt\Firma\Firma\obj\Debug\net6.0-windows\
+C:\Users\klaku\Desktop\Studia i praca\WSB-NLU\Rok 3\Semestr 5\Aplikacje desktopowe\Księgarnia\Firma\obj\Debug\net6.0-windows\
 Firma
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\klaku\Desktop\Studia i praca\WSB-NLU\Rok 2\Semestr 4\Interfejsy\Projekt\Firma\Firma\App.xaml
+C:\Users\klaku\Desktop\Studia i praca\WSB-NLU\Rok 3\Semestr 5\Aplikacje desktopowe\Księgarnia\Firma\App.xaml
 12-1867187014
 
 30-353388213
-1941905061893
+195963220890
 Views\MainWindow.xaml;Views\MainWindowResources.xaml;Views\NowaFakturaView.xaml;Views\NowaWyplataView.xaml;Views\NowyPracownikView.xaml;Views\NowyTowarView.xaml;Views\PrzyjecieView.xaml;Views\StyleZakladekResources.xaml;Views\WszyscyPracownicyView.xaml;Views\WszystkieFakturyView.xaml;Views\WszystkieTowaryView.xaml;Views\WydanieView.xaml;
 
-True
+False
 

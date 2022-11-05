@@ -1,0 +1,51 @@
+﻿<local:NowyElementViewBase x:Class="Firma.Views.NowyWydawcaView"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:restab="clr-namespace:Firma.ViewResources"
+            xmlns:local="clr-namespace:Firma.Views"
+            mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="StyleZakladekResources.xaml"/>
+    </UserControl.Resources>
+    <ScrollViewer>
+        <Grid Style="{StaticResource TloGlowne}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!--<CheckBox Content="Archiwalny" Style="{StaticResource CheckBoxStandardowy}" HorizontalAlignment="Right" IsChecked="{Binding Path=CzyAktywny, UpdateSourceTrigger=PropertyChanged}"/>-->
+            <CheckBox Content="Archiwalny" Style="{StaticResource CheckBoxStandardowy}" HorizontalAlignment="Right"/>
+
+            <Expander Header="Dane personalne" Grid.Row="1" Style="{StaticResource Expander}">
+                <Grid Style="{StaticResource TloExpanderG}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.55*"/>
+                        <ColumnDefinition Width="0.75*"/>
+                        <ColumnDefinition Width="0.75*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Kod:" Style="{StaticResource LabelStPogrubiony}"/>
+                    <TextBox Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TBStPogrubiony}" Text="{Binding Path=Kod, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Label Content="Nazwa:" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource LabelStPogrubiony}"/>
+                    <TextBox Grid.Column="5" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Nazwa, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <Label Content="Opis:" Grid.Row="1" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" Style="{StaticResource TBRozciągnięty}" Text="{Binding Path=Opis, UpdateSourceTrigger=PropertyChanged}"/>
+                    
+                </Grid>
+            </Expander>
+        </Grid>
+    </ScrollViewer>
+</local:NowyElementViewBase>

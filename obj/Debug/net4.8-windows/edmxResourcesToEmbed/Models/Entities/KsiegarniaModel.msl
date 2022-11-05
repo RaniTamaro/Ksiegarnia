@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KsiegarniaModelStoreContainer" CdmEntityContainer="KsiegarniaEntities">
+    <EntitySetMapping Name="Adres">
+      <EntityTypeMapping TypeName="KsiegarniaModel.Adres">
+        <MappingFragment StoreEntitySet="Adres">
+          <ScalarProperty Name="IdAdresu" ColumnName="IdAdresu" />
+          <ScalarProperty Name="Ulica" ColumnName="Ulica" />
+          <ScalarProperty Name="NrDomu" ColumnName="NrDomu" />
+          <ScalarProperty Name="NrLokalu" ColumnName="NrLokalu" />
+          <ScalarProperty Name="Wojewodztwo" ColumnName="Wojewodztwo" />
+          <ScalarProperty Name="Powiat" ColumnName="Powiat" />
+          <ScalarProperty Name="Gmina" ColumnName="Gmina" />
+          <ScalarProperty Name="KodPocztowy" ColumnName="KodPocztowy" />
+          <ScalarProperty Name="Miejscowosc" ColumnName="Miejscowosc" />
+          <ScalarProperty Name="Poczta" ColumnName="Poczta" />
+          <ScalarProperty Name="KodKraju" ColumnName="KodKraju" />
+          <ScalarProperty Name="Kraj" ColumnName="Kraj" />
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cena">
+      <EntityTypeMapping TypeName="KsiegarniaModel.Cena">
+        <MappingFragment StoreEntitySet="Cena">
+          <ScalarProperty Name="IdCeny" ColumnName="IdCeny" />
+          <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+          <ScalarProperty Name="TypCeny" ColumnName="TypCeny" />
+          <ScalarProperty Name="Marza" ColumnName="Marza" />
+          <ScalarProperty Name="Zaokraglenie" ColumnName="Zaokraglenie" />
+          <ScalarProperty Name="Offset" ColumnName="Offset" />
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CenaTowaru">
+      <EntityTypeMapping TypeName="KsiegarniaModel.CenaTowaru">
+        <MappingFragment StoreEntitySet="CenaTowaru">
+          <ScalarProperty Name="IdCenyTowaru" ColumnName="IdCenyTowaru" />
+          <ScalarProperty Name="IdCeny" ColumnName="IdCeny" />
+          <ScalarProperty Name="IdTowaru" ColumnName="IdTowaru" />
+          <ScalarProperty Name="CenaNetto" ColumnName="CenaNetto" />
+          <ScalarProperty Name="CenaBrutto" ColumnName="CenaBrutto" />
+          <ScalarProperty Name="Waluta" ColumnName="Waluta" />
+          <ScalarProperty Name="CzyAktywna" ColumnName="CzyAktywna" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Faktura">
+      <EntityTypeMapping TypeName="KsiegarniaModel.Faktura">
+        <MappingFragment StoreEntitySet="Faktura">
+          <ScalarProperty Name="IdFaktury" ColumnName="IdFaktury" />
+          <ScalarProperty Name="IdKontrahenta" ColumnName="IdKontrahenta" />
+          <ScalarProperty Name="DataWystawienia" ColumnName="DataWystawienia" />
+          <ScalarProperty Name="DataPrzyjecia" ColumnName="DataPrzyjecia" />
+          <ScalarProperty Name="PoTerminie" ColumnName="PoTerminie" />
+          <ScalarProperty Name="TypCeny" ColumnName="TypCeny" />
+          <ScalarProperty Name="Rabat" ColumnName="Rabat" />
+          <ScalarProperty Name="DataPlatnosci" ColumnName="DataPlatnosci" />
+          <ScalarProperty Name="Zadluzenie" ColumnName="Zadluzenie" />
+          <ScalarProperty Name="IdSposobuPlatnosci" ColumnName="IdSposobuPlatnosci" />
+          <ScalarProperty Name="DataZaksiegowania" ColumnName="DataZaksiegowania" />
+          <ScalarProperty Name="Netto" ColumnName="Netto" />
+          <ScalarProperty Name="Razem" ColumnName="Razem" />
+          <ScalarProperty Name="Zaplacono" ColumnName="Zaplacono" />
+          <ScalarProperty Name="Pozostalo" ColumnName="Pozostalo" />
+          <ScalarProperty Name="CzyPodzielonaPlatnosc" ColumnName="CzyPodzielonaPlatnosc" />
+          <ScalarProperty Name="WartoscMPP" ColumnName="WartoscMPP" />
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Grupa">
+      <EntityTypeMapping TypeName="KsiegarniaModel.Grupa">
+        <MappingFragment StoreEntitySet="Grupa">
+          <ScalarProperty Name="IdGrupy" ColumnName="IdGrupy" />
+          <ScalarProperty Name="Kod" ColumnName="Kod" />
+          <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Jednostka">
+      <EntityTypeMapping TypeName="KsiegarniaModel.Jednostka">
+        <MappingFragment StoreEntitySet="Jednostka">
+          <ScalarProperty Name="IdJednostkiMiary" ColumnName="IdJednostkiMiary" />
+          <ScalarProperty Name="SkrotJednostki" ColumnName="SkrotJednostki" />
+          <ScalarProperty Name="NazwaJednostki" ColumnName="NazwaJednostki" />
+          <ScalarProperty Name="DodatkoweInformacje" ColumnName="DodatkoweInformacje" />
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KategoriaPracy">
+      <EntityTypeMapping TypeName="KsiegarniaModel.KategoriaPracy">
+        <MappingFragment StoreEntitySet="KategoriaPracy">
+          <ScalarProperty Name="IdKategoriiPracy" ColumnName="IdKategoriiPracy" />
+          <ScalarProperty Name="NazwaDzialu" ColumnName="NazwaDzialu" />
+          <ScalarProperty Name="IdOddzialu" ColumnName="IdOddzialu" />
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KategoriaTowaru">
+      <EntityTypeMapping TypeName="KsiegarniaModel.KategoriaTowaru">
+        <MappingFragment StoreEntitySet="KategoriaTowaru">
+          <ScalarProperty Name="IdKategoriiTowaru" ColumnName="IdKategoriiTowaru" />
+          <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+          <ScalarProperty Name="Opis" ColumnName="Opis" />
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kontrahent">
+      <EntityTypeMapping TypeName="KsiegarniaModel.Kontrahent">
+        <MappingFragment StoreEntitySet="Kontrahent">
+          <ScalarProperty Name="IdKontrahenta" ColumnName="IdKontrahenta" />
+          <ScalarProperty Name="Kod" ColumnName="Kod" />
+          <ScalarProperty Name="NIP" ColumnName="NIP" />
+          <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+          <ScalarProperty Name="IdAdresu" ColumnName="IdAdresu" />
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Magazyn">
+      <EntityTypeMapping TypeName="KsiegarniaModel.Magazyn">
+        <MappingFragment StoreEntitySet="Magazyn">
+          <ScalarProperty Name="IdMagazynu" ColumnName="IdMagazynu" />
+          <ScalarProperty Name="IdRodzajuDokumentu" ColumnName="IdRodzajuDokumentu" />
+          <ScalarProperty Name="Numer" ColumnName="Numer" />
+          <ScalarProperty Name="IdOddzialu" ColumnName="IdOddzialu" />
+          <ScalarProperty Name="NumerObcy" ColumnName="NumerObcy" />
+          <ScalarProperty Name="DataWplywu" ColumnName="DataWplywu" />
+          <ScalarProperty Name="DataWystawienia" ColumnName="DataWystawienia" />
+          <ScalarProperty Name="DataPrzyjecia" ColumnName="DataPrzyjecia" />
+          <ScalarProperty Name="TypCeny" ColumnName="TypCeny" />
+          <ScalarProperty Name="Rabat" ColumnName="Rabat" />
+          <ScalarProperty Name="Netto" ColumnName="Netto" />
+          <ScalarProperty Name="Razem" ColumnName="Razem" />
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Oddzial">
+      <EntityTypeMapping TypeName="KsiegarniaModel.Oddzial">
+        <MappingFragment StoreEntitySet="Oddzial">
+          <ScalarProperty Name="IdOddzialu" ColumnName="IdOddzialu" />
+          <ScalarProperty Name="Rodzaj" ColumnName="Rodzaj" />
+          <ScalarProperty Name="IdAdresu" ColumnName="IdAdresu" />
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OkresWyplaty">
+      <EntityTypeMapping TypeName="KsiegarniaModel.OkresWyplaty">
+        <MappingFragment StoreEntitySet="OkresWyplaty">
+          <ScalarProperty Name="IdOkresuWyplaty" ColumnName="IdOkresuWyplaty" />
+          <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PozycjaFaktury">
+      <EntityTypeMapping TypeName="KsiegarniaModel.PozycjaFaktury">
+        <MappingFragment StoreEntitySet="PozycjaFaktury">
+          <ScalarProperty Name="IdPozycjiFaktury" ColumnName="IdPozycjiFaktury" />
+          <ScalarProperty Name="IdFaktury" ColumnName="IdFaktury" />
+          <ScalarProperty Name="IdTowaru" ColumnName="IdTowaru" />
+          <ScalarProperty Name="Ilosc" ColumnName="Ilosc" />
+          <ScalarProperty Name="CenaPoczatkowa" ColumnName="CenaPoczatkowa" />
+          <ScalarProperty Name="Rabat" ColumnName="Rabat" />
+          <ScalarProperty Name="Cena" ColumnName="Cena" />
+          <ScalarProperty Name="Wartosc" ColumnName="Wartosc" />
+          <ScalarProperty Name="CzyAktywna" ColumnName="CzyAktywna" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PozycjaMagazynu">
+      <EntityTypeMapping TypeName="KsiegarniaModel.PozycjaMagazynu">
+        <MappingFragment StoreEntitySet="PozycjaMagazynu">
+          <ScalarProperty Name="IdPozycjiMagazynu" ColumnName="IdPozycjiMagazynu" />
+          <ScalarProperty Name="IdMagazynu" ColumnName="IdMagazynu" />
+          <ScalarProperty Name="IdTowaru" ColumnName="IdTowaru" />
+          <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+          <ScalarProperty Name="Ilosc" ColumnName="Ilosc" />
+          <ScalarProperty Name="CenaPoczatkowa" ColumnName="CenaPoczatkowa" />
+          <ScalarProperty Name="Rabat" ColumnName="Rabat" />
+          <ScalarProperty Name="Cena" ColumnName="Cena" />
+          <ScalarProperty Name="Wartosc" ColumnName="Wartosc" />
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pracownik">
+      <EntityTypeMapping TypeName="KsiegarniaModel.Pracownik">
+        <MappingFragment StoreEntitySet="Pracownik">
+          <ScalarProperty Name="IdPracownika" ColumnName="IdPracownika" />
+          <ScalarProperty Name="Aktonim" ColumnName="Aktonim" />
+          <ScalarProperty Name="Imie" ColumnName="Imie" />
+          <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+          <ScalarProperty Name="DrugieImie" ColumnName="DrugieImie" />
+          <ScalarProperty Name="PeselPracownika" ColumnName="PeselPracownika" />
+          <ScalarProperty Name="Nip" ColumnName="Nip" />
+          <ScalarProperty Name="DataUrodzenia" ColumnName="DataUrodzenia" />
+          <ScalarProperty Name="MiejsceUrodzenia" ColumnName="MiejsceUrodzenia" />
+          <ScalarProperty Name="ImieOjca" ColumnName="ImieOjca" />
+          <ScalarProperty Name="ImieMatki" ColumnName="ImieMatki" />
+          <ScalarProperty Name="NazwiskoRodowe" ColumnName="NazwiskoRodowe" />
+          <ScalarProperty Name="NazwiskoRodoweMatki" ColumnName="NazwiskoRodoweMatki" />
+          <ScalarProperty Name="IdAdresu" ColumnName="IdAdresu" />
+          <ScalarProperty Name="DataZatrudnienia" ColumnName="DataZatrudnienia" />
+          <ScalarProperty Name="IdSposobuPlatnosci" ColumnName="IdSposobuPlatnosci" />
+          <ScalarProperty Name="WspolczynnikKosztow" ColumnName="WspolczynnikKosztow" />
+          <ScalarProperty Name="WspolczynnikUlgi" ColumnName="WspolczynnikUlgi" />
+          <ScalarProperty Name="KodPracy" ColumnName="KodPracy" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="TelefonKomorkowy" ColumnName="TelefonKomorkowy" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UrzadSkarbowy" ColumnName="UrzadSkarbowy" />
+          <ScalarProperty Name="NrKonta" ColumnName="NrKonta" />
+          <ScalarProperty Name="IdKategoriiPracy" ColumnName="IdKategoriiPracy" />
+          <ScalarProperty Name="Stawka" ColumnName="Stawka" />
+          <ScalarProperty Name="RodzajUmowy" ColumnName="RodzajUmowy" />
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RodzajDokumentu">
+      <EntityTypeMapping TypeName="KsiegarniaModel.RodzajDokumentu">
+        <MappingFragment StoreEntitySet="RodzajDokumentu">
+          <ScalarProperty Name="IdRodzajuDokumentu" ColumnName="IdRodzajuDokumentu" />
+          <ScalarProperty Name="Kod" ColumnName="Kod" />
+          <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RodzajNaliczania">
+      <EntityTypeMapping TypeName="KsiegarniaModel.RodzajNaliczania">
+        <MappingFragment StoreEntitySet="RodzajNaliczania">
+          <ScalarProperty Name="IdNaliczania" ColumnName="IdNaliczania" />
+          <ScalarProperty Name="RodzajNaliczania1" ColumnName="RodzajNaliczania" />
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RodzajWliczania">
+      <EntityTypeMapping TypeName="KsiegarniaModel.RodzajWliczania">
+        <MappingFragment StoreEntitySet="RodzajWliczania">
+          <ScalarProperty Name="IdWliczania" ColumnName="IdWliczania" />
+          <ScalarProperty Name="RodzajWliczania1" ColumnName="RodzajWliczania" />
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SposobPlatnosci">
+      <EntityTypeMapping TypeName="KsiegarniaModel.SposobPlatnosci">
+        <MappingFragment StoreEntitySet="SposobPlatnosci">
+          <ScalarProperty Name="IdSposobuPlatnosci" ColumnName="IdSposobuPlatnosci" />
+          <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+          <ScalarProperty Name="Opis" ColumnName="Opis" />
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StawkaVat">
+      <EntityTypeMapping TypeName="KsiegarniaModel.StawkaVat">
+        <MappingFragment StoreEntitySet="StawkaVat">
+          <ScalarProperty Name="IdVat" ColumnName="IdVat" />
+          <ScalarProperty Name="Stawka" ColumnName="Stawka" />
+          <ScalarProperty Name="CzyAktywna" ColumnName="CzyAktywna" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="KsiegarniaModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Towar">
+      <EntityTypeMapping TypeName="KsiegarniaModel.Towar">
+        <MappingFragment StoreEntitySet="Towar">
+          <ScalarProperty Name="IdTowaru" ColumnName="IdTowaru" />
+          <ScalarProperty Name="KodTowaru" ColumnName="KodTowaru" />
+          <ScalarProperty Name="NrKatalogowy" ColumnName="NrKatalogowy" />
+          <ScalarProperty Name="IdGrupy" ColumnName="IdGrupy" />
+          <ScalarProperty Name="IdTypu" ColumnName="IdTypu" />
+          <ScalarProperty Name="EAN" ColumnName="EAN" />
+          <ScalarProperty Name="PKWiU" ColumnName="PKWiU" />
+          <ScalarProperty Name="IdVat" ColumnName="IdVat" />
+          <ScalarProperty Name="NazwaTowaru" ColumnName="NazwaTowaru" />
+          <ScalarProperty Name="IdKategoriiSprzedazy" ColumnName="IdKategoriiSprzedazy" />
+          <ScalarProperty Name="IdKategoriiZakupu" ColumnName="IdKategoriiZakupu" />
+          <ScalarProperty Name="IdJednostki" ColumnName="IdJednostki" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Opis" ColumnName="Opis" />
+          <ScalarProperty Name="KopiujOpis" ColumnName="KopiujOpis" />
+          <ScalarProperty Name="EdycjaNazwy" ColumnName="EdycjaNazwy" />
+          <ScalarProperty Name="EdycjaOpisu" ColumnName="EdycjaOpisu" />
+          <ScalarProperty Name="IdWydawcy" ColumnName="IdWydawcy" />
+          <ScalarProperty Name="TypKosztu" ColumnName="TypKosztu" />
+          <ScalarProperty Name="KosztUslugi" ColumnName="KosztUslugi" />
+          <ScalarProperty Name="PLU" ColumnName="PLU" />
+          <ScalarProperty Name="NazwaUrzadzenia" ColumnName="NazwaUrzadzenia" />
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Typ">
+      <EntityTypeMapping TypeName="KsiegarniaModel.Typ">
+        <MappingFragment StoreEntitySet="Typ">
+          <ScalarProperty Name="IdTypu" ColumnName="IdTypu" />
+          <ScalarProperty Name="Kod" ColumnName="Kod" />
+          <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Wydawca">
+      <EntityTypeMapping TypeName="KsiegarniaModel.Wydawca">
+        <MappingFragment StoreEntitySet="Wydawca">
+          <ScalarProperty Name="IdWydawcy" ColumnName="IdWydawcy" />
+          <ScalarProperty Name="Kod" ColumnName="Kod" />
+          <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+          <ScalarProperty Name="Opis" ColumnName="Opis" />
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Wyplata">
+      <EntityTypeMapping TypeName="KsiegarniaModel.Wyplata">
+        <MappingFragment StoreEntitySet="Wyplata">
+          <ScalarProperty Name="IdWyplaty" ColumnName="IdWyplaty" />
+          <ScalarProperty Name="TytulPrzelewu" ColumnName="TytulPrzelewu" />
+          <ScalarProperty Name="Skrot" ColumnName="Skrot" />
+          <ScalarProperty Name="Potracenie" ColumnName="Potracenie" />
+          <ScalarProperty Name="PrzychodPPK" ColumnName="PrzychodPPK" />
+          <ScalarProperty Name="IdSposobuPlatnosci" ColumnName="IdSposobuPlatnosci" />
+          <ScalarProperty Name="ProcentWynagrodzenia" ColumnName="ProcentWynagrodzenia" />
+          <ScalarProperty Name="RodzajWynagrodzenia" ColumnName="RodzajWynagrodzenia" />
+          <ScalarProperty Name="AutomatyczneKorygowanie" ColumnName="AutomatyczneKorygowanie" />
+          <ScalarProperty Name="Urlop" ColumnName="Urlop" />
+          <ScalarProperty Name="ZwolnienieLekarskie" ColumnName="ZwolnienieLekarskie" />
+          <ScalarProperty Name="NieobecnoscUsprawiedliwiona" ColumnName="NieobecnoscUsprawiedliwiona" />
+          <ScalarProperty Name="NieobecnoscNieusprawiedliwiona" ColumnName="NieobecnoscNieusprawiedliwiona" />
+          <ScalarProperty Name="OdchylekNormy" ColumnName="OdchylekNormy" />
+          <ScalarProperty Name="PomniejszenieZwolnienie" ColumnName="PomniejszenieZwolnienie" />
+          <ScalarProperty Name="PozycjaPIT" ColumnName="PozycjaPIT" />
+          <ScalarProperty Name="SposobNaliczania" ColumnName="SposobNaliczania" />
+          <ScalarProperty Name="NaliczajUlge" ColumnName="NaliczajUlge" />
+          <ScalarProperty Name="PozycjaZus" ColumnName="PozycjaZus" />
+          <ScalarProperty Name="SposobNaliczaniaZus" ColumnName="SposobNaliczaniaZus" />
+          <ScalarProperty Name="SposobNaliczaniaUbezpieczenie" ColumnName="SposobNaliczaniaUbezpieczenie" />
+          <ScalarProperty Name="WliczacWynagrodzenieUrlop" ColumnName="WliczacWynagrodzenieUrlop" />
+          <ScalarProperty Name="StalaOkresowa" ColumnName="StalaOkresowa" />
+          <ScalarProperty Name="IdOkresuWyplaty" ColumnName="IdOkresuWyplaty" />
+          <ScalarProperty Name="DodatekOkresowy" ColumnName="DodatekOkresowy" />
+          <ScalarProperty Name="WliczanieZasilkuChorobowego" ColumnName="WliczanieZasilkuChorobowego" />
+          <ScalarProperty Name="WliczanieEkwiwalentuUrlopu" ColumnName="WliczanieEkwiwalentuUrlopu" />
+          <ScalarProperty Name="Zaokraglenie" ColumnName="Zaokraglenie" />
+          <ScalarProperty Name="SposobZaokraglenia" ColumnName="SposobZaokraglenia" />
+          <ScalarProperty Name="PrzyrownajNajnizsze" ColumnName="PrzyrownajNajnizsze" />
+          <ScalarProperty Name="UwzglednijDoplatyNadgodzin" ColumnName="UwzglednijDoplatyNadgodzin" />
+          <ScalarProperty Name="WplywaNaWyplate" ColumnName="WplywaNaWyplate" />
+          <ScalarProperty Name="WplywaNaZaliczkePodatku" ColumnName="WplywaNaZaliczkePodatku" />
+          <ScalarProperty Name="WliczajWynagrodzeniePFRON" ColumnName="WliczajWynagrodzeniePFRON" />
+          <ScalarProperty Name="StanowiKosztPracownika" ColumnName="StanowiKosztPracownika" />
+          <ScalarProperty Name="OpisAnalitycznyZgodny" ColumnName="OpisAnalitycznyZgodny" />
+          <ScalarProperty Name="NieZapisujZerowychElementow" ColumnName="NieZapisujZerowychElementow" />
+          <ScalarProperty Name="DoliczanyPoOgraniczeniuPotracen" ColumnName="DoliczanyPoOgraniczeniuPotracen" />
+          <ScalarProperty Name="WskazZUSJakoWyplacany" ColumnName="WskazZUSJakoWyplacany" />
+          <ScalarProperty Name="PiorytetNaliczania" ColumnName="PiorytetNaliczania" />
+          <ScalarProperty Name="WliczanyDoGus" ColumnName="WliczanyDoGus" />
+          <ScalarProperty Name="PKZP" ColumnName="PKZP" />
+          <ScalarProperty Name="Parametr1" ColumnName="Parametr1" />
+          <ScalarProperty Name="Parametr2" ColumnName="Parametr2" />
+          <ScalarProperty Name="Wzor" ColumnName="Wzor" />
+          <ScalarProperty Name="TypWyplatyWskaznikiem" ColumnName="TypWyplatyWskaznikiem" />
+          <ScalarProperty Name="PozycjaERP7" ColumnName="PozycjaERP7" />
+          <ScalarProperty Name="IdWprowadzajacego" ColumnName="IdWprowadzajacego" />
+          <ScalarProperty Name="DataDodania" ColumnName="DataDodania" />
+          <ScalarProperty Name="IdModyfikujacego" ColumnName="IdModyfikujacego" />
+          <ScalarProperty Name="DataModyfikacji" ColumnName="DataModyfikacji" />
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WyplataPracownika">
+      <EntityTypeMapping TypeName="KsiegarniaModel.WyplataPracownika">
+        <MappingFragment StoreEntitySet="WyplataPracownika">
+          <ScalarProperty Name="IdWyplatyPracownika" ColumnName="IdWyplatyPracownika" />
+          <ScalarProperty Name="IdWyplaty" ColumnName="IdWyplaty" />
+          <ScalarProperty Name="IdPracownika" ColumnName="IdPracownika" />
+          <ScalarProperty Name="OkresOd" ColumnName="OkresOd" />
+          <ScalarProperty Name="OkresDo" ColumnName="OkresDo" />
+          <ScalarProperty Name="MiesiacDeklaracji" ColumnName="MiesiacDeklaracji" />
+          <ScalarProperty Name="RokDeklaracji" ColumnName="RokDeklaracji" />
+          <ScalarProperty Name="Wartosc" ColumnName="Wartosc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

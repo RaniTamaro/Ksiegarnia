@@ -76,3 +76,47 @@ C:\Users\klaku\Desktop\Studia i praca\WSB-NLU\Rok 2\Semestr 4\Interfejsy\Projekt
 C:\Users\klaku\Desktop\Studia i praca\WSB-NLU\Rok 2\Semestr 4\Interfejsy\Projekt\Firma\Firma\obj\Debug\net6.0-windows\Views\WszyscyPracownicyView.baml
 C:\Users\klaku\Desktop\Studia i praca\WSB-NLU\Rok 2\Semestr 4\Interfejsy\Projekt\Firma\Firma\obj\Debug\net6.0-windows\Views\NowaWyplataView.g.cs
 C:\Users\klaku\Desktop\Studia i praca\WSB-NLU\Rok 2\Semestr 4\Interfejsy\Projekt\Firma\Firma\obj\Debug\net6.0-windows\Views\NowaWyplataView.baml
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\bin\Debug\net6.0-windows\Firma.exe
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\bin\Debug\net6.0-windows\Firma.deps.json
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\bin\Debug\net6.0-windows\Firma.runtimeconfig.json
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\bin\Debug\net6.0-windows\Firma.dll
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\bin\Debug\net6.0-windows\ref\Firma.dll
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\bin\Debug\net6.0-windows\Firma.pdb
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Firma.csproj.AssemblyReference.cache
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Views\StyleZakladekResources.baml
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Views\MainWindow.g.cs
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Views\NowaFakturaView.g.cs
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Views\NowaWyplataView.g.cs
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Views\NowyPracownikView.g.cs
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Views\NowyTowarView.g.cs
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Views\PrzyjecieView.g.cs
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Views\WszyscyPracownicyView.g.cs
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Views\WszystkieFakturyView.g.cs
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Views\WszystkieTowaryView.g.cs
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Views\WydanieView.g.cs
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Firma_MarkupCompile.cache
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Firma_MarkupCompile.lref
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Views\MainWindow.baml
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Views\MainWindowResources.baml
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Views\NowaFakturaView.baml
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Views\NowaWyplataView.baml
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Views\NowyPracownikView.baml
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Views\NowyTowarView.baml
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Views\PrzyjecieView.baml
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Views\WszyscyPracownicyView.baml
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Views\WszystkieFakturyView.baml
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Views\WszystkieTowaryView.baml
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Views\WydanieView.baml
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Firma.g.resources
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Firma.ViewResources.GlobalResources.resources
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Firma.csproj.GenerateResource.cache
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Firma.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Firma.AssemblyInfoInputs.cache
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Firma.AssemblyInfo.cs
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Firma.csproj.CoreCompileInputs.cache
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Firma.dll
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\ref\Firma.dll
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Firma.pdb
+C:\Users\klaku\Desktop\Księgarnia - Klaudia Kurela\Firma\obj\Debug\net6.0-windows\Firma.genruntimeconfig.cache

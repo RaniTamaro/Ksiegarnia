@@ -15,7 +15,43 @@ namespace Firma.ViewModels
 {
     public class MainWindowViewModel : BaseViewModel
     {
-        //Bedzie zawierala kolekcje komend, ktore pojawiaja sie w menu lewym oraz kolekcje zakladek
+        #region Pola i Wlasciwosci
+        private int _szerokoscKolumnyMenu = 35;
+        private bool _dostepnoscPrzycisku = true;
+
+        public int SzerokoscKolumnyMenu
+        {
+            get
+            {
+                return _szerokoscKolumnyMenu;
+            }
+            set
+            {
+                if (_szerokoscKolumnyMenu != value)
+                {
+                    _szerokoscKolumnyMenu = value;
+                    OnPropertyChanged(() => SzerokoscKolumnyMenu);
+                }
+            }
+        }
+
+        public bool DostepnoscPrzycisku
+        {
+            get
+            {
+                return _dostepnoscPrzycisku;
+            }
+            set
+            {
+                if (_dostepnoscPrzycisku != value)
+                {
+                    _dostepnoscPrzycisku = value;
+                    OnPropertyChanged(() => DostepnoscPrzycisku);
+                }
+            }
+        }
+        #endregion
+
         #region Komendy menu i paska narzedzi
         public ICommand NowyTowarCommand
         {
@@ -46,7 +82,7 @@ namespace Firma.ViewModels
             }
         }
 
-        public ICommand ZamknijAplikacje
+        public ICommand ZamknijAplikacjeCommand
         {
             get
             {
@@ -70,6 +106,38 @@ namespace Firma.ViewModels
             }
         }
         
+        public ICommand NowyKontrahentCommand
+        {
+            get
+            {
+                return new BaseCommand(() => createView(new NowyKontrahentViewModel()));
+            }
+        }
+
+        public ICommand KontrahenciCommand
+        {
+            get
+            {
+                return new BaseCommand(showAllKontrahenci);
+            }
+        }
+
+        public ICommand NowyWydawcaCommand
+        {
+            get
+            {
+                return new BaseCommand(() => createView(new NowyWydawcaViewModel()));
+            }
+        }
+
+        public ICommand WydawcyCommand
+        {
+            get
+            {
+                return new BaseCommand(showAllWydawcy);
+            }
+        }
+
         public ICommand PrzyjecieCommand
         {
             get
@@ -93,33 +161,45 @@ namespace Firma.ViewModels
                 return new BaseCommand(() => createView(new NowaWyplataViewModel()));
             }
         }
+
+        public ICommand PokazUkryjMenuBoczneAsyncCommand
+        {
+            get
+            {
+                return new BaseCommand(async () => await PokazUkrujMenuBoczneAsync());
+            }
+        }
         #endregion
 
-        //#region Przyciski w menu z lewej strony
-        //private ReadOnlyCollection<CommandViewModel> _Commands; //To jest kolekcja komend w menu lewym
-        //public ReadOnlyCollection<CommandViewModel> Commands
-        //{
-        //    get 
-        //    {
-        //        if (_Commands == null)//Sprawdzam, czy przyciski z lewej strony menu nie zostaly zainicjalizowane
-        //        {
-        //            List<CommandViewModel> cmds = this.CreateCommands();//Tworze liste przyciskowza pomoca funkcji CreateCommands
-        //            _Commands = new ReadOnlyCollection<CommandViewModel>(cmds);//Te liste przypisuje do ReadOnlyCollection, bo ReadOnlyCollection mozna tylko tworzyc, nie mozna jej dodawac
-        //        }
-        //        return _Commands;
-        //    }
-        //}
-        //private List<CommandViewModel> CreateCommands()//Tu decydujemy, jakie przyciski sa w lewym menu
-        //{
-        //    return new List<CommandViewModel>
-        //    {
-        //        new CommandViewModel("Towary", new BaseCommand(showAllTowar)), //To tworzy pierwszy przycisk o nazwie Towary, ktory pokaze zakladke WszystkieTowary
-        //        new CommandViewModel("Towar", new BaseCommand(()=>createView(new NowyTowarViewModel()))),
-        //        new CommandViewModel("Faktura", new BaseCommand(()=>createView(new NowaFakturaViewModel()))),
-        //        new CommandViewModel("Faktury", new BaseCommand(showAllFaktury)),
-        //    };
-        //}
-        //#endregion
+        #region Przyciski w menu z lewej strony
+        private ReadOnlyCollection<CommandViewModel> _Commands;
+        public ReadOnlyCollection<CommandViewModel> Commands
+        {
+            get
+            {
+                if (_Commands == null)
+                {
+                    List<CommandViewModel> cmds = this.CreateCommands();
+                    _Commands = new ReadOnlyCollection<CommandViewModel>(cmds);
+                }
+                return _Commands;
+            }
+        }
+
+        private List<CommandViewModel> CreateCommands()
+        {
+            return new List<CommandViewModel>
+            {
+                new CommandViewModel("IconNowyTowar.png","Dodaj Towar",new BaseCommand(()=>createView(new NowyTowarViewModel()))),
+                new CommandViewModel("IconPrzyjecie.png","Nowe Przyjęcie",new BaseCommand(()=>createView(new PrzyjecieViewModel()))),
+                new CommandViewModel("IconWydanie.png","Nowe Wydanie",new BaseCommand(()=>createView(new WydanieViewModel()))),
+                new CommandViewModel("IconPracownicy.png","Pracownicy",new BaseCommand(showAllPracownicy)),
+                new CommandViewModel("IconNowaFaktura.png","Dodaj Fakturę",new BaseCommand(()=>createView(new NowaFakturaViewModel()))),
+                new CommandViewModel("IconFaktury.png","Wyświetl Faktury",new BaseCommand(showAllFaktury)),
+                new CommandViewModel("IconZamknij.png","Zamknij",new BaseCommand(closeWindow))
+            };
+        }
+        #endregion
 
         #region Zakładki
         private ObservableCollection<WorkspaceViewModel> _Workspaces;//To jest kolekcja zakladek
@@ -153,7 +233,29 @@ namespace Firma.ViewModels
         #endregion
 
         #region Funkcje pomocnicze
-        //Wersja uniwersalna funkcji create
+        private async Task PokazUkrujMenuBoczneAsync()
+        {
+            DostepnoscPrzycisku = false;
+            if (SzerokoscKolumnyMenu > 35)
+            {
+                while (SzerokoscKolumnyMenu > 35)
+                {
+                    SzerokoscKolumnyMenu -= 5;
+                    await Task.Delay(5);
+                }
+            }
+            else
+            {
+                while (SzerokoscKolumnyMenu < 150)
+                {
+                    SzerokoscKolumnyMenu += 5;
+                    await Task.Delay(5);
+                }
+            }
+
+            DostepnoscPrzycisku = true;
+        }
+
         private void createView(WorkspaceViewModel workspace)
         {
             this.Workspaces.Add(workspace);
@@ -190,6 +292,30 @@ namespace Firma.ViewModels
                 workspace = new WszyscyPracownicyViewModel();
                 this.Workspaces.Add(workspace);
             }
+            this.setActiveWorkspace(workspace);
+        }
+
+        private void showAllKontrahenci()
+        {
+            WszyscyKontrahenciViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is WszyscyKontrahenciViewModel) as WszyscyKontrahenciViewModel;
+            if (workspace == null)
+            {
+                workspace = new WszyscyKontrahenciViewModel();
+                this.Workspaces.Add(workspace);
+            }
+
+            this.setActiveWorkspace(workspace);
+        }
+
+        private void showAllWydawcy()
+        {
+            WszyscyWydawcyViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is WszyscyWydawcyViewModel) as WszyscyWydawcyViewModel;
+            if (workspace == null)
+            {
+                workspace = new WszyscyWydawcyViewModel();
+                this.Workspaces.Add(workspace);
+            }
+
             this.setActiveWorkspace(workspace);
         }
 

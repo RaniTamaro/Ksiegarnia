@@ -18,7 +18,7 @@ namespace Firma.Views
     /// <summary>
     /// Interaction logic for WydanieView.xaml
     /// </summary>
-    public partial class WydanieView : UserControl
+    public partial class WydanieView : NowyElementViewBase
     {
         public WydanieView()
         {

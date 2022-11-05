@@ -2,12 +2,16 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
+    <TargetFramework>net4.8-windows</TargetFramework>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Models\Entities\KsiegarniaModel.edmx" />
+    <None Remove="Themes\IconEdit.png" />
+    <None Remove="Themes\IconEdytuj.png" />
+    <None Remove="Themes\IconOdswiez.png" />
+    <None Remove="Themes\IconUsun.png" />
     <None Remove="Views\24dp.png" />
     <None Remove="Views\Bookmark.png" />
     <None Remove="Views\Description.png" />
@@ -33,10 +37,24 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <EntityDeploy Include="Models\Entities\KsiegarniaModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>KsiegarniaModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Security" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Themes\IconEdytuj.png" />
+    <Resource Include="Themes\IconOdswiez.png" />
+    <Resource Include="Themes\IconUsun.png" />
     <Resource Include="Views\IconAktywność.png" />
     <Resource Include="Views\IconAnuluj.png" />
     <Resource Include="Views\IconDodajPracownika.png" />
@@ -54,6 +72,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Models\Entities\KsiegarniaModel.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>KsiegarniaModel.edmx</DependentUpon>
+    </Compile>
     <Compile Update="ViewResources\GlobalResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

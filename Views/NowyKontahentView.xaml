@@ -1,0 +1,142 @@
+﻿<local:NowyElementViewBase x:Class="Firma.Views.NowyKontahentView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:local="clr-namespace:Firma.Views"
+        mc:Ignorable="d" 
+        d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="StyleZakladekResources.xaml"/>
+    </UserControl.Resources>
+    <ScrollViewer>
+        <Grid Style="{StaticResource TloGlowne}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <CheckBox Content="Archiwalny" Style="{StaticResource CheckBoxStandardowy}" HorizontalAlignment="Right"/>
+
+            <Expander Header="Dane kontrahenta" Grid.Row="1" Style="{StaticResource Expander}">
+                <Grid Style="{StaticResource TloExpanderG}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.55*"/>
+                        <ColumnDefinition Width="0.75*"/>
+                        <ColumnDefinition Width="0.75*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Kod:" Style="{StaticResource LabelStPogrubiony}"/>
+                    <TextBox Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TBStPogrubiony}"/>
+                    <Label Content="NIP:" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource LabelStPogrubiony}"/>
+                    <TextBox Grid.Column="5" Style="{StaticResource TextBoxStandardowy}"/>
+
+                    <Label Content="Regon:" Grid.Row="1" Style="{StaticResource LabelStPogrubiony}"/>
+                    <TextBox  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}"/>
+                    <Label Content="PESEL:" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Text="Robert" Grid.Row="1" Grid.Column="5" Style="{StaticResource TextBoxStandardowy}"/>
+
+                    <Label Content="Nazwa:" Grid.Row="2" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}"/>
+
+                    <Label Content="Telefon:" Grid.Row="3" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}"/>
+                    <Label Content="Telefon kom." Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Grid.Row="3" Grid.Column="5" Style="{StaticResource TextBoxStandardowy}"/>
+
+                    <Label Content="E-mail" Grid.Row="4" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}"/>
+                </Grid>
+            </Expander>
+
+            <Expander Header="Adres" Grid.Row="2" Style="{StaticResource Expander}">
+                <Grid Style="{StaticResource TloExpanderG}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.8*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.8*"/>
+                        <ColumnDefinition Width="0.3*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="0.15*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="0.25*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Kraj/Kod kraju:" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Text="Polska" Grid.Column="1" Style="{StaticResource TextBoxStandardowy}"/>
+                    <ComboBox Grid.Column="2" Style="{StaticResource ComboBoxStandardowy}">
+                        <ComboBoxItem Content="PLN"/>
+                        <ComboBoxItem Content="UK"/>
+                        <ComboBoxItem Content="FR"/>
+                    </ComboBox>
+                    <Label Content="Województwo:" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource LabelStandardowy}"/>
+                    <ComboBox Grid.Column="5" Grid.ColumnSpan="4" Style="{StaticResource ComboBoxStandardowy}">
+                        <ComboBoxItem Content="Mazowieckie" IsSelected="True"/>
+                        <ComboBoxItem Content="Pomorskie"/>
+                        <ComboBoxItem Content="Małopolskie"/>
+                    </ComboBox>
+
+                    <Label Content="Powiat:" Grid.Row="1" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Text="Warszawa" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}"/>
+                    <Border Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource BorderStylizacja}">
+                        <Label Content="Gmina" Style="{StaticResource LabelStylizowany}"/>
+                    </Border>
+                    <ComboBox Grid.Column="5" Grid.Row="1" Grid.ColumnSpan="4" Style="{StaticResource ComboBoxStandardowy}">
+                        <ComboBoxItem Content="Warszawa" IsSelected="True"/>
+                        <ComboBoxItem Content="Bielany"/>
+                        <ComboBoxItem Content="Bielsk"/>
+                    </ComboBox>
+
+                    <Label Content="Ulica" Grid.Row="2" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Text="Gdańska" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}"/>
+                    <Label Content="Nr domu:" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Text="5" Grid.Row="2" Grid.Column="5" Style="{StaticResource TextBoxStandardowy}"/>
+                    <Label Content="/" Grid.Row="2" Grid.Column="6" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Text="5" Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}"/>
+
+                    <Border Grid.Row="3" Style="{StaticResource BorderStylizacja}">
+                        <Label Content="Miejscowość" Style="{StaticResource LabelStylizowany}"/>
+                    </Border>
+                    <ComboBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource ComboBoxStandardowy}">
+                        <ComboBoxItem Content="Warszawa" IsSelected="True"/>
+                        <ComboBoxItem Content="Płock"/>
+                        <ComboBoxItem Content="Ciechanów"/>
+                        <ComboBoxItem Content="Mława"/>
+                    </ComboBox>
+                    <Label Content="Kod pocztowy:" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Text="03-310" Grid.Row="3" Grid.Column="5" Style="{StaticResource TBStandPrawo}"/>
+
+                    <Border Grid.Row="4" Style="{StaticResource BorderStylizacja}">
+                        <Label Content="Poczta" Style="{StaticResource LabelStylizowany}"/>
+                    </Border>
+                    <ComboBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource ComboBoxStandardowy}">
+                        <ComboBoxItem Content="Warszawa" IsSelected="True"/>
+                        <ComboBoxItem Content="Płock"/>
+                        <ComboBoxItem Content="Ciechanów"/>
+                        <ComboBoxItem Content="Mława"/>
+                    </ComboBox>
+
+                </Grid>
+            </Expander>
+        </Grid>
+    </ScrollViewer>
+</local:NowyElementViewBase>
