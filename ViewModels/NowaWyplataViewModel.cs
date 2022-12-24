@@ -388,7 +388,7 @@ namespace Firma.ViewModels
             }
         }
 
-        public bool? DodatekOkresowy
+        public bool DodatekOkresowy
         {
             get
             {
@@ -756,18 +756,18 @@ namespace Firma.ViewModels
             }
         }
 
-        public int? IdWprowadzajacego
+        public string NazwaDodajacego
         {
             get
             {
-                return Item.IdWprowadzajacego;
+                return Item.NazwaDodajacego;
             }
             set
             {
-                if (value != Item.IdWprowadzajacego)
+                if (value != Item.NazwaDodajacego)
                 {
-                    Item.IdWprowadzajacego = value;
-                    base.OnPropertyChanged(() => IdWprowadzajacego);
+                    Item.NazwaDodajacego = value;
+                    base.OnPropertyChanged(() => NazwaDodajacego);
                 }
             }
         }
@@ -788,18 +788,18 @@ namespace Firma.ViewModels
             }
         }
 
-        public int? IdModyfikujacego
+        public string NazwaModyfikujacego
         {
             get
             {
-                return Item.IdModyfikujacego;
+                return Item.NazwaModyfikujacego;
             }
             set
             {
-                if (value != Item.IdModyfikujacego)
+                if (value != Item.NazwaModyfikujacego)
                 {
-                    Item.IdModyfikujacego = value;
-                    base.OnPropertyChanged(() => IdModyfikujacego);
+                    Item.NazwaModyfikujacego = value;
+                    base.OnPropertyChanged(() => NazwaModyfikujacego);
                 }
             }
         }

@@ -27,7 +27,8 @@
                                 <ColumnDefinition Width="0.05*"/>
                                 <ColumnDefinition Width="0.4*"/>
                                 <ColumnDefinition Width="0.5*"/>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition Width="0.5*"/>
                                 <ColumnDefinition Width="0.5*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -36,23 +37,33 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition/>
+                                <RowDefinition/>
                             </Grid.RowDefinitions>
 
                             <Label Content="Tytul:" Style="{StaticResource LabelStPogrubiony}"/>
-                            <TextBox Grid.Column="2" Grid.ColumnSpan="3" Style="{StaticResource TBStPogrubiony}" Text="{Binding Path=TytulPrzelewu, UpdateSourceTrigger=PropertyChanged}"/>
-                            <CheckBox Content="Nieaktywny" Grid.Column="5" Style="{StaticResource CheckBoxStandardowy}"/>
+                            <TextBox Grid.Column="2" Grid.ColumnSpan="4" Style="{StaticResource TBStPogrubiony}" Text="{Binding Path=TytulPrzelewu, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox Content="Nieaktywny" Grid.Column="6" Style="{StaticResource CheckBoxStandardowy}"/>
 
                             <Label Content="Skrót:" Grid.Row="1" Style="{StaticResource LabelStPogrubiony}"/>
-                            <TextBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" Style="{StaticResource TBStPogrubiony}" Text="{Binding Path=Skrot, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="4" Style="{StaticResource TBStPogrubiony}" Text="{Binding Path=Skrot, UpdateSourceTrigger=PropertyChanged}"/>
 
                             <CheckBox Content="Potrącenie" Grid.Row="2" Grid.Column="2" Style="{StaticResource CheckBoxStandardowy}"/>
-                            <CheckBox Content="Przychód PPK dla umów cywilnoprawnych" Grid.Row="2" Grid.Column="4" Style="{StaticResource CheckBoxStandardowy}"/>
+                            <CheckBox Content="Przychód PPK dla umów cywilnoprawnych" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
 
                             <Label Content="Rodzaj:" Grid.Row="3" Style="{StaticResource LabelStandardowy}"/>
-                            <ComboBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource ComboBoxStandardowy}">
+                            <ComboBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource ComboBoxStandardowy}">
                                 <ComboBoxItem Content="Wypłata" IsSelected="True"/>
                                 <ComboBoxItem Content="Dodatek"/>
                             </ComboBox>
+
+                            <Label Content="Okres wypłaty:" Grid.Row="3" Grid.Column="4" Style="{StaticResource LabelStandardowy}"/>
+                            <ComboBox Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2" Style="{StaticResource ComboBoxStandardowy}">
+                                <ComboBoxItem Content="Wypłata" IsSelected="True"/>
+                                <ComboBoxItem Content="Dodatek"/>
+                            </ComboBox>
+
+                            <Label Content="Kwota:" Grid.Row="4" Style="{StaticResource LabelStPogrubiony}"/>
+                            <TextBox Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource TBStPogrubiony}" Text="{Binding Path=Kwota, UpdateSourceTrigger=PropertyChanged}"/>
                         </Grid>
                     </Border>
 

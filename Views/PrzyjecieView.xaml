@@ -21,6 +21,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
                     <StackPanel Orientation="Horizontal" Style="{StaticResource TloExpanderS}">
@@ -47,7 +48,7 @@
                         <DatePicker Width="120" Style="{StaticResource DatePickerStandard}"/>
                     </StackPanel>
 
-                    <!--<Expander Header="Nagłówek" Grid.Row="2" Style="{StaticResource Expander}">
+                    <Expander Header="Magazyn" Grid.Row="2" Style="{StaticResource Expander}">
                         <Grid Style="{StaticResource TloExpanderG}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
@@ -56,43 +57,21 @@
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
                             </Grid.RowDefinitions>
 
-                            <ComboBox Style="{StaticResource CBStylizowany}">
-                                <ComboBoxItem Content="Kontrahent" IsSelected="True"/>
-                                <ComboBoxItem Content="Kontrahent1"/>
-                                <ComboBoxItem Content="Kontrahent2"/>
-                            </ComboBox>
-                            <ComboBox Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="Waneko" IsSelected="True"/>
-                                <ComboBoxItem Content="SJG"/>
-                            </ComboBox>
-                            <TextBox Text="Wydawnictwo Waneko" Grid.Column="2" Style="{StaticResource TBStZablokowany}"/>
-
-                            <Border Grid.Row="1" Style="{StaticResource BorderStylizacja}">
-                                <Label Content="Kategoria" Style="{StaticResource LabelStylizowany}"/>
-                            </Border>
-                            <ComboBox Grid.Row="1" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="M Waneko" IsSelected="True"/>
-                                <ComboBoxItem Content="M SJG"/>
-                            </ComboBox>
-                            <TextBox Text="Mangi wydawnictwa Waneko" Grid.Row="1" Grid.Column="2" Style="{StaticResource TextBoxStandardowy}"/>
-
-                            <Border Grid.Row="2" Style="{StaticResource BorderStylizacja}">
+                            <Border Style="{StaticResource BorderStylizacja}">
                                 <Label Content="Magazyn" Style="{StaticResource LabelStylizowany}"/>
                             </Border>
-                            <ComboBox Grid.Row="2" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
+                            <ComboBox  Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
                                 <ComboBoxItem Content="Magazyn" IsSelected="True"/>
                                 <ComboBoxItem Content="Magazyn Z"/>
                             </ComboBox>
-                            <TextBox Text="Magazyn główny" Grid.Row="2" Grid.Column="2" Style="{StaticResource TBStZablokowany}"/>
+                            <TextBox Text="Magazyn główny" Grid.Column="2" Style="{StaticResource TBStZablokowany}"/>
 
                         </Grid>
-                    </Expander>-->
+                    </Expander>
 
-                    <Expander Header="Daty i Wartości" Grid.Row="3" Style="{StaticResource Expander}">
+                    <Expander Header="Daty i Wartości" Grid.Row="4" Style="{StaticResource Expander}">
                         <Grid Style="{StaticResource TloExpanderG}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -163,7 +142,7 @@
                         </Grid>
                     </Expander>
 
-                    <DataGrid Grid.Row="4" Style="{StaticResource TabelaStandard}">
+                    <DataGrid Grid.Row="5" Style="{StaticResource TabelaStandard}">
                         <DataGrid.Columns>
                             <DataGridCheckBoxColumn Header="" Width="20"/>
                             <DataGridTextColumn Header="Lp." Width="30" Binding="{Binding Path=LP}"/>

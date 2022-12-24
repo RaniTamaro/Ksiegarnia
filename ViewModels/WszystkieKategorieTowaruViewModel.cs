@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Firma.ViewModels
 {
-    public class GrupaViewModel : WszystkieViewModel<Grupa>
+    public class WszystkieKategorieTowaruViewModel : WszystkieViewModel<KategoriaTowaru>
     {
         #region Konstruktor
-        public GrupaViewModel()
-            :base("Grupa")
+        public WszystkieKategorieTowaruViewModel()
+            : base("Kategorie")
         {
         }
         #endregion
@@ -21,11 +21,11 @@ namespace Firma.ViewModels
         #region Helpers
         public override void Load()
         {
-            List = new ObservableCollection<Grupa>
+            List = new ObservableCollection<KategoriaTowaru>
                 (
-                    from grupa in Db.Grupa
-                    where grupa.CzyAktywny == true
-                    select grupa
+                    from kategoria in Db.KategoriaTowaru
+                    where kategoria.CzyAktywny == true
+                    select kategoria
                 );
         }
         #endregion

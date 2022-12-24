@@ -22,31 +22,15 @@
         </Grid.RowDefinitions>
 
         <Border Style="{StaticResource BorderStandardowy}">
-            <DataGrid Style="{StaticResource TabelaStandard}">
+            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}" Style="{StaticResource TabelaStandard}">
                 <DataGrid.Columns>
                     <DataGridCheckBoxColumn Width="30"/>
                     <DataGridTextColumn Header="Kod" CanUserSort="True" Width="120" Binding="{Binding Path=Kod}"/>
                     <DataGridTextColumn Header="Nazwa" Width="200" Binding="{Binding Path=Nazwa}"/>
-                    <DataGridTextColumn Header="Grupa" Width="120" Binding="{Binding Path=Grupa}"/>
-                    <DataGridTextColumn Header="Ilość" Width="80" Binding="{Binding Path=Ilosc}"/>
+                    <DataGridTextColumn Header="Grupa" Width="150" Binding="{Binding Path=NazwaGrupy}"/>
+                    <!--<DataGridTextColumn Header="Ilość" Width="80" Binding="{Binding Path=Ilosc}"/>-->
                     <DataGridTextColumn Header="EAN" Width="150" Binding="{Binding Path=Ean}"/>
                 </DataGrid.Columns>
-
-                <restab:TowaryTable Kod="Książka" Nazwa="Harry Potter i Kamień Filozoficzny" Grupa="Fantasy" Ilosc="25" Ean="111122223333"/>
-                <restab:TowaryTable Kod="Książka" Nazwa="Harry Potter i Komnata Tajemnic" Grupa="Fantasy" Ilosc="20" Ean="111122223333"/>
-                <restab:TowaryTable Kod="Książka" Nazwa="Harry Potter i Więzień z Azkabanu" Grupa="Fantasy" Ilosc="20" Ean="111122223333"/>
-                <restab:TowaryTable Kod="Książka" Nazwa="Harry Potter i Czara Ognia" Grupa="Fantasy" Ilosc="20" Ean="111122223333"/>
-                <restab:TowaryTable Kod="Książka" Nazwa="Harry Potter i Zakon Feniksa" Grupa="Fantasy" Ilosc="20" Ean="111122223333"/>
-                <restab:TowaryTable Kod="Książka" Nazwa="Harry Potter i Książe Półkrwi" Grupa="Fantasy" Ilosc="20" Ean="111122223333"/>
-                <restab:TowaryTable Kod="Książka" Nazwa="Harry Potter i Insignia Śmierci" Grupa="Fantasy" Ilosc="20" Ean="111122223333"/>
-                <restab:TowaryTable Kod="Manga" Nazwa="Jujutsu Kaisen 1" Grupa="Akcja" Ilosc="15" Ean="111122223333"/>
-                <restab:TowaryTable Kod="Manga" Nazwa="Jujutsu Kaisen 2" Grupa="Akcja" Ilosc="10" Ean="111122223333"/>
-                <restab:TowaryTable Kod="Manga" Nazwa="Jujutsu Kaisen 3" Grupa="Akcja" Ilosc="10" Ean="111122223333"/>
-                <restab:TowaryTable Kod="Manga" Nazwa="Jujutsu Kaisen 4" Grupa="Akcja" Ilosc="10" Ean="111122223333"/>
-                <restab:TowaryTable Kod="Manga" Nazwa="Jujutsu Kaisen 5" Grupa="Akcja" Ilosc="10" Ean="111122223333"/>
-                <restab:TowaryTable Kod="Książka" Nazwa="Balladyna" Grupa="Lektury" Ilosc="5" Ean="111122223333"/>
-                <restab:TowaryTable Kod="Książka" Nazwa="Krzyżacy" Grupa="Lektury" Ilosc="5" Ean="111122223333"/>
-                <restab:TowaryTable Kod="Książka" Nazwa="Pan Tadeusz" Grupa="Lektury" Ilosc="5" Ean="111122223333"/>
             </DataGrid>
         </Border>
 

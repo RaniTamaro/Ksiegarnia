@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 
@@ -145,7 +146,15 @@ namespace Firma.ViewModels
                 return new BaseCommand(() => createView(new PrzyjecieViewModel()));
             }
         }
-        
+
+        public ICommand WszystkiePrzyjeciaCommand
+        {
+            get
+            {
+                return new BaseCommand(showAllPrzyjecia);
+            }
+        }
+
         public ICommand WydanieCommand
         {
             get
@@ -154,11 +163,91 @@ namespace Firma.ViewModels
             }
         }
 
+        public ICommand WszystkieWydaniaCommand
+        {
+            get
+            {
+                return new BaseCommand(showAllWydania);
+            }
+        }
+
         public ICommand NowaWyplataCommand
         {
             get
             {
                 return new BaseCommand(() => createView(new NowaWyplataViewModel()));
+            }
+        }
+
+        public ICommand WyplatyCommand
+        {
+            get
+            {
+                return new BaseCommand(showAllWyplaty);
+            }
+        }
+
+        public ICommand NowaGrupaCommand
+        {
+            get
+            {
+                return new BaseCommand(() => createView(new NowaGrupaViewModel()));
+            }
+        }
+
+        public ICommand GrupyCommand
+        {
+            get
+            {
+                return new BaseCommand(showAllGrupy);
+            }
+        }
+
+        public ICommand NowyOddzialCommand
+        {
+            get
+            {
+                return new BaseCommand(() => createView(new NowyOddzialViewModel()));
+            }
+        }
+
+        public ICommand OddzialyCommand
+        {
+            get
+            {
+                return new BaseCommand(showAllOddzialy);
+            }
+        }
+
+        public ICommand NowaKategoriaTowaruCommand
+        {
+            get
+            {
+                return new BaseCommand(() => createView(new NowaKategoriaTowaruViewModel()));
+            }
+        }
+
+        public ICommand KategorieTowaruCommand
+        {
+            get
+            {
+                return new BaseCommand(showAllKategorieTowaru);
+            }
+        }
+
+        public ICommand NowaKategoriaPracyCommand
+        {
+            get
+            {
+                return new BaseCommand(() => createView(new NowaKategoriaPracyViewModel()));
+            }
+        }
+
+        public ICommand KategoriePracyCommand
+        {
+            get
+            {
+                return new BaseCommand(showAllKategoriePracy);
             }
         }
 
@@ -307,12 +396,96 @@ namespace Firma.ViewModels
             this.setActiveWorkspace(workspace);
         }
 
+        private void showAllPrzyjecia()
+        {
+            WszystkiePrzyjeciaViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is WszystkiePrzyjeciaViewModel) as WszystkiePrzyjeciaViewModel;
+            if (workspace == null)
+            {
+                workspace = new WszystkiePrzyjeciaViewModel();
+                this.Workspaces.Add(workspace);
+            }
+
+            this.setActiveWorkspace(workspace);
+        }
+
+        private void showAllWydania()
+        {
+            WszystkieWydaniaViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is WszystkieWydaniaViewModel) as WszystkieWydaniaViewModel;
+            if (workspace == null)
+            {
+                workspace = new WszystkieWydaniaViewModel();
+                this.Workspaces.Add(workspace);
+            }
+
+            this.setActiveWorkspace(workspace);
+        }
+
         private void showAllWydawcy()
         {
             WszyscyWydawcyViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is WszyscyWydawcyViewModel) as WszyscyWydawcyViewModel;
             if (workspace == null)
             {
                 workspace = new WszyscyWydawcyViewModel();
+                this.Workspaces.Add(workspace);
+            }
+
+            this.setActiveWorkspace(workspace);
+        }
+
+        private void showAllWyplaty()
+        {
+            WszystkieWyplatyViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is WszystkieWyplatyViewModel) as WszystkieWyplatyViewModel;
+            if (workspace == null)
+            {
+                workspace = new WszystkieWyplatyViewModel();
+                this.Workspaces.Add(workspace);
+            }
+
+            this.setActiveWorkspace(workspace);
+        }
+
+        private void showAllGrupy()
+        {
+            WszystkieGrupyViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is WszystkieGrupyViewModel) as WszystkieGrupyViewModel;
+            if (workspace == null)
+            {
+                workspace = new WszystkieGrupyViewModel();
+                this.Workspaces.Add(workspace);
+            }
+
+            this.setActiveWorkspace(workspace);
+        }
+        
+        private void showAllOddzialy()
+        {
+            WszystkieOddzialyViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is WszystkieOddzialyViewModel) as WszystkieOddzialyViewModel;
+            if (workspace == null)
+            {
+                workspace = new WszystkieOddzialyViewModel();
+                this.Workspaces.Add(workspace);
+            }
+
+            this.setActiveWorkspace(workspace);
+        }
+
+        private void showAllKategorieTowaru()
+        {
+            WszystkieKategorieTowaruViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is WszystkieKategorieTowaruViewModel) as WszystkieKategorieTowaruViewModel;
+            if (workspace == null)
+            {
+                workspace = new WszystkieKategorieTowaruViewModel();
+                this.Workspaces.Add(workspace);
+            }
+
+            this.setActiveWorkspace(workspace);
+        }
+        
+        private void showAllKategoriePracy()
+        {
+            WszystkieKategoriePracyViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is WszystkieKategoriePracyViewModel) as WszystkieKategoriePracyViewModel;
+            if (workspace == null)
+            {
+                workspace = new WszystkieKategoriePracyViewModel();
                 this.Workspaces.Add(workspace);
             }
 

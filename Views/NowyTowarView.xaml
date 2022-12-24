@@ -49,7 +49,7 @@
                             <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=NrKatalogowy, UpdateSourceTrigger=PropertyChanged}"/>
 
                             <Border Grid.Row="2" Style="{StaticResource BorderStylizacja}">
-                                <Label Content="Grupa:" Style="{StaticResource LabelStylizowany}"/>
+                                <Button Content="Grupa:" Style="{StaticResource ButtonStylizowany}" Command="{Binding GrupyCommand}"/>
                             </Border>
                             <ComboBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource ComboBoxStandardowy}">
                                 <ComboBoxItem Content="Fantasy" IsSelected="True"/>
@@ -86,9 +86,7 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
-                            <Border Style="{StaticResource BorderStylizacja}">
-                                <Label Content="EAN:" Style="{StaticResource LabelStylizowany}"/>
-                            </Border>
+                            <Label Content="EAN:" Style="{StaticResource LabelStPogrubiony}"/>
                             <TextBox Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=EAN, UpdateSourceTrigger=PropertyChanged}"/>
 
                             <Label Grid.Row="1" Content="PKWiU:" Style="{StaticResource LabelStandardowy}"/>
@@ -138,7 +136,7 @@
                             <TextBox Grid.Column="1" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Visible" Style="{StaticResource TextBoxStandardowyGora}" Text="{Binding Path=NazwaTowaru, UpdateSourceTrigger=PropertyChanged}"/>
 
                             <Border Grid.Row="1" Style="{StaticResource BorderStylizacja}">
-                                <Label Content="Kategoria sprzedaży:" Style="{StaticResource LabelStylizowany}"/>
+                                <Button Content="Kategoria sprzedaży:" Style="{StaticResource ButtonStylizowany}" Command="{Binding KategorieTowaruCommand}"/>
                             </Border>
                             <ComboBox Grid.Row="1" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
                                 <ComboBoxItem Content="Kategoria 1"/>
@@ -148,7 +146,7 @@
                             <TextBox Grid.Row="1" Grid.Column="2" Style="{StaticResource TBStZablokowany}"/>
 
                             <Border Grid.Row="2" Style="{StaticResource BorderStylizacja}">
-                                <Label Content="Kategoria zakupu:" Style="{StaticResource LabelStylizowany}"/>
+                                <Button Content="Kategoria zakupu:" Style="{StaticResource ButtonStylizowany}" Command="{Binding KategorieTowaruCommand}"/>
                             </Border>
                             <ComboBox Grid.Row="2" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
                                 <ComboBoxItem Content="Kategoria 1"/>
@@ -279,7 +277,7 @@
                             <!--<CheckBox Content="Karta nieaktywna" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>-->
 
                             <Border Grid.Row="3" Style="{StaticResource BorderStylizacja}">
-                                <Label Content="Wydawca:" Style="{StaticResource LabelStylizowany}"/>
+                                <Button Content="Wydawca:" Style="{StaticResource ButtonStylizowany}" Command="{Binding WydawcyCommand}"/>
                             </Border>
                             <ComboBox Grid.Row="3" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
                                 <ComboBoxItem Content="Mięta"/>
@@ -394,18 +392,32 @@
         </TabItem>
         <TabItem Header="3. Grupy">
             <ScrollViewer>
-                <DataGrid AutoGenerateColumns="False" Style="{StaticResource TabelaStandard}" ItemsSource="{Binding List}">
-                    <DataGrid.Columns>
-                        <!--<DataGridTextColumn Header="Kod" IsReadOnly="True" Width="140" CanUserSort="True" Binding="{Binding Path=Kod}"/>-->
-                        <DataGridTextColumn Header="Kod" Binding="{Binding Path=Kod}"/>
-                        <DataGridTextColumn Header="Nazwa" IsReadOnly="True" Width="400"  Binding="{Binding Path=NazwaDluga}"/>
-                    </DataGrid.Columns>
+                <Grid Style="{StaticResource TloGlowne}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid AutoGenerateColumns="False" Style="{StaticResource TabelaStandard}" ItemsSource="{Binding List}">
+                        <DataGrid.Columns>
+                            <!--<DataGridTextColumn Header="Kod" IsReadOnly="True" Width="140" CanUserSort="True" Binding="{Binding Path=Kod}"/>-->
+                            <DataGridTextColumn Header="Kod" Binding="{Binding Path=Kod}"/>
+                            <DataGridTextColumn Header="Nazwa" IsReadOnly="True" Width="400"  Binding="{Binding Path=NazwaDluga}"/>
+                        </DataGrid.Columns>
 
-                    <restab:TowaryTable Kod="Kod1" NazwaDluga="Dluga nazwa1"/>
-                    <restab:TowaryTable Kod="Kod2" NazwaDluga="Dluga nazwa2"/>
-                    <restab:TowaryTable Kod="Kod3" NazwaDluga="Dluga nazwa3"/>
-                </DataGrid>
+                        <restab:TowaryTable Kod="Kod1" NazwaDluga="Dluga nazwa1"/>
+                        <restab:TowaryTable Kod="Kod2" NazwaDluga="Dluga nazwa2"/>
+                        <restab:TowaryTable Kod="Kod3" NazwaDluga="Dluga nazwa3"/>
+                    </DataGrid>
+                    
+                    <!--TO DO - Udoskonalić dodawanie grup z towarem lub usunąć tą zakładkę-->
+                    <StackPanel Grid.Column="1">
+                        <Button Style="{DynamicResource ButtonStandard}" ToolTip="Dodaj" Command="{Binding SaveAndCloseCommand}">
+                            <Image Source="/Views/IconNowyTowar.png"/>
+                        </Button>
+                    </StackPanel>
+                </Grid>
             </ScrollViewer>
         </TabItem>
     </TabControl>
 </local:NowyElementViewBase>
+ 

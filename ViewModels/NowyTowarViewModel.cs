@@ -181,22 +181,6 @@ namespace Firma.ViewModels
             }
         }
 
-        public int? IdJednostki
-        {
-            get
-            {
-                return Item.IdJednostki;
-            }
-            set
-            {
-                if (value != Item.IdJednostki)
-                {
-                    Item.IdJednostki = value;
-                    base.OnPropertyChanged(() => IdJednostki);
-                }
-            }
-        }
-
         public string Url
         {
             get

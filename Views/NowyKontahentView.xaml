@@ -15,6 +15,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <CheckBox Content="Archiwalny" Style="{StaticResource CheckBoxStandardowy}" HorizontalAlignment="Right"/>
@@ -33,8 +34,7 @@
                         <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
+
                     </Grid.RowDefinitions>
 
                     <Label Content="Kod:" Style="{StaticResource LabelStPogrubiony}"/>
@@ -50,17 +50,40 @@
                     <Label Content="Nazwa:" Grid.Row="2" Style="{StaticResource LabelStandardowy}"/>
                     <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}"/>
 
-                    <Label Content="Telefon:" Grid.Row="3" Style="{StaticResource LabelStandardowy}"/>
-                    <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}"/>
-                    <Label Content="Telefon kom." Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource LabelStandardowy}"/>
-                    <TextBox Grid.Row="3" Grid.Column="5" Style="{StaticResource TextBoxStandardowy}"/>
-
-                    <Label Content="E-mail" Grid.Row="4" Style="{StaticResource LabelStandardowy}"/>
-                    <TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}"/>
                 </Grid>
             </Expander>
 
-            <Expander Header="Adres" Grid.Row="2" Style="{StaticResource Expander}">
+            <Expander Header="Dane kontaktowe" Grid.Row="2" Style="{StaticResource Expander}">
+                <Grid Style="{StaticResource TloExpanderG}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.60*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="0.60*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Telefon:" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Grid.Column="1" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=TelefonDomowy, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Label Content="Telefon Kom." Grid.Column="2" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Grid.Column="4" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=TelefonKomorkowy, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <Label Content="E-Mail główny:" Grid.Row="1" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Email1, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Label Content="E-Mail dodat.:" Grid.Row="1" Grid.Column="2" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Grid.Row="1" Grid.Column="3" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Email2, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <Label Content="Adres WWW:" Grid.Row="2" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=AdresStrony, UpdateSourceTrigger=PropertyChanged}"/>
+
+                </Grid>
+            </Expander>
+
+            <Expander Header="Adres" Grid.Row="3" Style="{StaticResource Expander}">
                 <Grid Style="{StaticResource TloExpanderG}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.8*"/>

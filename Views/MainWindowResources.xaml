@@ -37,6 +37,32 @@
         <vw:WszyscyKontrahenciView/>
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type vm:NowaWyplataViewModel}">
+        <vw:NowaWyplataView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:WszystkieWyplatyViewModel}">
+        <vw:WszystkieWyplatyView/>
+    </DataTemplate>
+
+
+    <DataTemplate DataType="{x:Type vm:PrzyjecieViewModel}">
+        <vw:PrzyjecieView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:WszystkiePrzyjeciaViewModel}">
+        <vw:WszystkiePrzyjeciaView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:WydanieViewModel}">
+        <vw:WydanieView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:WszystkieWydaniaViewModel}">
+        <vw:WszystkieWydaniaView/>
+    </DataTemplate>
+
+
     <DataTemplate DataType="{x:Type vm:NowyWydawcaViewModel}">
         <vw:NowyWydawcaView/>
     </DataTemplate>
@@ -45,16 +71,40 @@
         <vw:WszyscyWydawcyView/>
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type vm:PrzyjecieViewModel}">
-        <vw:PrzyjecieView/>
+    <DataTemplate DataType="{x:Type vm:NowaKategoriaTowaruViewModel}">
+        <vw:NowaKategoriaTowaruView/>
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type vm:WydanieViewModel}">
-        <vw:WydanieView/>
+    <DataTemplate DataType="{x:Type vm:WszystkieKategorieTowaruViewModel}">
+        <vw:WszystkieKategorieTowaruView/>
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type vm:NowaWyplataViewModel}">
-        <vw:NowaWyplataView/>
+    <DataTemplate DataType="{x:Type vm:NowaKategoriaPracyViewModel}">
+        <vw:NowaKategoriaPracyView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:WszystkieKategoriePracyViewModel}">
+        <vw:WszystkieKategoriePracyView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:NowyTypViewModel}">
+        <vw:NowyTypView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:NowaGrupaViewModel}">
+        <vw:NowaGrupaView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:WszystkieGrupyViewModel}">
+        <vw:WszystkieGrupyView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:NowyOddzialViewModel}">
+        <vw:NowyOddzialView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:WszystkieOddzialyViewModel}">
+        <vw:WszystkieOddzialyView/>
     </DataTemplate>
     <!--tu jest koniec laczenia View z ViewModel zakladek-->
 

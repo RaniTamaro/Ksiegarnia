@@ -97,6 +97,7 @@ namespace Firma.ViewModels
         public override void Save()
         {
             Item.CzyAktywny = true;
+            Item.NazwaDodajacego = Environment.UserName;
             Db.Wydawca.AddObject(Item);
             Db.SaveChanges();
         }

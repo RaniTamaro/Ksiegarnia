@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Firma.ViewModels
 {
-    internal class NowyKontrahentViewModel : NowyElementViewModel<Kontrahent>
+    public class NowyKontrahentViewModel : NowyElementViewModel<Kontrahent>
     {
         #region Konstruktor
         public NowyKontrahentViewModel()

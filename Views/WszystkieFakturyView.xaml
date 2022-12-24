@@ -23,23 +23,17 @@
             </Grid.RowDefinitions>
 
             <Border Style="{StaticResource BorderStandardowy}">
-                <DataGrid Style="{StaticResource TabelaStandard}">
+                <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}" Style="{StaticResource TabelaStandard}">
                     <DataGrid.Columns>
                         <DataGridCheckBoxColumn Width="30"/>
-                        <DataGridTextColumn Header="Numer dokumentu" CanUserSort="True" Width="120" Binding="{Binding Path=NrDokumentu}"/>
-                        <DataGridTextColumn Header="Status" Width="90" Binding="{Binding Path=Status}"/>
-                        <DataGridTextColumn Header="Data wyst." Width="80" Binding="{Binding Path=DataWystawienia}"/>
-                        <DataGridTextColumn Header="Magazyn" Width="80" Binding="{Binding Path=Magazyn}"/>
-                        <DataGridTextColumn Header="Kontrahent" Width="120" Binding="{Binding Path=Kontrahent}"/>
-                        <DataGridTextColumn Header="Netto" Width="80" Binding="{Binding Path=CenaN}"/>
-                        <DataGridTextColumn Header="Brutto" Width="80" Binding="{Binding Path=CenaB}"/>
+                        <DataGridTextColumn Header="Numer dokumentu" CanUserSort="True" Width="120" Binding="{Binding Path=NumerDokumentu}"/>
+                        <DataGridTextColumn Header="Kontrahent" Width="200" Binding="{Binding Path=NazwaKontrahenta}"/>
+                        <DataGridTextColumn Header="Data wystawienia" Width="120" Binding="{Binding Path=DataWystawienia}"/>
+                        <DataGridTextColumn Header="Sposob platnosci" Width="120" Binding="{Binding Path=SposobPlatnosci}"/>
+                        <DataGridTextColumn Header="Netto" Width="100" Binding="{Binding Path=Netto}"/>
+                        <DataGridTextColumn Header="Brutto" Width="100" Binding="{Binding Path=Brutto}"/>
+                        <!--<DataGridTextColumn Header="Brutto" Width="80" Binding="{Binding Path=CenaB}"/>-->
                     </DataGrid.Columns>
-
-                    <restab:TowaryTable NrDokumentu="FA/1/2022" DataWystawienia="2022-05-20" Magazyn="Magazyn" Kontrahent="Adam AS Sp z o.o." Miasto="Warszawa" CenaN="150.00" CenaB="157.50"/>
-                    <restab:TowaryTable NrDokumentu="FA/2/2022" DataWystawienia="2022-05-20" Magazyn="Magazyn" Kontrahent="Waneko" Miasto="Warszawa" CenaN="1200.00" CenaB="1260.00"/>
-                    <restab:TowaryTable NrDokumentu="FA/2/2022" DataWystawienia="2022-05-20" Magazyn="Magazyn" Status="WZ" Kontrahent="ABB" Miasto="Gdańsk" CenaN="340.00" CenaB="357.00"/>
-                    <restab:TowaryTable NrDokumentu="FA/2/2022" DataWystawienia="2022-05-20" Magazyn="Magazyn" Kontrahent="Adam AS Sp z o.o." Miasto="Warszawa" CenaN="80.00" CenaB="84.00"/>
-
                 </DataGrid>
             </Border>
 

@@ -25,11 +25,11 @@
             <Border Style="{StaticResource BorderStandardowy}">
                 <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}" Style="{StaticResource TabelaStandard}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Akronim" CanUserSort="True" Width="100" Binding="{Binding Path=Aktonim}"/>
+                        <DataGridTextColumn Header="Akronim" CanUserSort="True" Width="100" Binding="{Binding Path=Akronim}"/>
                         <DataGridTextColumn Header="Nazwisko" Width="150" Binding="{Binding Path=Nazwisko}"/>
                         <DataGridTextColumn Header="Imię" Width="150" Binding="{Binding Path=Imie}"/>
                         <DataGridTextColumn Header="PESEL" Width="120" Binding="{Binding Path=PeselPracownika}"/>
-                        <!--<DataGridTextColumn Header="Zatrudnienie" Width="100" Binding="{Binding Path=Zatrudnienie}"/>-->
+                        <DataGridTextColumn Header="Adres" Width="300" Binding="{Binding Path=AdresGlowny}"/>
                         <DataGridTextColumn Header="Stawka" Width="80" Binding="{Binding Path=Stawka}"/>
                         <DataGridTextColumn Header="Data zatrud." Width="140" Binding="{Binding Path=DataZatrudnienia}"/>
                     </DataGrid.Columns>

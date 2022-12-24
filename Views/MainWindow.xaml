@@ -64,6 +64,10 @@
                         <Image Source="/Views/IconWydanie.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
+                <MenuItem Header="Wszystkie">
+                    <MenuItem Header="Przyjecia" Command="{Binding WszystkiePrzyjeciaCommand}"/>
+                    <MenuItem Header="Przyjecia" Command="{Binding WszystkieWydaniaCommand}"/>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="Zasoby">
                 <MenuItem Header="Pracownik">
@@ -82,10 +86,6 @@
                     <MenuItem Header="Dodaj" Command="{Binding NowyKontrahentCommand}"/>
                     <MenuItem Header="Wyswietl wszystkich" Command="{Binding KontrahenciCommand}"/>
                 </MenuItem>
-                <MenuItem Header="Wydawca">
-                    <MenuItem Header="Dodaj" Command="{Binding NowyWydawcaCommand}"/>
-                    <MenuItem Header="Wyswietl wszystkich" Command="{Binding WydawcyCommand}"/>
-                </MenuItem>
             </MenuItem>
             <MenuItem Header="_Ksiegowosc">
                 <MenuItem Header="Faktury">
@@ -102,6 +102,29 @@
                 </MenuItem>
                 <MenuItem Header="Wyplaty">
                     <MenuItem Header="Dodaj wypłatę" Command="{Binding NowaWyplataCommand}" InputGestureText="Ctrl+W"/>
+                    <MenuItem Header="Wyswietl wszystkie" Command="{Binding WyplatyCommand}"/>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Tabele słownikowe" ToolTip="Kategoria tymczasowa! Zostanie usunięta po dodaniu wyświetlania nowych okienek">
+                <MenuItem Header="Wydawca">
+                    <MenuItem Header="Dodaj" Command="{Binding NowyWydawcaCommand}"/>
+                    <MenuItem Header="Wyswietl wszystkich" Command="{Binding WydawcyCommand}"/>
+                </MenuItem>
+                <MenuItem Header="Grupa">
+                    <MenuItem Header="Nowa" Command="{Binding NowaGrupaCommand}"/>
+                    <MenuItem Header="Wszystkie" Command="{Binding GrupyCommand}"/>
+                </MenuItem>
+                <MenuItem Header="Oddział">
+                    <MenuItem Header="Nowa" Command="{Binding NowyOddzialCommand}"/>
+                    <MenuItem Header="Wszystkie" Command="{Binding OddzialyCommand}"/>
+                </MenuItem>
+                <MenuItem Header="Kategorie towaru">
+                    <MenuItem Header="Nowa" Command="{Binding NowaKategoriaTowaruCommand}"/>
+                    <MenuItem Header="Wszystkie" Command="{Binding KategorieTowaruCommand}"/>
+                </MenuItem>
+                <MenuItem Header="Kategorie pracy">
+                    <MenuItem Header="Nowa" Command="{Binding NowaKategoriaPracyCommand}"/>
+                    <MenuItem Header="Wszystkie" Command="{Binding KategoriePracyCommand}"/>
                 </MenuItem>
             </MenuItem>
         </Menu>

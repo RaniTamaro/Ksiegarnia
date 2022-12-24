@@ -18,6 +18,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
                     <CheckBox Content="Archiwalny" Style="{StaticResource CheckBoxStandardowy}" HorizontalAlignment="Right"/>
@@ -37,8 +38,6 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition Height="Auto"/>
-                                <RowDefinition/>
-                                <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
@@ -65,9 +64,7 @@
 
                             <Label Content="Data urodzenia:" Grid.Row="3" Style="{StaticResource LabelStandardowy}"/>
                             <DatePicker Grid.Row="3" Grid.Column="1" Style="{StaticResource DatePickerStandard}"/>
-                            <Border Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource BorderStylizacja}">
-                                <Label Content="Miejsce urodzenia" Style="{StaticResource LabelStylizowany}"/>
-                            </Border>
+                            <Label Grid.Row="3" Grid.Column="3" Content="Miejsce urodzenia" Style="{StaticResource LabelStandardowy}"/>
                             <TextBox Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=MiejsceUrodzenia, UpdateSourceTrigger=PropertyChanged}"/>
 
                             <Label Content="Imię ojca:" Grid.Row="4" Style="{StaticResource LabelStandardowy}"/>
@@ -79,18 +76,40 @@
                             <TextBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=NazwiskoRodowe, UpdateSourceTrigger=PropertyChanged}"/>
                             <Label Content="Nazw. rod. matki:" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource LabelStandardowy}"/>
                             <TextBox Grid.Row="5" Grid.Column="5" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=NazwiskoRodoweMatki, UpdateSourceTrigger=PropertyChanged}"/>
+                        </Grid>
+                    </Expander>
+                    
+                    <Expander Header="Dane kontaktowe" Grid.Row="2" Style="{StaticResource Expander}">
+                        <Grid Style="{StaticResource TloExpanderG}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.60*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="0.60*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
 
-                            <Label Content="Telefon:" Grid.Row="6" Grid.ColumnSpan="2" Style="{StaticResource LabelStandardowy}"/>
-                            <TextBox Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=TytulTelefonPrzelewu, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Content="Telefon Kom." Grid.Row="6" Grid.Column="3" Style="{StaticResource LabelStandardowy}"/>
-                            <TextBox Grid.Row="6" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=TelefonKomorkowy, UpdateSourceTrigger=PropertyChanged}"/>
-                            
-                            <Label Content="E-Mail:" Grid.Row="7" Style="{StaticResource LabelStandardowy}"/>
-                            <TextBox Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Content="Telefon:" Style="{StaticResource LabelStandardowy}"/>
+                            <TextBox Grid.Column="1" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=TelefonDomowy, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Content="Telefon Kom." Grid.Column="2" Style="{StaticResource LabelStandardowy}"/>
+                            <TextBox Grid.Column="4" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=TelefonKomorkowy, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <Label Content="E-Mail główny:" Grid.Row="1" Style="{StaticResource LabelStandardowy}"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Email1, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Content="E-Mail dodat.:" Grid.Row="1" Grid.Column="2" Style="{StaticResource LabelStandardowy}"/>
+                            <TextBox Grid.Row="1" Grid.Column="3" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Email2, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <Label Content="Adres WWW:" Grid.Row="2" Style="{StaticResource LabelStandardowy}"/>
+                            <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=AdresStrony, UpdateSourceTrigger=PropertyChanged}"/>
+
                         </Grid>
                     </Expander>
 
-                    <Expander Header="Adres zameldowania" Grid.Row="2" Style="{StaticResource Expander}">
+                    <Expander Header="Adres zameldowania" Grid.Row="3" Style="{StaticResource Expander}">
                         <Grid Style="{StaticResource TloExpanderG}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="0.8*"/>
@@ -180,40 +199,32 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
                                     <RowDefinition/>
-                                    <RowDefinition/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1.25*"/>
+                                    <ColumnDefinition Width="0.7*"/>
                                     <ColumnDefinition/>
-                                    <ColumnDefinition Width="0.75*"/>
-                                    <ColumnDefinition Width="0.5*"/>
+                                    <ColumnDefinition Width="0.6*"/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
 
                                 <Label Content="Data zatrudnienia:" Style="{StaticResource LabelStandardowy}"/>
                                 <DatePicker Grid.Column="1" Style="{StaticResource DatePickerStandard}"/>
                                 <Label Content="Forma płatności:" Grid.Column="2" Style="{StaticResource LabelStandardowy}"/>
-                                <ComboBox Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource ComboBoxStandardowy}">
+                                <ComboBox Grid.Column="3" Style="{StaticResource ComboBoxStandardowy}">
                                     <ComboBoxItem Content="Przelew" IsSelected="True"/>
                                     <ComboBoxItem Content="Blik"/>
                                     <ComboBoxItem Content="Gotówka"/>
                                 </ComboBox>
 
-                                <Label Content="Współczynnik kosztów uzyskania:" Grid.Row="1" Style="{StaticResource LabelStandardowy}"/>
-                                <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource TBStandPrawo}" Text="{Binding Path=WspolczynnikKosztow, UpdateSourceTrigger=PropertyChanged}"/>
-                                <Label Content="Współczynnik ulgi podatkowej:" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource LabelStandardowy}"/>
-                                <TextBox Grid.Row="1" Grid.Column="4" Style="{StaticResource TBStandPrawo}" Text="{Binding Path=WspolczynnikUlgi, UpdateSourceTrigger=PropertyChanged}"/>
-
-                                <Border Grid.Row="2" Grid.ColumnSpan="3" Style="{StaticResource BorderStandardowy}">
-                                    <Label Content="Kod pracy w szczególnych warunkach/charakterze:" Style="{StaticResource LabelStylizowany}"/>
-                                </Border>
-                                <TextBox Grid.Row="2" Grid.Column="3" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=KodPracy, UpdateSourceTrigger=PropertyChanged}"/>
+                                <Label Content="Stawka:" Grid.Row="1" Style="{StaticResource LabelStPogrubiony}"/>
+                                <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource TBStandPrawo}" Text="{Binding Path=Stawka, UpdateSourceTrigger=PropertyChanged}"/>
                             </Grid>
 
                             <GroupBox Header="Urząd Skarbowy" Grid.Row="1" Style="{StaticResource GroupBoxStandardowy}">
@@ -229,9 +240,7 @@
                                         <ColumnDefinition Width="2*"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <Border Style="{StaticResource BorderStylizacja}">
-                                        <Label Content="Urząd" Style="{StaticResource LabelStylizowany}"/>
-                                    </Border>
+                                    <Label Content="Urząd: " Style="{StaticResource LabelStPogrubiony}"/>
                                     <TextBox Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=UrzadSkarbowy, UpdateSourceTrigger=PropertyChanged}"/>
                                 </Grid>
                             </GroupBox>
@@ -239,8 +248,8 @@
                             <GroupBox Header="Bank" Grid.Row="2" Style="{StaticResource GroupBoxStandardowy}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="0.7*"/>
+                                        <ColumnDefinition Width="1.25*"/>
                                         <ColumnDefinition/>
                                         <ColumnDefinition Width="0.5*"/>
                                     </Grid.ColumnDefinitions>
@@ -249,14 +258,8 @@
                                         <RowDefinition/>
                                     </Grid.RowDefinitions>
 
-                                    <Border Style="{StaticResource BorderStylizacja}">
-                                        <Label Content="Bank" Style="{StaticResource LabelStylizowany}"/>
-                                    </Border>
-                                    <ComboBox Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
-                                        <ComboBoxItem Content="PEKAO S.A 2 Warszawa" IsSelected="True"/>
-                                        <ComboBoxItem Content="Mienium 5 Warszawa"/>
-                                        <ComboBoxItem Content="M-Bank 1 Warszawa"/>
-                                    </ComboBox>
+                                    <Label Content="Bank" Style="{StaticResource LabelStandardowy}"/>
+                                    <TextBox Grid.Column="1" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=NazwaBanku, UpdateSourceTrigger=PropertyChanged}"/>
 
                                     <Label Content="Numer rachunku:" Grid.Row="1"/>
                                     <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=NrKonta, UpdateSourceTrigger=PropertyChanged}"/>
@@ -278,7 +281,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Border Style="{StaticResource BorderStylizacja}">
-                                        <Label Content="Kategoria" Style="{StaticResource LabelStylizowany}"/>
+                                        <Button Content="Kategoria" Style="{StaticResource ButtonStylizowany}" Command="{Binding KategoriePracyCommand}"/>
                                     </Border>
                                     <ComboBox Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
                                         <ComboBoxItem Content="Dział Sprzedaży" IsSelected="True"/>
@@ -290,6 +293,27 @@
                                     <CheckBox Content="Nie rozliczaj płatności" Grid.Row="1" Style="{StaticResource CheckBoxStandardowy}"/>
                                 </Grid>
                             </GroupBox>
+
+                            <GroupBox Header="Oddział" Grid.Row="4" Style="{StaticResource GroupBoxStandardowy}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="0.75*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="2.25*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border Style="{StaticResource BorderStylizacja}">
+                                        <Button Content="Oddział" Style="{StaticResource ButtonStylizowany}" Command="{Binding OddzialyCommand}"/>
+                                    </Border>
+                                    <TextBox Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=UrzadSkarbowy, UpdateSourceTrigger=PropertyChanged}"/>
+                                </Grid>
+                            </GroupBox>
+
                         </Grid>
                     </GroupBox>
                 </Grid>

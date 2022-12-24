@@ -25,13 +25,13 @@ namespace Firma.ViewModels
         {
             get
             {
-                return Item.Aktonim;
+                return Item.Akronim;
             }
             set
             {
-                if (value != Item.Aktonim)
+                if (value != Item.Akronim)
                 {
-                    Item.Aktonim = value;
+                    Item.Akronim = value;
                     base.OnPropertyChanged(() => Aktonim);
                 }
             }
@@ -213,18 +213,34 @@ namespace Firma.ViewModels
             }
         }
 
-        public int IdAdresu
+        public int IdAdresu1
         {
             get
             {
-                return Item.IdAdresu;
+                return Item.IdAdresu1;
             }
             set
             {
-                if (value != Item.IdAdresu)
+                if (value != Item.IdAdresu1)
                 {
-                    Item.IdAdresu = value;
-                    base.OnPropertyChanged(() => IdAdresu);
+                    Item.IdAdresu1 = value;
+                    base.OnPropertyChanged(() => IdAdresu1);
+                }
+            }
+        }
+
+        public int? IdAdresu2
+        {
+            get
+            {
+                return Item.IdAdresu2;
+            }
+            set
+            {
+                if (value != Item.IdAdresu2)
+                {
+                    Item.IdAdresu2 = value;
+                    base.OnPropertyChanged(() => IdAdresu2);
                 }
             }
         }
@@ -309,53 +325,6 @@ namespace Firma.ViewModels
             }
         }
 
-        public string Telefon
-        {
-            get
-            {
-                return Item.Telefon;
-            }
-            set
-            {
-                if (value != Item.Telefon)
-                {
-                    Item.Telefon = value;
-                    base.OnPropertyChanged(() => Telefon);
-                }
-            }
-        }
-
-        public string TelefonKomorkowy
-        {
-            get
-            {
-                return Item.TelefonKomorkowy;
-            }
-            set
-            {
-                if (value != Item.TelefonKomorkowy)
-                {
-                    Item.TelefonKomorkowy = value;
-                    base.OnPropertyChanged(() => TelefonKomorkowy);
-                }
-            }
-        }
-
-        public string Email
-        {
-            get
-            {
-                return Item.Email;
-            }
-            set
-            {
-                if (value != Item.Email)
-                {
-                    Item.Email = value;
-                    base.OnPropertyChanged(() => Email);
-                }
-            }
-        }
 
         public string UrzadSkarbowy
         {
@@ -369,22 +338,6 @@ namespace Firma.ViewModels
                 {
                     Item.UrzadSkarbowy = value;
                     base.OnPropertyChanged(() => UrzadSkarbowy);
-                }
-            }
-        }
-
-        public string NrKonta
-        {
-            get
-            {
-                return Item.NrKonta;
-            }
-            set
-            {
-                if (value != Item.NrKonta)
-                {
-                    Item.NrKonta = value;
-                    base.OnPropertyChanged(() => NrKonta);
                 }
             }
         }
@@ -442,6 +395,7 @@ namespace Firma.ViewModels
         public override void Save()
         {
             Item.CzyAktywny = true;
+            Item.NazwaDodajacego = Environment.UserName;
             Db.Pracownik.AddObject(Item);
             Db.SaveChanges();
         }

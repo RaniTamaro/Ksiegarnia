@@ -13,7 +13,7 @@ namespace Firma.ViewModels
     {
         #region Konsturktor
         public WszyscyWydawcyViewModel()
-            :base("Wszyscy wydawcy")
+            :base("Wydawcy")
         {
         }
         #endregion

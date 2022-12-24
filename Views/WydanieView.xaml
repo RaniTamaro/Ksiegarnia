@@ -20,6 +20,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3.5*"/>
@@ -42,7 +43,7 @@
                         <TextBox Text="2018" Width="40" Style="{StaticResource TBStZablokowany}"/>
                     </StackPanel>
 
-                    <!--<Expander Header="Nagłówek" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource Expander}">
+                    <Expander Header="Magazyn" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource Expander}">
                         <Grid Style="{StaticResource TloExpanderG}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
@@ -51,45 +52,21 @@
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
                             </Grid.RowDefinitions>
 
-                            <ComboBox Style="{StaticResource CBStylizowany}">
-                                <ComboBoxItem Content="Kontrahent" IsSelected="True"/>
-                                <ComboBoxItem Content="Kontrahent1"/>
-                                <ComboBoxItem Content="Kontrahent2"/>
-                            </ComboBox>
-                            <ComboBox Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="MagazyZew" IsSelected="True"/>
-                                <ComboBoxItem Content="Biuro"/>
-                                <ComboBoxItem Content="Biuro2"/>
-                            </ComboBox>
-                            <TextBox Text="Magazyn Zewnętrzny" Grid.Column="2" Style="{StaticResource TBStZablokowany}"/>
-
-                            <Border Grid.Row="1" Style="{StaticResource BorderStylizacja}">
-                                <Label Content="Kategoria" Style="{StaticResource LabelStylizowany}"/>
-                            </Border>
-                            <ComboBox Grid.Row="1" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="Lektury" IsSelected="True"/>
-                                <ComboBoxItem Content="Książki"/>
-                                <ComboBoxItem Content="Mangi"/>
-                            </ComboBox>
-                            <TextBox Text="Lektory szkolne" Grid.Row="1" Grid.Column="2" Style="{StaticResource TextBoxStandardowy}"/>
-
-                            <Border Grid.Row="2" Style="{StaticResource BorderStylizacja}">
+                            <Border Style="{StaticResource BorderStylizacja}">
                                 <Label Content="Magazyn" Style="{StaticResource LabelStylizowany}"/>
                             </Border>
-                            <ComboBox Grid.Row="2" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
+                            <ComboBox  Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
                                 <ComboBoxItem Content="Magazyn" IsSelected="True"/>
                                 <ComboBoxItem Content="Magazyn Z"/>
                             </ComboBox>
-                            <TextBox Text="Magazyn główny" Grid.Row="2" Grid.Column="2" Style="{StaticResource TBStZablokowany}"/>
+                            <TextBox Text="Magazyn główny" Grid.Column="2" Style="{StaticResource TBStZablokowany}"/>
 
                         </Grid>
-                    </Expander>-->
+                    </Expander>
 
-                    <Expander Header="Daty i Wartości" Grid.Row="2" Style="{StaticResource Expander}">
+                    <Expander Header="Daty i Wartości" Grid.Row="3" Style="{StaticResource Expander}">
                         <Grid Style="{StaticResource TloExpanderG}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -190,19 +167,19 @@
                         </Grid>
                     </Expander>
 
-                    <Expander Grid.Row="2" Grid.Column="1" Style="{StaticResource Expander}">
+                    <Expander Grid.Row="3" Grid.Column="1" Style="{StaticResource Expander}">
                         <Grid Style="{StaticResource TloExpanderG}">
                             <GroupBox Style="{StaticResource GroupBoxStandardowy}">
                                 <StackPanel>
                                     <Label Height="30"/>
-                                    <Label Content="Wartość podlegająca MPP:" Style="{StaticResource LabelStandardowy}"/>
+                                    <Label Content="Wartość podleg. MPP:" Style="{StaticResource LabelStandardowy}"/>
                                     <TextBox Text="0.00 PLN" Style="{StaticResource TBStZablokowanyPrawo}"/>
                                 </StackPanel>
                             </GroupBox>
                         </Grid>
                     </Expander>
 
-                    <DataGrid Grid.Row="3" Grid.ColumnSpan="2" Style="{StaticResource TabelaStandard}">
+                    <DataGrid Grid.Row="4" Grid.ColumnSpan="2" Style="{StaticResource TabelaStandard}">
                         <DataGrid.Columns>
                             <DataGridCheckBoxColumn Header="" Width="20"/>
                             <DataGridTextColumn Header="Lp." Width="30" Binding="{Binding Path=LP}"/>

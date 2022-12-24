@@ -10,16 +10,31 @@
     <Compile Update="Views\NowaFakturaView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\NowaGrupaView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NowaKategoriaPracyView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NowaKategoriaTowaruView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\NowaWyplataView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\NowyKontahentView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\NowyOddzialView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\NowyPracownikView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\NowyTowarView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NowyTypView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\NowyWydawcaView.xaml.cs">
@@ -40,7 +55,28 @@
     <Compile Update="Views\WszystkieFakturyView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\WszystkieGrupyView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\WszystkieKategoriePracyView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\WszystkieKategorieTowaruView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\WszystkieOddzialyView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\WszystkiePrzyjeciaView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\WszystkieTowaryView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\WszystkieWydaniaView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\WszystkieWyplatyView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\WydanieView.xaml.cs">
@@ -60,16 +96,31 @@
     <Page Update="Views\NowaFakturaView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\NowaGrupaView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\NowaKategoriaPracyView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\NowaKategoriaTowaruView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\NowaWyplataView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\NowyKontahentView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\NowyOddzialView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\NowyPracownikView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\NowyTowarView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\NowyTypView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\NowyWydawcaView.xaml">
@@ -93,7 +144,28 @@
     <Page Update="Views\WszystkieFakturyView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\WszystkieGrupyView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\WszystkieKategoriePracyView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\WszystkieKategorieTowaruView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\WszystkieOddzialyView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\WszystkiePrzyjeciaView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\WszystkieTowaryView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\WszystkieWydaniaView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\WszystkieWyplatyView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\WydanieView.xaml">

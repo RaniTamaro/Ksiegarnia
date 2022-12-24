@@ -27,8 +27,8 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Kod" CanUserSort="True" Width="100" Binding="{Binding Path=Kod}"/>
                         <DataGridTextColumn Header="Nazwa" Width="200" Binding="{Binding Path=Nazwa}"/>
-                        <DataGridTextColumn Header="NIP" Width="200" Binding="{Binding Path=NIP}"/>
-                        <!--<DataGridTextColumn Header="Adres" Width="500" Binding="{Binding Path=NIP}"/>-->
+                        <DataGridTextColumn Header="NIP/Pesel" Width="200" Binding="{Binding Path=NipLubPesel}"/>
+                        <DataGridTextColumn Header="Adres" Width="500" Binding="{Binding Path=KontrahentAdres}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>
