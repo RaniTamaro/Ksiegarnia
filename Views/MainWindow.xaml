@@ -105,6 +105,10 @@
                     <MenuItem Header="Wyswietl wszystkie" Command="{Binding WyplatyCommand}"/>
                 </MenuItem>
             </MenuItem>
+            <MenuItem Header="Raporty">
+                <MenuItem Header="Raport sprzedazy" Command="{Binding RaportSprzedazyCommand}"/>
+                <MenuItem Header="Koszty pracownicze" Command="{Binding KosztyPracowniczeCommand}"/>
+            </MenuItem>
             <MenuItem Header="Tabele słownikowe" ToolTip="Kategoria tymczasowa! Zostanie usunięta po dodaniu wyświetlania nowych okienek">
                 <MenuItem Header="Wydawca">
                     <MenuItem Header="Dodaj" Command="{Binding NowyWydawcaCommand}"/>

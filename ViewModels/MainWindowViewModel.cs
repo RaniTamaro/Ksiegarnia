@@ -251,6 +251,22 @@ namespace Firma.ViewModels
             }
         }
 
+        public ICommand RaportSprzedazyCommand
+        {
+            get
+            {
+                return new BaseCommand(() => createView(new RaportSprzedazyViewModel()));
+            }
+        }
+
+        public ICommand KosztyPracowniczeCommand
+        {
+            get
+            {
+                return new BaseCommand(() => createView(new KosztyPracowniczeViewModel()));
+            }
+        }
+
         public ICommand PokazUkryjMenuBoczneAsyncCommand
         {
             get
