@@ -1,4 +1,4 @@
-﻿<local:WszystkieViewBase x:Class="Firma.Views.WszyscyWydawcyView"
+﻿<local:WszystkieSlownikoweViewBase x:Class="Firma.Views.WszyscyWydawcyView"
             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -22,7 +22,7 @@
             </Grid.RowDefinitions>
 
             <Border Style="{StaticResource BorderStandardowy}">
-                <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}" Style="{StaticResource TabelaStandard}">
+                <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}" Style="{StaticResource TabelaStandard}" SelectedItem="{Binding Path=WybranyWydawca, Mode=TwoWay}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Kod" CanUserSort="True" Width="100" Binding="{Binding Path=Kod}"/>
                         <DataGridTextColumn Header="Nazwa" Width="200" Binding="{Binding Path=Nazwa}"/>
@@ -58,4 +58,4 @@
 
         </Grid>
     </ScrollViewer>
-</local:WszystkieViewBase>
+</local:WszystkieSlownikoweViewBase>

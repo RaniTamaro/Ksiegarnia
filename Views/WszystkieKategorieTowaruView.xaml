@@ -24,8 +24,8 @@
             <Border Style="{StaticResource BorderStandardowy}">
                 <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}" Style="{StaticResource TabelaStandard}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Kod" CanUserSort="True" Width="100" Binding="{Binding Path=Kod}"/>
                         <DataGridTextColumn Header="Nazwa" Width="200" Binding="{Binding Path=Nazwa}"/>
+                        <DataGridTextColumn Header="Opis" Width="350" Binding="{Binding Path=Opis}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>

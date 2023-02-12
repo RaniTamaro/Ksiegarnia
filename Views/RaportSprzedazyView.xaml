@@ -10,62 +10,64 @@
     <UserControl.Resources>
         <ResourceDictionary Source="StyleZakladekResources.xaml"/>
     </UserControl.Resources>
-    <Grid>
+    <Grid Style="{StaticResource TloGlowne}">
         <StackPanel Style="{StaticResource TloStackPanel}">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+            <Border Style="{StaticResource BorderStandardowy}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
 
-                <Label Style="{StaticResource LabelStWysrodkoway}">Utarg w wybranym okresie dla wybranego towaru</Label>
+                    <Label Style="{StaticResource LabelStWysrodkoway}">Utarg w wybranym okresie dla wybranego towaru</Label>
 
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40"/>
-                        <ColumnDefinition Width="120"/>
-                        <ColumnDefinition Width="20"/>
-                        <ColumnDefinition Width="40"/>
-                        <ColumnDefinition Width="120"/>
-                    </Grid.ColumnDefinitions>
-                    <Label Style="{StaticResource LabelStandardowy}" Content="Od:"/>
-                    <DatePicker Grid.Column="1" Style="{StaticResource DatePickerStandard}" SelectedDate="{Binding Path=DataOd,  Mode=TwoWay}"/>
-                    <Label Grid.Column="3" Style="{StaticResource LabelStandardowy}" Content="Do:"/>
-                    <DatePicker Grid.Column="4" Style="{StaticResource DatePickerStandard}" SelectedDate="{Binding Path=DataDo, Mode=TwoWay}"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="120"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Style="{StaticResource LabelStandardowy}" Content="Od:"/>
+                        <DatePicker Grid.Column="1" Style="{StaticResource DatePickerStandard}" SelectedDate="{Binding Path=DataOd,  Mode=TwoWay}"/>
+                        <Label Grid.Column="3" Style="{StaticResource LabelStandardowy}" Content="Do:"/>
+                        <DatePicker Grid.Column="4" Style="{StaticResource DatePickerStandard}" SelectedDate="{Binding Path=DataDo, Mode=TwoWay}"/>
+                    </Grid>
+
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="112.876"/>
+                            <ColumnDefinition Width="87.124"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" Style="{StaticResource LabelStandardowy}" Content="Wybierz towar"/>
+                        <ComboBox Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}" Grid.ColumnSpan="2" 
+                                  ItemsSource="{Binding TowaryComboboxItems}"
+                                  DisplayMemberPath="Value"
+                                  SelectedValuePath="Key"
+                                  SelectedValue="{Binding Path=IdTowaru, Mode=TwoWay}"/>
+                    </Grid>
+
+                    <Border Grid.Row="3" Style="{StaticResource BorderStylizacja}">
+                        <Button Style="{StaticResource ButtonStylizowany}" Content="Oblicz" Command="{Binding ObliczCommand}"/>
+                    </Border>
+
+                    <Grid Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="200"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" Style="{StaticResource LabelStPogrubiony}" Content="Utarg wynosi:"/>
+                        <Label Grid.Column="1" Style="{StaticResource LabelStandardowy}" Content="{Binding Utarg, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
                 </Grid>
-
-                <Grid Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="150"/>
-                        <ColumnDefinition Width="112.876"/>
-                        <ColumnDefinition Width="87.124"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Label Grid.Column="0" Style="{StaticResource LabelStandardowy}" Content="Wybierz towar"/>
-                    <ComboBox Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}" Grid.ColumnSpan="2" 
-                              ItemsSource="{Binding TowaryComboboxItems}"
-                              DisplayMemberPath="Value"
-                              SelectedValuePath="Key"
-                              SelectedValue="{Binding Path=IdTowaru, Mode=TwoWay}"/>
-                </Grid>
-
-                <Border Grid.Row="3" Style="{StaticResource BorderStylizacja}">
-                    <Button Style="{StaticResource ButtonStylizowany}" Content="Oblicz" Command="{Binding ObliczCommand}"/>
-                </Border>
-
-                <Grid Grid.Row="4">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="150"/>
-                        <ColumnDefinition Width="200"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Label Grid.Column="0" Style="{StaticResource LabelStPogrubiony}" Content="Utarg wynosi:"/>
-                    <Label Grid.Column="1" Style="{StaticResource LabelStandardowy}" Content="{Binding Utarg, UpdateSourceTrigger=PropertyChanged}"/>
-                </Grid>
-            </Grid>
+            </Border>
         </StackPanel>
     </Grid>
 </UserControl>

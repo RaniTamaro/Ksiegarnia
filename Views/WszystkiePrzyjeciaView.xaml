@@ -11,108 +11,16 @@
         <ResourceDictionary Source="StyleZakladekResources.xaml"/>
     </UserControl.Resources>
 
-    <Grid Style="{StaticResource TloGlowne}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="280"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="0.25*"/>
-        </Grid.RowDefinitions>
-
-        <Border Style="{StaticResource BorderStandardowy}">
-            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}" Style="{StaticResource TabelaStandard}">
-                <DataGrid.Columns>
-                    <DataGridCheckBoxColumn Width="30"/>
-                    <DataGridTextColumn Header="Numer" CanUserSort="True" Width="120" Binding="{Binding Path=Numer}"/>
-                    <DataGridTextColumn Header="Magazyn" Width="200" Binding="{Binding Path=NazwaMagazynu}"/>
-                    <DataGridTextColumn Header="Wystawiono" Width="100" Binding="{Binding Path=DataWystawienia}"/>
-                    <DataGridTextColumn Header="Cena netto" Width="100" Binding="{Binding Path=CenaNetto}"/>
-                    <DataGridTextColumn Header="Cena" Width="100" Binding="{Binding Path=Cena}"/>
-                </DataGrid.Columns>
-            </DataGrid>
-        </Border>
-
-        <Expander Grid.Row="1" Header="Filtr aktywny" Style="{StaticResource Expander}">
-            <Grid Style="{StaticResource TloExpanderG}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="0.85*"/>
-                    <ColumnDefinition Width="1.25*"/>
-                    <ColumnDefinition Width="0.4*"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-
-                <GroupBox Header="Typ" Grid.RowSpan="4" Style="{StaticResource GroupBoxStandardowy}">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-
-                        <CheckBox Content="Towary proste" IsChecked="True" Style="{StaticResource CheckBoxStandardowy}"/>
-                        <CheckBox Content="Towary złożone" Grid.Row="1" IsChecked="True" Style="{StaticResource CheckBoxStandardowy}"/>
-                    </Grid>
-                </GroupBox>
-
-                <Border Grid.Column="1" Style="{StaticResource BorderStylizacja}">
-                    <Label Content="Magazyn" Style="{StaticResource LabelStylizowany}"/>
-                </Border>
-                <ComboBox Grid.Column="2" Style="{StaticResource ComboBoxStandardowy}">
-                    <ComboBoxItem Content="Magazyn" IsSelected="True"/>
-                    <ComboBoxItem Content="Magazyn Zew"/>
-                </ComboBox>
-                <Label Content="Data:" Grid.Column="3"/>
-                <DatePicker Grid.Column="4" Style="{StaticResource DatePickerStandard}"/>
-
-                <Label Content="Ceny:" Grid.Row="1" Grid.Column="1" Style="{StaticResource LabelStandardowy}"/>
-                <ComboBox Grid.Row="1" Grid.Column="2" Style="{StaticResource ComboBoxStandardowy}">
-                    <ComboBoxItem Content="Netto" IsSelected="True"/>
-                    <ComboBoxItem Content="Brutto"/>
-                </ComboBox>
-                <CheckBox Content="Zerowe" Grid.Row="1" Grid.Column="4" Style="{StaticResource CheckBoxStandardowy}"/>
-
-                <CheckBox Content="Tylko braki" Grid.Row="2" Grid.Column="4" Style="{StaticResource CheckBoxStandardowy}"/>
-
-                <Label Content="EAN" Grid.Row="3" Grid.Column="1" Style="{StaticResource LabelStandardowy}"/>
-                <TextBox Grid.Row="3" Grid.Column="2" Style="{StaticResource TextBoxStandardowy}"/>
-                <CheckBox Content="Nieaktywne" Grid.Row="3" Grid.Column="4" Style="{StaticResource CheckBoxStandardowy}"/>
-
-                <GroupBox Header="Towary udostępniome:" Grid.Column="5" Grid.RowSpan="4" Style="{StaticResource GroupBoxStandardowy}">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.5*"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-
-                        <Label Content="e-Sklep:" Style="{StaticResource LabelStandardowy}"/>
-                        <ComboBox Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource ComboBoxStandardowy}">
-                            <ComboBoxItem Content="Opcja1"/>
-                            <ComboBoxItem Content="Opcja2"/>
-                            <ComboBoxItem Content="Opcja3"/>
-                        </ComboBox>
-                        <RadioButton Content="Nie" Grid.Row="2" Style="{StaticResource RadioButtonStandardowy}"/>
-                        <RadioButton Content="Tak" Grid.Row="2" Grid.Column="1" Style="{StaticResource RadioButtonStandardowy}"/>
-
-                    </Grid>
-                </GroupBox>
-            </Grid>
-        </Expander>
-
-    </Grid>
+    <Border Style="{StaticResource BorderStandardowy}">
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}" Style="{StaticResource TabelaStandard}">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Width="30"/>
+                <DataGridTextColumn Header="Numer" CanUserSort="True" Width="200" Binding="{Binding Path=Numer}"/>
+                <DataGridTextColumn Header="Magazyn" Width="200" Binding="{Binding Path=NazwaMagazynu}"/>
+                <DataGridTextColumn Header="Wystawiono" Width="100" Binding="{Binding Path=DataWystawienia}"/>
+                <DataGridTextColumn Header="Cena netto" Width="100" Binding="{Binding Path=CenaNetto}"/>
+                <DataGridTextColumn Header="Cena" Width="100" Binding="{Binding Path=Cena}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Border>
 </local:WszystkieViewBase>

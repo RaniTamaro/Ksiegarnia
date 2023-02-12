@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Firma.Extensions
+namespace Firma.Tools.Extensions
 {
     public static class LinqExtension
     {

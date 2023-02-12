@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Firma.ViewModels.Abstract
@@ -25,6 +26,13 @@ namespace Firma.ViewModels.Abstract
         }
         #endregion
 
+        #region Properties
+        public abstract string NazwaDodajacego { get; set; }
+        public abstract DateTime? DataDodania { get; set; }
+        public abstract string NazwaModyfikujacego { get; set; }
+        public abstract DateTime? DataModyfikacji { get; set; }
+        #endregion
+
         #region Command
         private BaseCommand _SaveAndCommad;
         public ICommand SaveAndCloseCommand
@@ -41,12 +49,32 @@ namespace Firma.ViewModels.Abstract
         }
         #endregion
 
+        #region Validation
+        public virtual bool IsValid()
+        {
+            return true;
+        }
+        #endregion
+
         #region Helpers
         public abstract void Save();
         private void saveAndClose()
         {
-            Save();
-            base.OnRequestClose();
+            if (IsValid())
+            {
+                Save();
+                base.OnRequestClose();
+            }
+            else
+            {
+                MessageBox.Show("Popraw wszystkie dane");
+            }
+        }
+
+        protected void SetAddedInformation()
+        {
+            NazwaDodajacego = Environment.UserName;
+            DataDodania = DateTime.Now.Date;
         }
         #endregion
     }

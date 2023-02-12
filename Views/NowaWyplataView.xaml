@@ -20,8 +20,8 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <Border Style="{StaticResource BorderStandardowy}">
-                        <Grid>
+                    <Expander Header="Główne informacje" Style="{StaticResource Expander}">
+                        <Grid Style="{StaticResource TloExpanderG}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="0.2*"/>
                                 <ColumnDefinition Width="0.05*"/>
@@ -38,34 +38,39 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition/>
+                                <RowDefinition/>
                             </Grid.RowDefinitions>
 
-                            <Label Content="Tytul:" Style="{StaticResource LabelStPogrubiony}"/>
-                            <TextBox Grid.Column="2" Grid.ColumnSpan="4" Style="{StaticResource TBStPogrubiony}" Text="{Binding Path=TytulPrzelewu, UpdateSourceTrigger=PropertyChanged}"/>
-                            <CheckBox Content="Nieaktywny" Grid.Column="6" Style="{StaticResource CheckBoxStandardowy}"/>
+                            <Border Style="{StaticResource BorderStylizacja}" Grid.ColumnSpan="2">
+                                <Button Content="Pracownik:" Style="{StaticResource ButtonStylizowany}" Command="{Binding ShowPracownicyCommand}"/>
+                            </Border>
+                            <TextBox Grid.Column="2" Grid.ColumnSpan="4" Style="{StaticResource TBStZablokowany}" Text="{Binding Path=DanePracownika, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                            
+                            <Label Grid.Row="1" Content="Tytul:" Style="{StaticResource LabelStPogrubiony}"/>
+                            <TextBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="4" Style="{StaticResource TBStPogrubiony}" Text="{Binding Path=TytulPrzelewu, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 
-                            <Label Content="Skrót:" Grid.Row="1" Style="{StaticResource LabelStPogrubiony}"/>
-                            <TextBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="4" Style="{StaticResource TBStPogrubiony}" Text="{Binding Path=Skrot, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Content="Skrót:" Grid.Row="2" Style="{StaticResource LabelStPogrubiony}"/>
+                            <TextBox Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="4" Style="{StaticResource TBStPogrubiony}" Text="{Binding Path=Skrot, UpdateSourceTrigger=PropertyChanged}"/>
 
-                            <CheckBox Content="Potrącenie" Grid.Row="2" Grid.Column="2" Style="{StaticResource CheckBoxStandardowy}"/>
-                            <CheckBox Content="Przychód PPK dla umów cywilnoprawnych" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
+                            <CheckBox Content="Potrącenie" Grid.Row="3" Grid.Column="2" Style="{StaticResource CheckBoxStandardowy}" IsChecked="{Binding Potracenie, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox Content="Przychód PPK dla umów cywilnoprawnych" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}" IsChecked="{Binding PrzychodPPK, UpdateSourceTrigger=PropertyChanged}"/>
 
-                            <Label Content="Rodzaj:" Grid.Row="3" Style="{StaticResource LabelStandardowy}"/>
-                            <ComboBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="Wypłata" IsSelected="True"/>
-                                <ComboBoxItem Content="Dodatek"/>
-                            </ComboBox>
+                            <Label Content="Rodzaj:" Grid.Row="4" Style="{StaticResource LabelStandardowy}"/>
+                            <ComboBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource ComboBoxStandardowy}"
+                                      ItemsSource="{Binding RodzajWyplatyComboboxItems}"
+                                      SelectedValue="{Binding Path=Rodzaj, Mode=TwoWay}"/>
 
-                            <Label Content="Okres wypłaty:" Grid.Row="3" Grid.Column="4" Style="{StaticResource LabelStandardowy}"/>
-                            <ComboBox Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="Wypłata" IsSelected="True"/>
-                                <ComboBoxItem Content="Dodatek"/>
-                            </ComboBox>
+                            <Label Content="Okres wypłaty:" Grid.Row="4" Grid.Column="4" Style="{StaticResource LabelStandardowy}"/>
+                            <ComboBox Grid.Row="4" Grid.Column="5" Grid.ColumnSpan="2" Style="{StaticResource ComboBoxStandardowy}"
+                                      ItemsSource="{Binding OkresWyplatyComboboxItems}"
+                                      DisplayMemberPath="Value"
+                                      SelectedValuePath="Key"
+                                      SelectedValue="{Binding Path=IdOkresuWyplaty, Mode=TwoWay}"/>
 
-                            <Label Content="Kwota:" Grid.Row="4" Style="{StaticResource LabelStPogrubiony}"/>
-                            <TextBox Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource TBStPogrubiony}" Text="{Binding Path=Kwota, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Content="Kwota:" Grid.Row="5" Style="{StaticResource LabelStPogrubiony}"/>
+                            <TextBox Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource TBStPogrubiony}" Text="{Binding Path=Kwota, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                         </Grid>
-                    </Border>
+                    </Expander>
 
                     <Expander Header="Algorytm naliczania wartości" Grid.Row="1" Style="{StaticResource Expander}">
                         <Grid Style="{StaticResource TloExpanderG}">
@@ -78,12 +83,6 @@
                                 <ColumnDefinition Width="0.05*"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-
-                            <!--<Border Style="{StaticResource BorderStylizacja}">
-                                <Label Content="Algorytm" Style="{StaticResource LabelStylizowanyPogrubiony}"/>
-                            </Border>
-                            <TextBox Text="2" Grid.Column="1" Style="{StaticResource TBStandPrawo}"/>
-                            <Label Content="Procent wynagrodzenia" Grid.Column="2" Style="{StaticResource LabelStPogrubiony}"/>-->
 
                             <TabControl Grid.Row="1" Grid.ColumnSpan="3">
                                 <TabItem Header="Definicja">
@@ -128,47 +127,16 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
 
-                            <CheckBox Content="Automatycznie korygować wynagrodzenie z tytułu:" Grid.ColumnSpan="3" Style="{StaticResource CBSPogrubiony}"/>
-                            <CheckBox Content="Urlopu, nieobecności płatnej" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
-                            <CheckBox Content="Zwolnienia lekarskiego" Grid.Row="1" Grid.Column="2" Style="{StaticResource CheckBoxStandardowy}"/>
+                            <CheckBox Content="Automatycznie korygować wynagrodzenie z tytułu:" Grid.ColumnSpan="3" Style="{StaticResource CBSPogrubiony}" IsChecked="{Binding AutomatyczneKorygowanie, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox Content="Urlopu, nieobecności płatnej" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}" IsChecked="{Binding Urlop, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox Content="Zwolnienia lekarskiego" Grid.Row="1" Grid.Column="2" Style="{StaticResource CheckBoxStandardowy}" IsChecked="{Binding ZwolnienieLekarskie, UpdateSourceTrigger=PropertyChanged}"/>
 
-                            <CheckBox Content="Nieobecności usprawiedliwionej" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
-                            <CheckBox Content="Odchyłek od normy" Grid.Row="2" Grid.Column="2" Style="{StaticResource CheckBoxStandardowy}"/>
+                            <CheckBox Content="Nieobecności usprawiedliwionej" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}" IsChecked="{Binding NieobecnoscUsprawiedliwiona, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox Content="Odchyłek od normy" Grid.Row="2" Grid.Column="2" Style="{StaticResource CheckBoxStandardowy}" IsChecked="{Binding NieobecnoscNieusprawiedliwiona, UpdateSourceTrigger=PropertyChanged}"/>
 
                             <CheckBox Content="Nieobecności nieusprawiedliwionej" Grid.Row="3" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
 
-                            <GroupBox Header="Pomniejszenie za zwolnienie lekarskie" Grid.Row="1" Grid.RowSpan="3" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource GroupBoxStandardowy}">
-
-                                <Border Grid.ColumnSpan="2" Style="{StaticResource BorderStandardowy}">
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition/>
-                                            <RowDefinition/>
-                                        </Grid.RowDefinitions>
-                                        <RadioButton Content="Proporcjonalnie" Style="{StaticResource RadioButtonStandardowy}"/>
-                                        <RadioButton Content="1/30" Grid.Row="1" Style="{StaticResource RadioButtonStandardowy}"/>
-                                    </Grid>
-                                </Border>
-                            </GroupBox>
-
-                            <!--<Border Grid.Row="4" Style="{StaticResource BorderStylizacja}">
-                                <Label Content="Składnik związany" Style="{StaticResource LabelStylizowany}"/>
-                            </Border>
-                            <ComboBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="Brak" IsSelected="True"/>
-                                <ComboBoxItem Content="Opcja1"/>
-                                <ComboBoxItem Content="Opcja2"/>
-                            </ComboBox>-->
-                            <!--<CheckBox Content="Tylko za okres zwolnienia" Grid.Row="4" Grid.Column="4" Style="{StaticResource CBSZablokowany}"/>-->
-
-                            <Border Grid.Row="5" Style="{StaticResource BorderStylizacja}">
-                                <Label Content="Przychód PPK" IsEnabled="False" Style="{StaticResource LabelStylizowany}"/>
-                            </Border>
-                            <ComboBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource CBStZablokowany}">
-                                <ComboBoxItem Content="Opcja1"/>
-                                <ComboBoxItem Content="Opcja1"/>
-                                <ComboBoxItem Content="Opcja2"/>
-                            </ComboBox>
+                            
 
                         </Grid>
                     </Expander>
@@ -226,7 +194,7 @@
                                 <ComboBoxItem Content="Nie naliczać"/>
                             </ComboBox>
 
-                            <CheckBox Content="Zawsze naliczaj ulgę podatkową" Grid.Row="2" IsChecked="True" Style="{StaticResource CheckBoxStandardowy}"/>
+                            <CheckBox Content="Zawsze naliczaj ulgę podatkową" Grid.Row="2" Style="{StaticResource CheckBoxStandardowy}" IsChecked="{Binding NaliczajUlge, UpdateSourceTrigger=PropertyChanged}"/>
 
                             <Label Content="Sposób naliczania zaliczki podatku:" Grid.Row="3" Style="{StaticResource LabelStandardowy}"/>
                             <ComboBox Grid.Row="3" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
@@ -253,14 +221,14 @@
                                 <ComboBoxItem Content="Nie naliczać"/>
                             </ComboBox>
 
-                            <Label Content="Okres wypłaty:" Grid.Row="7" Style="{StaticResource LabelStandardowy}"/>
+                            <!--<Label Content="Okres wypłaty:" Grid.Row="7" Style="{StaticResource LabelStandardowy}"/>
                             <ComboBox Grid.Row="7" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
                                 <ComboBoxItem Content="Co 1 tydzień"/>
                                 <ComboBoxItem Content="Co 2 tygodnie"/>
                                 <ComboBoxItem Content="Co 1 miesiąc" IsSelected="True"/>
                                 <ComboBoxItem Content="Co 3 miesiące"/>
                             </ComboBox>
-                            <CheckBox Content="Korygowana" Grid.Row="7" Grid.Column="4" Style="{StaticResource CheckBoxStandardowy}"/>
+                            <CheckBox Content="Korygowana" Grid.Row="7" Grid.Column="4" Style="{StaticResource CheckBoxStandardowy}"/>-->
                         </Grid>
                     </Expander>
 
@@ -286,7 +254,7 @@
                                 <ComboBoxItem Content="Nie wliczać"/>
                             </ComboBox>
 
-                            <CheckBox Content="Dodatek okresowy - wliczać w podwójnej wysokości, gdy nie wypłacono go za ostatni okres" Grid.Row="1" Grid.ColumnSpan="3"/>
+                            <CheckBox Content="Dodatek okresowy - wliczać w podwójnej wysokości, gdy nie wypłacono go za ostatni okres" Grid.Row="1" Grid.ColumnSpan="3" Style="{StaticResource CheckBoxStandardowy}" IsChecked="{Binding DodatekOkresowy, UpdateSourceTrigger=PropertyChanged}"/>
 
                             <Label Content="Wynagrodzenie za czas urlopu:" Grid.Row="2" Style="{StaticResource  LabelStandardowy}"/>
                             <ComboBox Grid.Row="2" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
@@ -294,11 +262,6 @@
                                 <ComboBoxItem Content="Wliczać wg progu"/>
                                 <ComboBoxItem Content="Nie wliczać" IsSelected="True"/>
                             </ComboBox>
-
-                            <Border Grid.Row="3" IsEnabled="False" Style="{StaticResource BorderStylizacja}">
-                                <Label Content="Stała okresowa" IsEnabled="False" Style="{StaticResource LabelStylizowany}"/>
-                            </Border>
-                            <TextBox Grid.Row="3" Grid.Column="1" Style="{StaticResource TBStZablokowany}" Text="{Binding Path=StalaOkresowa, UpdateSourceTrigger=PropertyChanged}"/>
 
                             <Label Content="Ekwiwalentu za czas urlopu:" Grid.Row="4" Style="{StaticResource  LabelStandardowy}"/>
                             <ComboBox Grid.Row="4" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
@@ -310,17 +273,6 @@
                         </Grid>
                     </Expander>
 
-                    <!--<Border Grid.Row="3" Style="{StaticResource BorderStandardowy}">
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Wprowadził:" Style="{StaticResource LabelStandardowy}"/>
-                            <TextBox Text="Administrator" IsEnabled="False" Style="{StaticResource TextBoxStandardowy}"/>
-                            <DatePicker IsEnabled="False" Style="{StaticResource DPStZablokowany}"/>
-                            <Label Content="Zmodyfikował:" Style="{StaticResource LabelStandardowy}"/>
-                            <TextBox Text="Administrator" IsEnabled="False" Style="{StaticResource TextBoxStandardowy}"/>
-                            <DatePicker IsEnabled="False" Style="{StaticResource DPStZablokowany}"/>
-
-                        </StackPanel>
-                    </Border>-->
                 </Grid>
             </ScrollViewer>
         </TabItem>
@@ -356,25 +308,25 @@
                             </Grid.RowDefinitions>
 
                             <Label Content="Zaokrąglenie:" Style="{StaticResource LabelStandardowy}"/>
-                            <TextBox Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TBStandPrawo}" Text="{Binding Path=Zaokraglenie, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TBStandPrawo}" Text="{Binding Path=Zaokraglenie, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                             <Label Content="zł" Grid.Column="3" Style="{StaticResource LabelStandardowy}"/>
                             <Label Content="Sposób zaokrąglania:" Grid.Column="4" Style="{StaticResource LabelStandardowy}"/>
                             <TextBox Grid.Column="5" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=SposobZaokraglenia, UpdateSourceTrigger=PropertyChanged}"/>
 
-                            <CheckBox Content="Przyrównuj do najniższego wynagrodzenia" Grid.Row="1" Grid.ColumnSpan="4" Style="{StaticResource CheckBoxStandardowy}"/>
-                            <CheckBox Content="Uwzględnij przy dopłatach za nadgodziny" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
+                            <CheckBox Content="Przyrównuj do najniższego wynagrodzenia" Grid.Row="1" Grid.ColumnSpan="4" Style="{StaticResource CheckBoxStandardowy}" IsChecked="{Binding PrzyrownajNajnizsze, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox Content="Uwzględnij przy dopłatach za nadgodziny" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}" IsChecked="{Binding UwzglednijDoplatyNadgodzin, UpdateSourceTrigger=PropertyChanged}"/>
 
-                            <CheckBox Content="Wpływa na kwotę do wypłaty" IsChecked="True" Grid.Row="2" Grid.ColumnSpan="4" Style="{StaticResource CheckBoxStandardowy}"/>
-                            <CheckBox Content="Wpływa na podstawę liczenia zaliczki podatku" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
+                            <CheckBox Content="Wpływa na kwotę do wypłaty" Grid.Row="2" Grid.ColumnSpan="4" Style="{StaticResource CheckBoxStandardowy}" IsChecked="{Binding WplywaNaWyplate, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox Content="Wpływa na podstawę liczenia zaliczki podatku" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}" IsChecked="{Binding WplywaNaZaliczkePodatku, UpdateSourceTrigger=PropertyChanged}"/>
 
-                            <CheckBox Content="Wliczaj do wynagrodzenia na deklaracji PFRON" IsChecked="True" Grid.Row="3" Grid.ColumnSpan="4" Style="{StaticResource CheckBoxStandardowy}"/>
-                            <CheckBox Content="Stanowi koszt pracodawcy" IsChecked="True" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
+                            <CheckBox Content="Wliczaj do wynagrodzenia na deklaracji PFRON" Grid.Row="3" Grid.ColumnSpan="4" Style="{StaticResource CheckBoxStandardowy}" IsChecked="{Binding WliczajWynagrodzeniePFRON, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox Content="Stanowi koszt pracodawcy" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}" IsChecked="{Binding StanowiKosztPracownika, UpdateSourceTrigger=PropertyChanged}"/>
 
-                            <CheckBox Content="Opis analityczny zgodny z opisem czasu pracy" Grid.Row="4" Grid.ColumnSpan="4" Style="{StaticResource CheckBoxStandardowy}"/>
-                            <CheckBox Content="Nie zapisuj w wypłacie zerowych elementów" Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
+                            <CheckBox Content="Opis analityczny zgodny z opisem czasu pracy" Grid.Row="4" Grid.ColumnSpan="4" Style="{StaticResource CheckBoxStandardowy}" IsChecked="{Binding OpisAnalitycznyZgodny, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox Content="Nie zapisuj w wypłacie zerowych elementów" Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}" IsChecked="{Binding NieZapisujZerowychElementow, UpdateSourceTrigger=PropertyChanged}"/>
 
-                            <CheckBox Content="Doliczany po ograniczeniu potrąceń" Grid.Row="5" Grid.ColumnSpan="4" Style="{StaticResource CheckBoxStandardowy}"/>
-                            <CheckBox Content="Wykaż na ZUS RPA/RIA jako element wypłacany obok zasiłków" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
+                            <CheckBox Content="Doliczany po ograniczeniu potrąceń" Grid.Row="5" Grid.ColumnSpan="4" Style="{StaticResource CheckBoxStandardowy}" IsChecked="{Binding DoliczanyPoOgraniczeniuPotracen, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox Content="Wykaż na ZUS RPA/RIA jako element wypłacany obok zasiłków" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}" IsChecked="{Binding WskazZUSJakoWyplacany, UpdateSourceTrigger=PropertyChanged}"/>
 
                             <Label Content="Priorytet naliczania:" Grid.Row="6" Grid.ColumnSpan="2"/>
                             <TextBox Grid.Row="6" Grid.Column="2" Style="{StaticResource TBStandPrawo}" Text="{Binding Path=PiorytetNaliczania, UpdateSourceTrigger=PropertyChanged}"/>

@@ -17,7 +17,7 @@ namespace Firma.Views
     /// <summary>
     /// Interaction logic for WszyscyWydawcyView.xaml
     /// </summary>
-    public partial class WszyscyWydawcyView : WszystkieViewBase
+    public partial class WszyscyWydawcyView : WszystkieSlownikoweViewBase
     {
         public WszyscyWydawcyView()
         {

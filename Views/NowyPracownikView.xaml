@@ -19,6 +19,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
                     <CheckBox Content="Archiwalny" Style="{StaticResource CheckBoxStandardowy}" HorizontalAlignment="Right"/>
@@ -29,8 +30,7 @@
                                 <ColumnDefinition Width="0.55*"/>
                                 <ColumnDefinition Width="0.75*"/>
                                 <ColumnDefinition Width="0.75*"/>
-                                <ColumnDefinition Width="0.5*"/>
-                                <ColumnDefinition Width="0.2*"/>
+                                <ColumnDefinition Width="0.75*"/>
                                 <ColumnDefinition Width="1.5*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -43,39 +43,34 @@
                             </Grid.RowDefinitions>
 
                             <Label Content="Akronim:" Style="{StaticResource LabelStPogrubiony}"/>
-                            <TextBox Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TBStPogrubiony}" Text="{Binding Path=Aktonim, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TBStPogrubiony}" Text="{Binding Path=Akronim, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                             <Label Content="Nazwisko:" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource LabelStPogrubiony}"/>
-                            <TextBox Grid.Column="5" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Nazwisko, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox Grid.Column="5" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Nazwisko, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 
                             <Label Content="Imię:" Grid.Row="1" Style="{StaticResource LabelStPogrubiony}"/>
-                            <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Imie, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Imie, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                             <Label Content="Drugie imię:" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource LabelStandardowy}"/>
-                            <TextBox Grid.Row="1" Grid.Column="5" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=DrugieImie, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox Grid.Row="1" Grid.Column="5" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=DrugieImie, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 
                             <Label Content="PESEL:" Grid.Row="2" Style="{StaticResource LabelStandardowy}"/>
-                            <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=PeselPracownika, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=PeselPracownika, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                             <Label Content="NIP:" Grid.Row="2" Grid.Column="3" Style="{StaticResource LabelStandardowy}"/>
-                            <ComboBox Grid.Row="2" Grid.Column="4" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="1"/>
-                                <ComboBoxItem Content="2"/>
-                                <ComboBoxItem Content="3"/>
-                            </ComboBox>
                             <TextBox Grid.Row="2" Grid.Column="5" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Nip, UpdateSourceTrigger=PropertyChanged}"/>
 
                             <Label Content="Data urodzenia:" Grid.Row="3" Style="{StaticResource LabelStandardowy}"/>
-                            <DatePicker Grid.Row="3" Grid.Column="1" Style="{StaticResource DatePickerStandard}"/>
+                            <DatePicker Grid.Row="3" Grid.Column="1" Style="{StaticResource DatePickerStandard}" SelectedDate="{Binding Path=DataUrodzenia,  Mode=TwoWay}"/>
                             <Label Grid.Row="3" Grid.Column="3" Content="Miejsce urodzenia" Style="{StaticResource LabelStandardowy}"/>
-                            <TextBox Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=MiejsceUrodzenia, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=MiejsceUrodzenia, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 
                             <Label Content="Imię ojca:" Grid.Row="4" Style="{StaticResource LabelStandardowy}"/>
-                            <TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=ImieOjca, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=ImieOjca, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                             <Label Content="Imię matki:" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource LabelStandardowy}"/>
-                            <TextBox Grid.Row="4" Grid.Column="5" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=ImieMatki, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox Grid.Row="4" Grid.Column="5" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=ImieMatki, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 
                             <Label Content="Nazw. rodowe:" Grid.Row="5" Style="{StaticResource LabelStandardowy}"/>
-                            <TextBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=NazwiskoRodowe, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Content="Nazw. rod. matki:" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource LabelStandardowy}"/>
-                            <TextBox Grid.Row="5" Grid.Column="5" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=NazwiskoRodoweMatki, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=NazwiskoRodowe, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                            <Label Content="Nazw. rod. matki:" Grid.Row="5" Grid.Column="3" Style="{StaticResource LabelStandardowy}"/>
+                            <TextBox Grid.Row="5" Grid.Column="5" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=NazwiskoRodoweMatki, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                         </Grid>
                     </Expander>
                     
@@ -99,12 +94,12 @@
                             <TextBox Grid.Column="4" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=TelefonKomorkowy, UpdateSourceTrigger=PropertyChanged}"/>
 
                             <Label Content="E-Mail główny:" Grid.Row="1" Style="{StaticResource LabelStandardowy}"/>
-                            <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Email1, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Email1, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                             <Label Content="E-Mail dodat.:" Grid.Row="1" Grid.Column="2" Style="{StaticResource LabelStandardowy}"/>
-                            <TextBox Grid.Row="1" Grid.Column="3" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Email2, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox Grid.Row="1" Grid.Column="3" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Email2, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 
                             <Label Content="Adres WWW:" Grid.Row="2" Style="{StaticResource LabelStandardowy}"/>
-                            <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=AdresStrony, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=AdresStrony, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 
                         </Grid>
                     </Expander>
@@ -131,58 +126,98 @@
                             </Grid.RowDefinitions>
 
                             <Label Content="Kraj/Kod kraju:" Style="{StaticResource LabelStandardowy}"/>
-                            <TextBox Text="Polska" Grid.Column="1" Style="{StaticResource TextBoxStandardowy}"/>
-                            <ComboBox Grid.Column="2" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="PLN"/>
-                                <ComboBoxItem Content="UK"/>
-                                <ComboBoxItem Content="FR"/>
-                            </ComboBox>
+                            <TextBox Grid.Column="1" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Kraj, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                            <TextBox Grid.Column="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=KodKraju, UpdateSourceTrigger=PropertyChanged}"/>
                             <Label Content="Województwo:" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource LabelStandardowy}"/>
-                            <ComboBox Grid.Column="5" Grid.ColumnSpan="4" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="Mazowieckie" IsSelected="True"/>
-                                <ComboBoxItem Content="Pomorskie"/>
-                                <ComboBoxItem Content="Małopolskie"/>
-                            </ComboBox>
+                            <TextBox Grid.Column="5" Grid.ColumnSpan="4" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Wojewodztwo, UpdateSourceTrigger=PropertyChanged}"/>
+
 
                             <Label Content="Powiat:" Grid.Row="1" Style="{StaticResource LabelStandardowy}"/>
-                            <TextBox Text="Warszawa" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Powiat, UpdateSourceTrigger=PropertyChanged}"/>
                             <Border Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource BorderStylizacja}">
                                 <Label Content="Gmina" Style="{StaticResource LabelStylizowany}"/>
                             </Border>
-                            <ComboBox Grid.Column="5" Grid.Row="1" Grid.ColumnSpan="4" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="Warszawa" IsSelected="True"/>
-                                <ComboBoxItem Content="Bielany"/>
-                                <ComboBoxItem Content="Bielsk"/>
-                            </ComboBox>
+                            <TextBox Grid.Column="5" Grid.Row="1" Grid.ColumnSpan="4" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Gmina, UpdateSourceTrigger=PropertyChanged}"/>
+
 
                             <Label Content="Ulica" Grid.Row="2" Style="{StaticResource LabelStandardowy}"/>
-                            <TextBox Text="Gdańska" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}"/>
+                            <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Ulica, UpdateSourceTrigger=PropertyChanged}"/>
                             <Label Content="Nr domu:" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource LabelStandardowy}"/>
-                            <TextBox Text="5" Grid.Row="2" Grid.Column="5" Style="{StaticResource TextBoxStandardowy}"/>
+                            <TextBox Grid.Row="2" Grid.Column="5" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=NrDomu, UpdateSourceTrigger=PropertyChanged}"/>
                             <Label Content="/" Grid.Row="2" Grid.Column="6" Style="{StaticResource LabelStandardowy}"/>
-                            <TextBox Text="5" Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}"/>
+                            <TextBox Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=NrLokalu, UpdateSourceTrigger=PropertyChanged}"/>
 
                             <Border Grid.Row="3" Style="{StaticResource BorderStylizacja}">
                                 <Label Content="Miejscowość" Style="{StaticResource LabelStylizowany}"/>
                             </Border>
-                            <ComboBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="Warszawa" IsSelected="True"/>
-                                <ComboBoxItem Content="Płock"/>
-                                <ComboBoxItem Content="Ciechanów"/>
-                                <ComboBoxItem Content="Mława"/>
-                            </ComboBox>
+                            <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Miejscowosc, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+
                             <Label Content="Kod pocztowy:" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource LabelStandardowy}"/>
-                            <TextBox Text="03-310" Grid.Row="3" Grid.Column="5" Style="{StaticResource TBStandPrawo}"/>
+                            <TextBox Grid.Row="3" Grid.Column="5" Style="{StaticResource TBStandPrawo}" Text="{Binding Path=KodPocztowy, UpdateSourceTrigger=PropertyChanged}"/>
 
                             <Border Grid.Row="4" Style="{StaticResource BorderStylizacja}">
                                 <Label Content="Poczta" Style="{StaticResource LabelStylizowany}"/>
                             </Border>
-                            <ComboBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="Warszawa" IsSelected="True"/>
-                                <ComboBoxItem Content="Płock"/>
-                                <ComboBoxItem Content="Ciechanów"/>
-                                <ComboBoxItem Content="Mława"/>
-                            </ComboBox>
+                            <TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Poczta, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        </Grid>
+                    </Expander>
+
+                    <Expander Header="Adres" Grid.Row="4" Style="{StaticResource Expander}">
+                        <Grid Style="{StaticResource TloExpanderG}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.8*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition Width="0.8*"/>
+                                <ColumnDefinition Width="0.3*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="0.15*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="0.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <Label Content="Kraj/Kod kraju:" Style="{StaticResource LabelStandardowy}"/>
+                            <TextBox Grid.Column="1" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Kraj2, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                            <TextBox Grid.Column="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=KodKraju2, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Content="Województwo:" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource LabelStandardowy}"/>
+                            <TextBox Grid.Column="5" Grid.ColumnSpan="4" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Wojewodztwo2, UpdateSourceTrigger=PropertyChanged}"/>
+
+
+                            <Label Content="Powiat:" Grid.Row="1" Style="{StaticResource LabelStandardowy}"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Powiat2, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Border Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource BorderStylizacja}">
+                                <Label Content="Gmina" Style="{StaticResource LabelStylizowany}"/>
+                            </Border>
+                            <TextBox Grid.Column="5" Grid.Row="1" Grid.ColumnSpan="4" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Gmina2, UpdateSourceTrigger=PropertyChanged}"/>
+
+
+                            <Label Content="Ulica" Grid.Row="2" Style="{StaticResource LabelStandardowy}"/>
+                            <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Ulica2, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Content="Nr domu:" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource LabelStandardowy}"/>
+                            <TextBox Grid.Row="2" Grid.Column="5" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=NrDomu2, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Content="/" Grid.Row="2" Grid.Column="6" Style="{StaticResource LabelStandardowy}"/>
+                            <TextBox Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=NrLokalu2, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <Border Grid.Row="3" Style="{StaticResource BorderStylizacja}">
+                                <Label Content="Miejscowość" Style="{StaticResource LabelStylizowany}"/>
+                            </Border>
+                            <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Miejscowosc2, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+
+                            <Label Content="Kod pocztowy:" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource LabelStandardowy}"/>
+                            <TextBox Grid.Row="3" Grid.Column="5" Style="{StaticResource TBStandPrawo}" Text="{Binding Path=KodPocztowy2, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <Border Grid.Row="4" Style="{StaticResource BorderStylizacja}">
+                                <Label Content="Poczta" Style="{StaticResource LabelStylizowany}"/>
+                            </Border>
+                            <TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Poczta2, UpdateSourceTrigger=PropertyChanged}"/>
 
                         </Grid>
                     </Expander>
@@ -206,25 +241,34 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
                                     <RowDefinition/>
+                                    <RowDefinition/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="0.7*"/>
                                     <ColumnDefinition/>
+                                    <ColumnDefinition Width="0.5*"/>
                                     <ColumnDefinition Width="0.6*"/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Content="Data zatrudnienia:" Style="{StaticResource LabelStandardowy}"/>
-                                <DatePicker Grid.Column="1" Style="{StaticResource DatePickerStandard}"/>
-                                <Label Content="Forma płatności:" Grid.Column="2" Style="{StaticResource LabelStandardowy}"/>
-                                <ComboBox Grid.Column="3" Style="{StaticResource ComboBoxStandardowy}">
-                                    <ComboBoxItem Content="Przelew" IsSelected="True"/>
-                                    <ComboBoxItem Content="Blik"/>
-                                    <ComboBoxItem Content="Gotówka"/>
-                                </ComboBox>
+                                <Label Content="Rodzaj umowy:" Style="{StaticResource LabelStandardowy}"/>
+                                <ComboBox Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}"
+                                          ItemsSource="{Binding RodzajUmowyComboboxItems}"
+                                          DisplayMemberPath="Value"
+                                          SelectedValuePath="Key"
+                                          SelectedValue="{Binding Path=IdRodzajUmowy, Mode=TwoWay}"/>
+                                <Label Content="Forma płatności:" Grid.Column="3" Style="{StaticResource LabelStandardowy}"/>
+                                <ComboBox Grid.Column="4" Style="{StaticResource ComboBoxStandardowy}"
+                                          ItemsSource="{Binding SposobPlatnosciComboboxItems}"
+                                          DisplayMemberPath="Value"
+                                          SelectedValuePath="Key"
+                                          SelectedValue="{Binding Path=IdSposobuPlatnosci, Mode=TwoWay}"/>
 
-                                <Label Content="Stawka:" Grid.Row="1" Style="{StaticResource LabelStPogrubiony}"/>
-                                <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource TBStandPrawo}" Text="{Binding Path=Stawka, UpdateSourceTrigger=PropertyChanged}"/>
+                                <Label Content="Data zatrudnienia:" Grid.Row="1" Style="{StaticResource LabelStandardowy}"/>
+                                <DatePicker Grid.Row="1" Grid.Column="1" Style="{StaticResource DatePickerStandard}" SelectedDate="{Binding Path=DataZatrudnienia,  Mode=TwoWay}"/>
+                                
+                                <Label Content="Stawka:" Grid.Row="2" Style="{StaticResource LabelStPogrubiony}"/>
+                                <TextBox Grid.Row="2" Grid.Column="1" Style="{StaticResource TBStandPrawo}" Text="{Binding Path=Stawka, UpdateSourceTrigger=PropertyChanged}"/>
                             </Grid>
 
                             <GroupBox Header="Urząd Skarbowy" Grid.Row="1" Style="{StaticResource GroupBoxStandardowy}">
@@ -281,16 +325,13 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Border Style="{StaticResource BorderStylizacja}">
-                                        <Button Content="Kategoria" Style="{StaticResource ButtonStylizowany}" Command="{Binding KategoriePracyCommand}"/>
+                                        <Label Content="Kategoria" Style="{StaticResource LabelStylizowany}"/>
                                     </Border>
-                                    <ComboBox Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
-                                        <ComboBoxItem Content="Dział Sprzedaży" IsSelected="True"/>
-                                        <ComboBoxItem Content="Magazyn"/>
-                                        <ComboBoxItem Content="PR"/>
-                                    </ComboBox>
-                                    <TextBox Text="Dział sprzedaży" Grid.Column="2" Style="{StaticResource TextBoxStandardowy}"/>
-
-                                    <CheckBox Content="Nie rozliczaj płatności" Grid.Row="1" Style="{StaticResource CheckBoxStandardowy}"/>
+                                    <ComboBox Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}"
+                                              ItemsSource="{Binding KategoriaComboboxItems}"
+                                              DisplayMemberPath="Value"
+                                              SelectedValuePath="Key"
+                                              SelectedValue="{Binding Path=IdKategoriiPracy, Mode=TwoWay}"/>
                                 </Grid>
                             </GroupBox>
 
@@ -308,9 +349,9 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Border Style="{StaticResource BorderStylizacja}">
-                                        <Button Content="Oddział" Style="{StaticResource ButtonStylizowany}" Command="{Binding OddzialyCommand}"/>
+                                        <Button Content="Oddział" Style="{StaticResource ButtonStylizowany}" Command="{Binding ShowOddzialyCommand}"/>
                                     </Border>
-                                    <TextBox Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=UrzadSkarbowy, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <TextBox Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource TBStZablokowany}" Text="{Binding Path=OddzialNazwa, UpdateSourceTrigger=PropertyChanged}"/>
                                 </Grid>
                             </GroupBox>
 

@@ -28,24 +28,26 @@
                         <Border Width="80" Style="{StaticResource BorderStylizacja}">
                             <Label Content="Dokument:" Style="{StaticResource LabelStylizowanyPogrubiony}"/>
                         </Border>
-                        <ComboBox Width="70" Style="{StaticResource ComboBoxStandardowy}">
-                            <ComboBoxItem Content="PZ" IsSelected="True"/>
-                            <ComboBoxItem Content="PZ2"/>
-                            <ComboBoxItem Content="PZ3"/>
-                        </ComboBox>
+                        <ComboBox Width="70" Style="{StaticResource ComboBoxStandardowy}"
+                                  ItemsSource="{Binding RodzajDokumentuComboboxItems}"
+                                  DisplayMemberPath="Value"
+                                  SelectedValuePath="Key"
+                                  SelectedValue="{Binding Path=IdRodzajuDokumentu, Mode=TwoWay}"/>
+
                         <Label Width="40"/>
                         <Label Content="Numer" Width="50" Style="{StaticResource LabelStandardowy}"/>
-                        <TextBox Text="PZ" Width="70" Style="{StaticResource TBStZablokowany}"/>
-                        <TextBox Text="Auto" Width="70" Style="{StaticResource TBStandPrawo}"/>
-                        <TextBox Text="2018" Width="40" Style="{StaticResource TBStZablokowany}"/>
+                        <!--Tu poprawić to bindowanie-->
+                        <TextBox Width="70" Style="{StaticResource TBStZablokowany}" Text="{Binding Path=NumerPrefix, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Width="70" Style="{StaticResource TBStandPrawo}" Text="{Binding Path=NumerGlowny, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                        <TextBox Width="40" Style="{StaticResource TBStZablokowany}" Text="{Binding Path=NumerRok, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Row="1" Orientation="Horizontal" Style="{StaticResource TloExpanderS}">
                         <Label Content="Numer obcy:" Width="80" Style="{StaticResource LabelStPogrubiony}"/>
-                        <TextBox Width="380" Style="{StaticResource TextBoxStandardowy}"/>
-                        <Label Width="95"/>
+                        <TextBox Width="380" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=NumerObcy, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Width="40"/>
                         <Label Content="Data wpływu" Width="80" Style="{StaticResource LabelStandardowy}"/>
-                        <DatePicker Width="120" Style="{StaticResource DatePickerStandard}"/>
+                        <DatePicker Width="120" Style="{StaticResource DatePickerStandard}" SelectedDate="{Binding Path=DataWplywu,  Mode=TwoWay}"/>
                     </StackPanel>
 
                     <Expander Header="Magazyn" Grid.Row="2" Style="{StaticResource Expander}">
@@ -62,11 +64,12 @@
                             <Border Style="{StaticResource BorderStylizacja}">
                                 <Label Content="Magazyn" Style="{StaticResource LabelStylizowany}"/>
                             </Border>
-                            <ComboBox  Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
-                                <ComboBoxItem Content="Magazyn" IsSelected="True"/>
-                                <ComboBoxItem Content="Magazyn Z"/>
-                            </ComboBox>
-                            <TextBox Text="Magazyn główny" Grid.Column="2" Style="{StaticResource TBStZablokowany}"/>
+                            <ComboBox  Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}"
+                                      ItemsSource="{Binding OddzialComboboxItems}"
+                                      DisplayMemberPath="Value"
+                                      SelectedValuePath="Key"
+                                      SelectedValue="{Binding Path=IdOddzialu, Mode=TwoWay}"/>
+                            <TextBox Grid.Column="2" Style="{StaticResource TBStZablokowany}" Text="{Binding Path=MagazynNazwa, UpdateSourceTrigger=PropertyChanged}"/>
 
                         </Grid>
                     </Expander>
@@ -76,14 +79,13 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
-                                <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
 
                             <GroupBox Style="{StaticResource GroupBoxStandardowy}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="1.55*"/>
-                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="0.2*"/>
                                         <ColumnDefinition Width="1.5*"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
@@ -92,34 +94,18 @@
                                         <RowDefinition/>
                                     </Grid.RowDefinitions>
 
-                                    <Label Content="Data wystawienia:" Style="{StaticResource LabelStandardowy}"/>
-                                    <DatePicker Grid.Column="2" Style="{StaticResource DatePickerStandard}"/>
+                                    <Label Content="Data wystawienia:" Style="{StaticResource LabelStandardowy}" />
+                                    <DatePicker Grid.Column="2" Style="{StaticResource DatePickerStandard}" SelectedDate="{Binding Path=DataWystawienia,  Mode=TwoWay}"/>
 
                                     <Label Content="Data przyjęcia:" Grid.Row="1" Style="{StaticResource LabelStandardowy}"/>
-                                    <DatePicker Grid.Row="1" Grid.Column="2" Style="{StaticResource DatePickerStandard}"/>
+                                    <DatePicker Grid.Row="1" Grid.Column="2" Style="{StaticResource DatePickerStandard}" SelectedDate="{Binding Path=DataPrzyjecia,  Mode=TwoWay}"/>
 
-                                    <Label Content="Data przyjęcia:" Grid.Row="2" Style="{StaticResource LabelStandardowy}"/>
-                                    <ComboBox Grid.Row="2" Grid.Column="2" Style="{StaticResource CBStZablokowany}">
-                                        <ComboBoxItem Content="Netto" IsSelected="True"/>
-                                        <ComboBoxItem Content="Brutto"/>
-                                    </ComboBox>
-
+                                    <Label Content="Typ ceny:" Grid.Row="2" Style="{StaticResource LabelStandardowy}"/>
+                                    <ComboBox Grid.Row="2" Grid.Column="2" Style="{StaticResource ComboBoxStandardowy}"
+                                              ItemsSource="{Binding TypCenyComboboxItems}"
+                                              SelectedValue="{Binding Path=TypCeny, Mode=TwoWay}"/>
                                 </Grid>
                             </GroupBox>
-
-                            <GroupBox Grid.Column="1" Style="{StaticResource GroupBoxStandardowy}" Height="35" VerticalAlignment="Top">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <Label Content="Rabat:" Style="{StaticResource LabelStandardowy}"/>
-                                    <TextBox Text="0.00%" Grid.Column="2" Style="{StaticResource TBStandPrawo}"/>
-                                </Grid>
-                            </GroupBox>
-
                             <GroupBox Grid.Column="2" Style="{StaticResource GroupBoxStandardowy}" Height="60" VerticalAlignment="Top">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -133,33 +119,36 @@
                                     </Grid.RowDefinitions>
 
                                     <Label Content="Netto:" Style="{StaticResource LabelStandardowy}"/>
-                                    <TextBox Text="1468,24 PLN" Grid.Column="2" Style="{StaticResource TBStZablokowanyPrawo}"/>
+                                    <TextBox Grid.Column="2" Style="{StaticResource TBStZablokowanyPrawo}" Text="{Binding Path=Netto, UpdateSourceTrigger=PropertyChanged}"/>
 
                                     <Label Content="Razem" Grid.Row="1" Style="{StaticResource LabelStPogrubiony}"/>
-                                    <TextBox Text="1541,65 PLN" Grid.Row="1" Grid.Column="2" Style="{StaticResource TBStZablokowanyPrawo}" FontWeight="Bold"/>
+                                    <TextBox Grid.Row="1" Grid.Column="2" Style="{StaticResource TBStZablokowanyPrawo}" FontWeight="Bold" Text="{Binding Path=Razem, UpdateSourceTrigger=PropertyChanged}"/>
                                 </Grid>
                             </GroupBox>
                         </Grid>
                     </Expander>
 
-                    <DataGrid Grid.Row="5" Style="{StaticResource TabelaStandard}">
-                        <DataGrid.Columns>
-                            <DataGridCheckBoxColumn Header="" Width="20"/>
-                            <DataGridTextColumn Header="Lp." Width="30" Binding="{Binding Path=LP}"/>
-                            <DataGridTextColumn Header="Nazwa" Width="100" Binding="{Binding Path=NazwaTowaru}"/>
-                            <DataGridTextColumn Header="Ilość" Width="120" Binding="{Binding Path=Ilosc}"/>
-                            <DataGridTextColumn Header="C.pocz." Width="100" Binding="{Binding Path=CenaPoczatkowa}"/>
-                            <DataGridTextColumn Header="Rabat" Width="60" Binding="{Binding Path=Rabat}"/>
-                            <DataGridTextColumn Header="Cena" Width="120" Binding="{Binding Path=Cena}"/>
-                            <DataGridTextColumn Header="Wartość" Width="120" Binding="{Binding Path=Wartosc}"/>
-                        </DataGrid.Columns>
+                    <Grid Grid.Row="5" Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="0.05*"/>
+                        </Grid.ColumnDefinitions>
 
-                        <restab:TowaryTable LP="1" NazwaTowaru="Jujutsu Kaisen #1" Ilosc="50" CenaPoczatkowa="22.99" Rabat="40.00" Cena="13.79" Wartosc="689.5"/>
-                        <restab:TowaryTable LP="2" NazwaTowaru="Jujutsu Kaisen #2" Ilosc="30" CenaPoczatkowa="22.99" Rabat="40.00" Cena="13.79" Wartosc="551.6"/>
-                        <restab:TowaryTable LP="3" NazwaTowaru="Tokyo Ghoul #1" Ilosc="25" CenaPoczatkowa="19.99" Rabat="40.00" Cena="11.99" Wartosc="299.75"/>
-                        <restab:TowaryTable LP="4" NazwaTowaru="Kasane #1" Ilosc="20" CenaPoczatkowa="24.99" Rabat="40.00" Cena="14.99" Wartosc="299.80"/>
-                    </DataGrid>
+                        <Button Grid.Column="1" Style="{DynamicResource ButtonStandard}" Height="25px" ToolTip="Dodaj Towar" Command="{Binding ShowTowaryCommand}">
+                            <Image Source="/Views/IconNowyTowar.png"/>
+                        </Button>
+                        <DataGrid AutoGenerateColumns="False" Style="{StaticResource TabelaStandard}" ItemsSource="{Binding Pozycje, UpdateSourceTrigger=PropertyChanged}">
+                            <DataGrid.Columns>
+                                <DataGridCheckBoxColumn Header="" Width="20"/>
+                                <DataGridTextColumn IsReadOnly="True" Header="Nazwa" Width="150" Binding="{Binding Path=Nazwa, UpdateSourceTrigger=PropertyChanged}"/>
+                                <DataGridTextColumn Header="Ilość" Width="60" Binding="{Binding Path=Ilosc, UpdateSourceTrigger=PropertyChanged}"/>
+                                <DataGridTextColumn IsReadOnly="True" Header="C.pocz." Width="100" Binding="{Binding Path=CenaPoczatkowa, UpdateSourceTrigger=PropertyChanged}"/>
+                                <DataGridTextColumn IsReadOnly="True" Header="Cena" Width="120" Binding="{Binding Path=Cena, UpdateSourceTrigger=PropertyChanged}"/>
+                                <DataGridTextColumn IsReadOnly="True" Header="Wartość" Width="120" Binding="{Binding Path=ObliczonaWartosc, UpdateSourceTrigger=PropertyChanged}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
 
+                    </Grid>
                 </Grid>
             </ScrollViewer>
         </TabItem>

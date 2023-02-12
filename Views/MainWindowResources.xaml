@@ -115,6 +115,10 @@
     <DataTemplate DataType="{x:Type vm:KosztyPracowniczeViewModel}">
         <vw:KosztyPracowniczeView/>
     </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:RaportPrzyjecWydanViewModel}">
+        <vw:RaportPrzyjecWydanView/>
+    </DataTemplate>
     <!--tu jest koniec laczenia View z ViewModel zakladek-->
 
     

@@ -11,87 +11,17 @@
         <ResourceDictionary Source="StyleZakladekResources.xaml"/>
     </UserControl.Resources>
 
-    <ScrollViewer>
-        <Grid Style="{StaticResource TloGlowne}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="280"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="0.25*"/>
-            </Grid.RowDefinitions>
-
-            <Border Style="{StaticResource BorderStandardowy}">
-                <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}" Style="{StaticResource TabelaStandard}">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Akronim" CanUserSort="True" Width="100" Binding="{Binding Path=Akronim}"/>
-                        <DataGridTextColumn Header="Nazwisko" Width="150" Binding="{Binding Path=Nazwisko}"/>
-                        <DataGridTextColumn Header="Imię" Width="150" Binding="{Binding Path=Imie}"/>
-                        <DataGridTextColumn Header="PESEL" Width="120" Binding="{Binding Path=PeselPracownika}"/>
-                        <DataGridTextColumn Header="Adres" Width="300" Binding="{Binding Path=AdresGlowny}"/>
-                        <DataGridTextColumn Header="Stawka" Width="80" Binding="{Binding Path=Stawka}"/>
-                        <DataGridTextColumn Header="Data zatrud." Width="140" Binding="{Binding Path=DataZatrudnienia}"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </Border>
-
-            <Expander Grid.Row="1" Header="Filtr zaawansowany" Style="{StaticResource Expander}">
-                <Grid Style="{StaticResource TloExpanderG}">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1.2*"/>
-                        <ColumnDefinition Width="0.7*"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="1.2*"/>
-                        <ColumnDefinition Width="0.9*"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-
-                    <Label Content="Lista:" Style="{StaticResource LabelStandardowy}"/>
-                    <ComboBox Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
-                        <ComboBoxItem Content="Wszyscy" IsSelected="True"/>
-                        <ComboBoxItem Content="Zlecenie"/>
-                        <ComboBoxItem Content="Umowa"/>
-                    </ComboBox>
-                    <CheckBox Content="Pokaż archiwalnych" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource CheckBoxStandardowy}"/>
-                    <Label Content="Data aktualności:" Grid.Column="5" Style="{StaticResource LabelStandardowy}"/>
-                    <DatePicker Grid.Column="6" Style="{StaticResource DatePickerStandard}"/>
-
-                    <Border Grid.Row="1" Style="{StaticResource BorderStylizacja}">
-                        <Label Content="Centrum podległ." Style="{StaticResource LabelStylizowany}"/>
-                    </Border>
-                    <ComboBox Grid.Row="1" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
-                        <ComboBoxItem Content="Firma" IsSelected="True"/>
-                        <ComboBoxItem Content="Sklep"/>
-                    </ComboBox>
-                    <CheckBox Content="Podcentra" Grid.Row="1" Grid.Column="2" Style="{StaticResource CheckBoxStandardowy}"/>
-                    <Border Grid.Row="1" Grid.Column="3" Style="{StaticResource BorderStylizacja}">
-                        <Label Content="Wydział" Style="{StaticResource LabelStylizowany}"/>
-                    </Border>
-                    <ComboBox Grid.Row="1" Grid.Column="4" Style="{StaticResource ComboBoxStandardowy}">
-                        <ComboBoxItem Content="Firma" IsSelected="True"/>
-                        <ComboBoxItem Content="Sklep"/>
-                    </ComboBox>
-                    <CheckBox Content="Podwydziały" Grid.Row="1" Grid.Column="5" Style="{StaticResource CheckBoxStandardowy}"/>
-
-                    <Border Grid.Row="2" Style="{StaticResource BorderStylizacja}">
-                        <Label Content="Kierownik" Style="{StaticResource LabelStylizowany}"/>
-                    </Border>
-                    <ComboBox Grid.Row="2" Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}">
-                        <ComboBoxItem Content="Działu"/>
-                        <ComboBoxItem Content="Sklepu"/>
-                        <ComboBoxItem Content="Główny"/>
-                    </ComboBox>
-                    <TextBox Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="4" Style="{StaticResource TBStZablokowany}"/>
-                </Grid>
-            </Expander>
-
-        </Grid>
-    </ScrollViewer>
+    <Border Style="{StaticResource BorderStandardowy}">
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}" Style="{StaticResource TabelaStandard}" SelectedItem="{Binding Path=WybranyPracownik, Mode=TwoWay}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Akronim" CanUserSort="True" Width="100" Binding="{Binding Path=Akronim}"/>
+                <DataGridTextColumn Header="Nazwisko" Width="150" Binding="{Binding Path=Nazwisko}"/>
+                <DataGridTextColumn Header="Imię" Width="150" Binding="{Binding Path=Imie}"/>
+                <DataGridTextColumn Header="PESEL" Width="120" Binding="{Binding Path=PeselPracownika}"/>
+                <DataGridTextColumn Header="Adres" Width="300" Binding="{Binding Path=AdresGlowny}"/>
+                <DataGridTextColumn Header="Stawka" Width="80" Binding="{Binding Path=Stawka}"/>
+                <DataGridTextColumn Header="Data zatrud." Width="140" Binding="{Binding Path=DataZatrudnienia}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Border>
 </local:WszystkieViewBase>

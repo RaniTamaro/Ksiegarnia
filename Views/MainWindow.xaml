@@ -66,7 +66,7 @@
                 </MenuItem>
                 <MenuItem Header="Wszystkie">
                     <MenuItem Header="Przyjecia" Command="{Binding WszystkiePrzyjeciaCommand}"/>
-                    <MenuItem Header="Przyjecia" Command="{Binding WszystkieWydaniaCommand}"/>
+                    <MenuItem Header="Wydania" Command="{Binding WszystkieWydaniaCommand}"/>
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="Zasoby">
@@ -108,28 +108,7 @@
             <MenuItem Header="Raporty">
                 <MenuItem Header="Raport sprzedazy" Command="{Binding RaportSprzedazyCommand}"/>
                 <MenuItem Header="Koszty pracownicze" Command="{Binding KosztyPracowniczeCommand}"/>
-            </MenuItem>
-            <MenuItem Header="Tabele słownikowe" ToolTip="Kategoria tymczasowa! Zostanie usunięta po dodaniu wyświetlania nowych okienek">
-                <MenuItem Header="Wydawca">
-                    <MenuItem Header="Dodaj" Command="{Binding NowyWydawcaCommand}"/>
-                    <MenuItem Header="Wyswietl wszystkich" Command="{Binding WydawcyCommand}"/>
-                </MenuItem>
-                <MenuItem Header="Grupa">
-                    <MenuItem Header="Nowa" Command="{Binding NowaGrupaCommand}"/>
-                    <MenuItem Header="Wszystkie" Command="{Binding GrupyCommand}"/>
-                </MenuItem>
-                <MenuItem Header="Oddział">
-                    <MenuItem Header="Nowa" Command="{Binding NowyOddzialCommand}"/>
-                    <MenuItem Header="Wszystkie" Command="{Binding OddzialyCommand}"/>
-                </MenuItem>
-                <MenuItem Header="Kategorie towaru">
-                    <MenuItem Header="Nowa" Command="{Binding NowaKategoriaTowaruCommand}"/>
-                    <MenuItem Header="Wszystkie" Command="{Binding KategorieTowaruCommand}"/>
-                </MenuItem>
-                <MenuItem Header="Kategorie pracy">
-                    <MenuItem Header="Nowa" Command="{Binding NowaKategoriaPracyCommand}"/>
-                    <MenuItem Header="Wszystkie" Command="{Binding KategoriePracyCommand}"/>
-                </MenuItem>
+                <MenuItem Header="Raport przyjec i wydan" Command="{Binding RaportPrzyjecWydanCommand}"/>
             </MenuItem>
         </Menu>
 
@@ -140,7 +119,7 @@
                 </ToggleButton.Background>
             </ToggleButton>
             <Separator/>
-            <ToggleButton Width="32" Height="32" Margin="2" Command="{Binding NowyTowarCommand}" ToolTip="Dodaj fakturę (Ctrl+Alt+F)">
+            <ToggleButton Width="32" Height="32" Margin="2" Command="{Binding NowyTowarCommand}" ToolTip="Dodaj Towar (Ctrl+Alt+T)">
                 <ToggleButton.Background>
                     <ImageBrush ImageSource="/Views/IconNowyTowar.png"/>
                 </ToggleButton.Background>

@@ -1,4 +1,4 @@
-﻿using Firma.Extensions;
+﻿using Firma.Tools.Extensions;
 using Firma.Models.Entities;
 using System;
 using System.Collections.Generic;
@@ -20,14 +20,9 @@ namespace Firma.Models.BusinessLogic
         #region FunkcjeBiznesowe
         public decimal? UtargOkresTowar(int idTowaru, DateTime dataOd, DateTime dataDo)
         {
-            return (
-                    from pozycja in Db.PozycjaFaktury
-                    where pozycja.IdTowaru == idTowaru &&
-                    pozycja.Faktura.DataWystawienia >= dataOd &&
-                    pozycja.Faktura.DataWystawienia <= dataDo &&
-                    pozycja.CzyAktywna == true
-                    select pozycja.Cena * pozycja.Ilosc
-                ).SumOrDefault();
+            return Db.PozycjaFaktury
+                .Where(x => x.IdTowaru == idTowaru && x.Faktura.DataDodania >= dataOd && x.Faktura.DataDodania <= dataDo && x.CzyAktywna == true)
+                .Select(x => x.Cena * x.Ilosc).SumOrDefault();
         }
         #endregion
     }

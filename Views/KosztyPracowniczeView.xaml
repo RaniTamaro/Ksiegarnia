@@ -10,47 +10,49 @@
     <UserControl.Resources>
         <ResourceDictionary Source="StyleZakladekResources.xaml"/>
     </UserControl.Resources>
-    <Grid>
+    <Grid Style="{StaticResource TloGlowne}">
         <StackPanel Style="{StaticResource TloStackPanel}">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+            <Border Style="{StaticResource BorderStandardowy}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
 
-                <Label Style="{StaticResource LabelStWysrodkoway}">Koszty przeznaczone na wypłaty w wybranym okresie</Label>
+                    <Label Style="{StaticResource LabelStWysrodkoway}">Koszty przeznaczone na wypłaty w wybranym okresie</Label>
 
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="150"/>
-                        <ColumnDefinition Width="112.876"/>
-                        <ColumnDefinition Width="87.124"/>
-                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="112.876"/>
+                            <ColumnDefinition Width="87.124"/>
+                        </Grid.ColumnDefinitions>
 
-                    <Label Grid.Column="0" Style="{StaticResource LabelStandardowy}" Content="Wybierz okres"/>
-                    <ComboBox Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}" Grid.ColumnSpan="2" 
-                              ItemsSource="{Binding OkresyComboboxItems}"
-                              DisplayMemberPath="Value"
-                              SelectedValuePath="Key"
-                              SelectedValue="{Binding Path=IdOkresu, Mode=TwoWay}"/>
+                        <Label Grid.Column="0" Style="{StaticResource LabelStandardowy}" Content="Wybierz okres"/>
+                        <ComboBox Grid.Column="1" Style="{StaticResource ComboBoxStandardowy}" Grid.ColumnSpan="2" 
+                                  ItemsSource="{Binding OkresyComboboxItems}"
+                                  DisplayMemberPath="Value"
+                                  SelectedValuePath="Key"
+                                  SelectedValue="{Binding Path=IdOkresu, Mode=TwoWay}"/>
+                    </Grid>
+
+                    <Border Grid.Row="2" Style="{StaticResource BorderStylizacja}">
+                        <Button Style="{StaticResource ButtonStylizowany}" Content="Oblicz" Command="{Binding ObliczCommand}"/>
+                    </Border>
+
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="200"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" Style="{StaticResource LabelStPogrubiony}" Content="Koszt wynosi:"/>
+                        <Label Grid.Column="1" Style="{StaticResource LabelStandardowy}" Content="{Binding Koszt, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
                 </Grid>
-
-                <Border Grid.Row="2" Style="{StaticResource BorderStylizacja}">
-                    <Button Style="{StaticResource ButtonStylizowany}" Content="Oblicz" Command="{Binding ObliczCommand}"/>
-                </Border>
-
-                <Grid Grid.Row="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="150"/>
-                        <ColumnDefinition Width="200"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Label Grid.Column="0" Style="{StaticResource LabelStPogrubiony}" Content="Koszt wynosi:"/>
-                    <Label Grid.Column="1" Style="{StaticResource LabelStandardowy}" Content="{Binding Koszt, UpdateSourceTrigger=PropertyChanged}"/>
-                </Grid>
-            </Grid>
+            </Border>
         </StackPanel>
     </Grid>
 </UserControl>

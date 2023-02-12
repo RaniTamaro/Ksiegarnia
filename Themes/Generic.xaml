@@ -11,30 +11,75 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="34"/>
                             <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <ToolBar Grid.Row="0" Height="30" Margin="0, 2, 0, 2">
-                            <ToggleButton Width="25" Height="25" Margin="2" Command="{}" ToolTip="Dodaj">
+                            <ToggleButton Width="25" Height="25" Margin="2" Command="{Binding AddCommand}" ToolTip="Dodaj">
                                 <ToggleButton.Background>
                                     <ImageBrush ImageSource="/Views/IconNowyTowar.png"/>
                                 </ToggleButton.Background>
                             </ToggleButton>
-                            <ToggleButton Width="25" Height="25" Margin="2" Command="{}" ToolTip="Modyfikuj">
-                                <ToggleButton.Background>
-                                    <ImageBrush ImageSource="/Themes/IconEdytuj.png"/>
-                                </ToggleButton.Background>
-                            </ToggleButton>
-                            <ToggleButton Width="25" Height="25" Margin="2" Command="{}" ToolTip="Kasuj">
-                                <ToggleButton.Background>
-                                    <ImageBrush ImageSource="/Themes/IconUsun.png"/>
-                                </ToggleButton.Background>
-                            </ToggleButton>
-                            <ToggleButton Width="25" Height="25" Margin="2" Command="{}" ToolTip="Odswiez">
+                            <ToggleButton Width="25" Height="25" Margin="2" Command="{Binding LoadComand}" ToolTip="Odswiez">
                                 <ToggleButton.Background>
                                     <ImageBrush ImageSource="/Themes/IconOdswiez.png"/>
                                 </ToggleButton.Background>
                             </ToggleButton>
                         </ToolBar>
-                        <ContentPresenter Grid.Row="2" Margin="0, 5, 0, 5"/>
+
+                        <ScrollViewer Grid.Row="1">
+                            <Grid Style="{DynamicResource TloGlowne}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="280"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="0.25*"/>
+                                </Grid.RowDefinitions>
+
+                                <ContentPresenter Margin="0, 5, 0, 5"/>
+
+                                <Expander Grid.Row="1" Header="Filtr zaawansowany" Style="{DynamicResource Expander}">
+                                    <Grid Style="{DynamicResource TloExpanderG}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.6*"/>
+                                            <ColumnDefinition Width="0.8*"/>
+                                            <ColumnDefinition Width="0.4*"/>
+                                            <ColumnDefinition Width="0.2*"/>
+                                            <ColumnDefinition Width="0.6*"/>
+                                            <ColumnDefinition Width="0.8*"/>
+                                            <ColumnDefinition Width="0.4*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Label Content="Sortowanie:" Style="{DynamicResource LabelStandardowy}"/>
+                                        <ComboBox Grid.Column="1" Grid.ColumnSpan="2" Style="{DynamicResource ComboBoxStandardowy}" 
+                                                  ItemsSource="{Binding SortComboboxItems}" 
+                                                  SelectedValue="{Binding Path=SortField, Mode=TwoWay}"/>
+                                        <Label Grid.Column="4" Content="Filtrowanie:" Style="{DynamicResource LabelStandardowy}"/>
+                                        <ComboBox Grid.Column="5" Grid.ColumnSpan="2" Style="{DynamicResource ComboBoxStandardowy}"
+                                                  ItemsSource="{Binding FindComboboxItems}" 
+                                                  SelectedValue="{Binding Path=FindField, Mode=TwoWay}"/>
+
+                                        <Border Grid.Row="1" Grid.Column="2" Style="{DynamicResource BorderStylizacja}">
+                                            <Button Content="Sortuj" Style="{DynamicResource ButtonStylizowany}" Command="{Binding SortCommand}"/>
+                                        </Border>
+                                        <TextBox Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="2" Style="{DynamicResource TextBoxStandardowy}" Text="{Binding Path=FindTextBox, UpdateSourceTrigger=PropertyChanged}"/>
+
+                                        <Border Grid.Row="2" Grid.Column="6" Style="{DynamicResource BorderStylizacja}">
+                                            <Button Content="Filtruj" Style="{DynamicResource ButtonStylizowany}" Command="{Binding FindCommand}"/>
+                                        </Border>
+
+                                    </Grid>
+                                </Expander>
+
+                            </Grid>
+                        </ScrollViewer>
+                        
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -69,11 +114,11 @@
                         <Border Grid.Row="1" Style="{DynamicResource BorderStandardowy}">
                             <StackPanel Orientation="Horizontal">
                                 <Label Content="Wprowadzil:" Style="{DynamicResource LabelStandardowy}"/>
-                                <TextBox Text="Administrator" IsEnabled="False" Style="{DynamicResource TextBoxStandardowy}"/>
-                                <DatePicker IsEnabled="False" Style="{DynamicResource DPStZablokowany}"/>
+                                <TextBox Text="{Binding NazwaDodajacego}" IsEnabled="False" Style="{DynamicResource TextBoxStandardowy}" Width="150"/>
+                                <DatePicker SelectedDate="{Binding DataDodania}" IsEnabled="False" Style="{DynamicResource DPStZablokowany}"/>
                                 <Label Content="Zmodyfikowal:" Style="{DynamicResource LabelStandardowy}"/>
-                                <TextBox Text="Administrator" IsEnabled="False" Style="{DynamicResource TextBoxStandardowy}"/>
-                                <DatePicker IsEnabled="False" Style="{DynamicResource DPStZablokowany}"/>
+                                <TextBox Text="{Binding NazwaModyfikujacego}" IsEnabled="False" Style="{DynamicResource TextBoxStandardowy}" Width="150"/>
+                                <DatePicker SelectedDate="{Binding DataModyfikacji}" IsEnabled="False" Style="{DynamicResource DPStZablokowany}"/>
                             </StackPanel>
                         </Border>
                     </Grid>
@@ -94,22 +139,12 @@
                         <ContentPresenter Grid.Row="0"/>
 
                         <ToolBar HorizontalAlignment="Right" Grid.Row="1" Height="30" Margin="0, 2, 0, 2">
-                            <ToggleButton Width="25" Height="25" Margin="2" Command="{}" ToolTip="Dodaj">
+                            <ToggleButton Width="25" Height="25" Margin="2" Command="{Binding AddCommand}" ToolTip="Dodaj">
                                 <ToggleButton.Background>
                                     <ImageBrush ImageSource="/Views/IconNowyTowar.png"/>
                                 </ToggleButton.Background>
                             </ToggleButton>
-                            <ToggleButton Width="25" Height="25" Margin="2" Command="{}" ToolTip="Modyfikuj">
-                                <ToggleButton.Background>
-                                    <ImageBrush ImageSource="/Themes/IconEdytuj.png"/>
-                                </ToggleButton.Background>
-                            </ToggleButton>
-                            <ToggleButton Width="25" Height="25" Margin="2" Command="{}" ToolTip="Kasuj">
-                                <ToggleButton.Background>
-                                    <ImageBrush ImageSource="/Themes/IconUsun.png"/>
-                                </ToggleButton.Background>
-                            </ToggleButton>
-                            <ToggleButton Width="25" Height="25" Margin="2" Command="{}" ToolTip="Odswiez">
+                            <ToggleButton Width="25" Height="25" Margin="2" Command="{Binding LoadComand}" ToolTip="Odswiez">
                                 <ToggleButton.Background>
                                     <ImageBrush ImageSource="/Themes/IconOdswiez.png"/>
                                 </ToggleButton.Background>
@@ -120,4 +155,5 @@
             </Setter.Value>
         </Setter>
     </Style>
+
 </ResourceDictionary>

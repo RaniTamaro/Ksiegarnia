@@ -29,5 +29,34 @@ namespace Firma.ViewModels
                 );
         }
         #endregion
+
+        #region FindAndSort
+        public override void Sort()
+        {
+            if (SortField == "Nazwa")
+            {
+                List = new ObservableCollection<KategoriaTowaru>(List.OrderBy(item => item.Nazwa));
+            }
+        }
+
+        public override List<string> GetComboboxSortList()
+        {
+            return new List<string> { "Nazwa" };
+        }
+
+        public override void Find()
+        {
+
+            if (FindField == "Nazwa")
+            {
+                List = new ObservableCollection<KategoriaTowaru>(List.Where(item => item.Nazwa != null && item.Nazwa.StartsWith(FindTextBox)));
+            }
+        }
+
+        public override List<string> GetComboboxFindList()
+        {
+            return new List<string> { "Nazwa" };
+        }
+        #endregion
     }
 }

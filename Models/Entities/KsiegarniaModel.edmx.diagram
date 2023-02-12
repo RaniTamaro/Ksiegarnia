@@ -4,59 +4,6 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2849304f5266434ba9d7067d5a239fa0" Name="Diagram1">
-        <EntityTypeShape EntityType="KsiegarniaModel.Adres" Width="1.5" PointX="1.5" PointY="32" IsExpanded="true" />
-        <EntityTypeShape EntityType="KsiegarniaModel.Cena" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="KsiegarniaModel.DaneKontaktowe" Width="1.5" PointX="1.5" PointY="42.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="KsiegarniaModel.Faktura" Width="1.5" PointX="6" PointY="43.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="KsiegarniaModel.Grupa" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="KsiegarniaModel.KategoriaPracy" Width="1.5" PointX="6.75" PointY="38.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="KsiegarniaModel.KategoriaTowaru" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="KsiegarniaModel.Kontrahent" Width="1.5" PointX="3.75" PointY="42.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="KsiegarniaModel.Magazyn" Width="1.5" PointX="3" PointY="24.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="KsiegarniaModel.Oddzial" Width="1.5" PointX="0.75" PointY="24" IsExpanded="true" />
-        <EntityTypeShape EntityType="KsiegarniaModel.OkresWyplaty" Width="1.5" PointX="9" PointY="48" IsExpanded="true" />
-        <EntityTypeShape EntityType="KsiegarniaModel.PozycjaFaktury" Width="1.5" PointX="8.25" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="KsiegarniaModel.PozycjaMagazynu" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="KsiegarniaModel.Pracownik" Width="1.5" PointX="9" PointY="38.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="KsiegarniaModel.RachunekBankowy" Width="1.5" PointX="6.75" PointY="50.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="KsiegarniaModel.RodzajDokumentu" Width="1.5" PointX="0.75" PointY="38.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="KsiegarniaModel.SposobPlatnosci" Width="1.5" PointX="3.75" PointY="47.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="KsiegarniaModel.StawkaVat" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="KsiegarniaModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="KsiegarniaModel.Towar" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="KsiegarniaModel.Typ" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="KsiegarniaModel.Wydawca" Width="1.5" PointX="0.75" PointY="18.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="KsiegarniaModel.Wyplata" Width="1.5" PointX="11.25" PointY="38.375" IsExpanded="true" />
-        <AssociationConnector Association="KsiegarniaModel.FK_Kontrahent_Adres" ManuallyRouted="false" />
-        <AssociationConnector Association="KsiegarniaModel.FK_Oddzial_Adres" ManuallyRouted="false" />
-        <AssociationConnector Association="KsiegarniaModel.FK_Pracownik_Adres" ManuallyRouted="false" />
-        <AssociationConnector Association="KsiegarniaModel.FK_Pracownik_Adres1" ManuallyRouted="false" />
-        <AssociationConnector Association="KsiegarniaModel.FK_Cena_Towar" ManuallyRouted="false" />
-        <AssociationConnector Association="KsiegarniaModel.FK_DaneKontaktowe_DaneKontaktowe" ManuallyRouted="false" />
-        <AssociationConnector Association="KsiegarniaModel.FK_Kontrahent_DaneKontaktowe" ManuallyRouted="false" />
-        <AssociationConnector Association="KsiegarniaModel.FK_Pracownik_DaneKontaktowe" ManuallyRouted="false" />
-        <AssociationConnector Association="KsiegarniaModel.FK_Faktura_Kontrahent" ManuallyRouted="false" />
-        <AssociationConnector Association="KsiegarniaModel.FK_Faktura_SposobPlatnosci" ManuallyRouted="false" />
-        <AssociationConnector Association="KsiegarniaModel.FK_PozycjaFaktury_Faktura" ManuallyRouted="false" />
-        <AssociationConnector Association="KsiegarniaModel.FK_Towar_Grupa" ManuallyRouted="false" />
-        <AssociationConnector Association="KsiegarniaModel.FK_Pracownik_KategoriaPracy" ManuallyRouted="false" />
-        <AssociationConnector Association="KsiegarniaModel.FK_Towar_KategoriaTowaru" ManuallyRouted="false" />
-        <AssociationConnector Association="KsiegarniaModel.FK_Towar_KategoriaTowaru1" ManuallyRouted="false" />
-        <AssociationConnector Association="KsiegarniaModel.FK_Magazyn_Oddzial" ManuallyRouted="false" />
-        <AssociationConnector Association="KsiegarniaModel.FK_Magazyn_RodzajDokumentu" ManuallyRouted="false" />
-        <AssociationConnector Association="KsiegarniaModel.FK_PozycjaMagazynu_Magazyn" ManuallyRouted="false" />
-        <AssociationConnector Association="KsiegarniaModel.FK_Wyplata_OkresWyplaty" ManuallyRouted="false" />
-        <AssociationConnector Association="KsiegarniaModel.FK_PozycjaFaktury_Towar" ManuallyRouted="false" />
-        <AssociationConnector Association="KsiegarniaModel.FK_PozycjaMagazynu_Towar" ManuallyRouted="false" />
-        <AssociationConnector Association="KsiegarniaModel.FK_Pracownik_Pracownik" ManuallyRouted="false" />
-        <AssociationConnector Association="KsiegarniaModel.FK_Pracownik_SposobPlatnosci" ManuallyRouted="false" />
-        <AssociationConnector Association="KsiegarniaModel.FK_Wyplata_Pracownik" ManuallyRouted="false" />
-        <AssociationConnector Association="KsiegarniaModel.FK_Wyplata_SposobPlatnosci" ManuallyRouted="false" />
-        <AssociationConnector Association="KsiegarniaModel.FK_Towar_StawkaVat" ManuallyRouted="false" />
-        <AssociationConnector Association="KsiegarniaModel.FK_Towar_Typ" ManuallyRouted="false" />
-        <AssociationConnector Association="KsiegarniaModel.FK_Towar_Wydawca" ManuallyRouted="false" />
-      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

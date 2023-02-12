@@ -21,8 +21,8 @@
           <Property Name="Poczta" Type="nvarchar" MaxLength="50" />
           <Property Name="KodKraju" Type="nchar" MaxLength="10" />
           <Property Name="Kraj" Type="nvarchar" MaxLength="50" />
-          <Property Name="CzyAktywny" Type="bit" />
-          <Property Name="NazwaDodajacego" Type="nvarchar" MaxLength="100" />
+          <Property Name="CzyAktywny" Type="bit" Nullable="false" />
+          <Property Name="NazwaDodajacego" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="DataDodania" Type="date" />
           <Property Name="NazwaModyfikujacego" Type="nvarchar" MaxLength="100" />
           <Property Name="DataModyfikacji" Type="date" />
@@ -38,8 +38,11 @@
           <Property Name="Nazwa" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="TypCeny" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="Marza" Type="int" />
-          <Property Name="Zaokraglenie" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Offset" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Zaokraglenie" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Offset" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CenaNetto" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CenaBrutto" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Waluta" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CzyAktywny" Type="bit" />
           <Property Name="NazwaDodajacego" Type="nvarchar" MaxLength="100" />
           <Property Name="DataDodania" Type="date" />
@@ -53,8 +56,6 @@
             <PropertyRef Name="IdDaneKontaktowe" />
           </Key>
           <Property Name="IdDaneKontaktowe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nazwa" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Opis" Type="nvarchar(max)" />
           <Property Name="TelefonKomorkowy" Type="nvarchar" MaxLength="50" />
           <Property Name="TelefonDomowy" Type="nvarchar" MaxLength="50" />
           <Property Name="Email1" Type="nvarchar" MaxLength="50" />
@@ -74,22 +75,21 @@
           </Key>
           <Property Name="IdFaktury" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NumerFaktury" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="IdKontrahenta" Type="int" Nullable="false" />
+          <Property Name="IdKontrahenta" Type="int" />
+          <Property Name="IdOddzialu" Type="int" />
           <Property Name="DataWystawienia" Type="date" Nullable="false" />
           <Property Name="DataPrzyjecia" Type="date" />
-          <Property Name="PoTerminie" Type="date" />
+          <Property Name="PoTerminie" Type="int" />
           <Property Name="TypCeny" Type="nchar" MaxLength="10" />
-          <Property Name="Rabat" Type="decimal" Precision="18" Scale="0" />
           <Property Name="DataPlatnosci" Type="date" />
-          <Property Name="Zadluzenie" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Zadluzenie" Type="decimal" Precision="18" Scale="2" />
           <Property Name="IdSposobuPlatnosci" Type="int" Nullable="false" />
-          <Property Name="DataZaksiegowania" Type="date" />
-          <Property Name="Netto" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="Brutto" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="Zaplacono" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="Pozostalo" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Netto" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Brutto" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Zaplacono" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Pozostalo" Type="decimal" Precision="18" Scale="2" />
           <Property Name="CzyPodzielonaPlatnosc" Type="bit" Nullable="false" />
-          <Property Name="WartoscMPP" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="WartoscMPP" Type="decimal" Precision="18" Scale="2" />
           <Property Name="CzyAktywny" Type="bit" Nullable="false" />
           <Property Name="NazwaDodajacego" Type="nvarchar" MaxLength="100" />
           <Property Name="DataDodania" Type="date" />
@@ -177,10 +177,9 @@
           <Property Name="DataWplywu" Type="date" />
           <Property Name="DataPrzyjecia" Type="date" />
           <Property Name="TypCeny" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="Rabat" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Netto" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Razem" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="WartoscMPP" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Netto" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Razem" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="WartoscMPP" Type="decimal" Precision="18" Scale="2" />
           <Property Name="CzyAktywny" Type="bit" />
           <Property Name="NazwaDodajacego" Type="nvarchar" MaxLength="100" />
           <Property Name="DataDodania" Type="date" />
@@ -209,7 +208,7 @@
           <Key>
             <PropertyRef Name="IdOkresuWyplaty" />
           </Key>
-          <Property Name="IdOkresuWyplaty" Type="int" Nullable="false" />
+          <Property Name="IdOkresuWyplaty" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nazwa" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="OdKiedy" Type="date" Nullable="false" />
           <Property Name="DoKiedy" Type="date" Nullable="false" />
@@ -229,10 +228,9 @@
           <Property Name="IdFaktury" Type="int" Nullable="false" />
           <Property Name="IdTowaru" Type="int" Nullable="false" />
           <Property Name="Ilosc" Type="int" Nullable="false" />
-          <Property Name="CenaPoczatkowa" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Rabat" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="Cena" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Wartosc" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CenaPoczatkowa" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Cena" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Wartosc" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="CzyAktywna" Type="bit" Nullable="false" />
           <Property Name="NazwaDodajacego" Type="nvarchar" MaxLength="100" />
           <Property Name="DataDodania" Type="date" />
@@ -245,15 +243,14 @@
           <Key>
             <PropertyRef Name="IdPozycjiMagazynu" />
           </Key>
-          <Property Name="IdPozycjiMagazynu" Type="int" Nullable="false" />
+          <Property Name="IdPozycjiMagazynu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdMagazynu" Type="int" Nullable="false" />
           <Property Name="IdTowaru" Type="int" Nullable="false" />
           <Property Name="Nazwa" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Ilosc" Type="int" Nullable="false" />
-          <Property Name="CenaPoczatkowa" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Rabat" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Cena" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Wartosc" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CenaPoczatkowa" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Cena" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Wartosc" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="CzyAktywny" Type="bit" Nullable="false" />
           <Property Name="NazwaDodajacego" Type="nvarchar" MaxLength="100" />
           <Property Name="DataDodania" Type="date" />
@@ -271,27 +268,25 @@
           <Property Name="Imie" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Nazwisko" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DrugieImie" Type="nvarchar" MaxLength="50" />
-          <Property Name="PeselPracownika" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PeselPracownika" Type="nvarchar" MaxLength="50" />
           <Property Name="Nip" Type="nvarchar" MaxLength="50" />
-          <Property Name="DataUrodzenia" Type="date" Nullable="false" />
-          <Property Name="MiejsceUrodzenia" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DataUrodzenia" Type="date" />
+          <Property Name="MiejsceUrodzenia" Type="nvarchar" MaxLength="50" />
           <Property Name="ImieOjca" Type="nvarchar" MaxLength="50" />
           <Property Name="ImieMatki" Type="nvarchar" MaxLength="50" />
           <Property Name="NazwiskoRodowe" Type="nvarchar" MaxLength="50" />
           <Property Name="NazwiskoRodoweMatki" Type="nvarchar" MaxLength="50" />
-          <Property Name="IdAdresu1" Type="int" Nullable="false" />
+          <Property Name="IdAdresu1" Type="int" />
           <Property Name="IdAdresu2" Type="int" />
-          <Property Name="UrzadSkarbowy" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="DataZatrudnienia" Type="date" Nullable="false" />
-          <Property Name="IdSposobuPlatnosci" Type="int" Nullable="false" />
-          <Property Name="WspolczynnikKosztow" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="WspolczynnikUlgi" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="KodPracy" Type="nchar" MaxLength="10" />
+          <Property Name="UrzadSkarbowy" Type="nvarchar" MaxLength="50" />
+          <Property Name="DataZatrudnienia" Type="date" />
+          <Property Name="IdSposobuPlatnosci" Type="int" />
+          <Property Name="IdOddzialu" Type="int" />
           <Property Name="IdDaneKontaktowe" Type="int" />
           <Property Name="IdRachunkuBankowego" Type="int" />
           <Property Name="IdKategoriiPracy" Type="int" />
-          <Property Name="Stawka" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="RodzajUmowy" Type="nvarchar" MaxLength="50" />
+          <Property Name="Stawka" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IdRodzajUmowy" Type="int" />
           <Property Name="CzyAktywny" Type="bit" />
           <Property Name="NazwaDodajacego" Type="nvarchar" MaxLength="100" />
           <Property Name="DataDodania" Type="date" />
@@ -332,6 +327,21 @@
           <Property Name="NazwaUsuwajacego" Type="nvarchar" MaxLength="100" />
           <Property Name="DataUsuniecia" Type="date" />
         </EntityType>
+        <EntityType Name="RodzajUmowy">
+          <Key>
+            <PropertyRef Name="IdRodzajuUmowy" />
+          </Key>
+          <Property Name="IdRodzajuUmowy" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="50" />
+          <Property Name="CzyAktywny" Type="bit" Nullable="false" />
+          <Property Name="NazwaDodajacego" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DataDodania" Type="date" />
+          <Property Name="NazwaModyfikujacego" Type="nvarchar" MaxLength="100" />
+          <Property Name="DataModyfikacji" Type="date" />
+          <Property Name="NazwaUsuwajacego" Type="nvarchar" MaxLength="100" />
+          <Property Name="DataUsuniecia" Type="date" />
+        </EntityType>
         <EntityType Name="SposobPlatnosci">
           <Key>
             <PropertyRef Name="IdSposobuPlatnosci" />
@@ -352,7 +362,7 @@
             <PropertyRef Name="IdVat" />
           </Key>
           <Property Name="IdVat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Stawka" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Stawka" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="CzyAktywna" Type="bit" Nullable="false" />
           <Property Name="NazwaDodajacego" Type="nvarchar" MaxLength="100" />
           <Property Name="DataDodania" Type="date" />
@@ -378,11 +388,11 @@
           <Property Name="IdTowaru" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="KodTowaru" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="NrKatalogowy" Type="nchar" MaxLength="10" />
-          <Property Name="IdGrupy" Type="int" Nullable="false" />
-          <Property Name="IdTypu" Type="int" Nullable="false" />
+          <Property Name="IdGrupy" Type="int" />
+          <Property Name="IdTypu" Type="int" />
           <Property Name="EAN" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PKWiU" Type="nvarchar" MaxLength="50" />
-          <Property Name="IdVat" Type="int" Nullable="false" />
+          <Property Name="IdVat" Type="int" />
           <Property Name="NazwaTowaru" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IdKategoriiSprzedazy" Type="int" />
           <Property Name="IdKategoriiZakupu" Type="int" />
@@ -392,8 +402,6 @@
           <Property Name="EdycjaNazwy" Type="bit" />
           <Property Name="EdycjaOpisu" Type="bit" />
           <Property Name="IdWydawcy" Type="int" />
-          <Property Name="TypKosztu" Type="bit" />
-          <Property Name="KosztUslugi" Type="decimal" Precision="18" Scale="0" />
           <Property Name="PLU" Type="nvarchar" MaxLength="50" />
           <Property Name="NazwaUrzadzenia" Type="nvarchar" MaxLength="50" />
           <Property Name="CzyAktywny" Type="bit" />
@@ -440,14 +448,15 @@
             <PropertyRef Name="IdWyplaty" />
           </Key>
           <Property Name="IdWyplaty" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdPracownika" Type="int" Nullable="false" />
-          <Property Name="NumerDokumentu" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdPracownika" Type="int" />
+          <Property Name="NumerDokumentu" Type="nvarchar" MaxLength="50" />
           <Property Name="TytulPrzelewu" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Skrot" Type="nvarchar" MaxLength="50" />
+          <Property Name="Rodzaj" Type="nvarchar" MaxLength="50" />
           <Property Name="Potracenie" Type="bit" />
           <Property Name="PrzychodPPK" Type="bit" />
-          <Property Name="IdSposobuPlatnosci" Type="int" Nullable="false" />
-          <Property Name="ProcentWynagrodzenia" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IdSposobuPlatnosci" Type="int" />
+          <Property Name="ProcentWynagrodzenia" Type="decimal" Precision="18" Scale="2" />
           <Property Name="RodzajWynagrodzenia" Type="nvarchar" MaxLength="50" />
           <Property Name="AutomatyczneKorygowanie" Type="bit" />
           <Property Name="Urlop" Type="bit" />
@@ -463,11 +472,10 @@
           <Property Name="SposobNaliczaniaZus" Type="int" />
           <Property Name="SposobNaliczaniaUbezpieczenie" Type="int" />
           <Property Name="WliczacWynagrodzenieUrlop" Type="int" />
-          <Property Name="StalaOkresowa" Type="nvarchar" MaxLength="50" />
-          <Property Name="DodatekOkresowy" Type="bit" Nullable="false" />
+          <Property Name="DodatekOkresowy" Type="bit" />
           <Property Name="WliczanieZasilkuChorobowego" Type="int" />
           <Property Name="WliczanieEkwiwalentuUrlopu" Type="int" />
-          <Property Name="Zaokraglenie" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Zaokraglenie" Type="decimal" Precision="18" Scale="2" />
           <Property Name="SposobZaokraglenia" Type="nvarchar" MaxLength="50" />
           <Property Name="PrzyrownajNajnizsze" Type="bit" />
           <Property Name="UwzglednijDoplatyNadgodzin" Type="bit" />
@@ -488,7 +496,7 @@
           <Property Name="TypWyplatyWskaznikiem" Type="bit" />
           <Property Name="PozycjaERP7" Type="nvarchar" MaxLength="50" />
           <Property Name="IdOkresuWyplaty" Type="int" />
-          <Property Name="Kwota" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Kwota" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="CzyAktywny" Type="bit" Nullable="false" />
           <Property Name="NazwaDodajacego" Type="nvarchar" MaxLength="100" />
           <Property Name="DataDodania" Type="date" />
@@ -509,20 +517,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_DaneKontaktowe_DaneKontaktowe">
-          <End Role="DaneKontaktowe" Type="Self.DaneKontaktowe" Multiplicity="1" />
-          <End Role="DaneKontaktowe1" Type="Self.DaneKontaktowe" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="DaneKontaktowe">
-              <PropertyRef Name="IdDaneKontaktowe" />
-            </Principal>
-            <Dependent Role="DaneKontaktowe1">
-              <PropertyRef Name="IdDaneKontaktowe" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Faktura_Kontrahent">
-          <End Role="Kontrahent" Type="Self.Kontrahent" Multiplicity="1" />
+          <End Role="Kontrahent" Type="Self.Kontrahent" Multiplicity="0..1" />
           <End Role="Faktura" Type="Self.Faktura" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Kontrahent">
@@ -530,6 +526,18 @@
             </Principal>
             <Dependent Role="Faktura">
               <PropertyRef Name="IdKontrahenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faktura_Oddzial">
+          <End Role="Oddzial" Type="Self.Oddzial" Multiplicity="0..1" />
+          <End Role="Faktura" Type="Self.Faktura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Oddzial">
+              <PropertyRef Name="IdOddzialu" />
+            </Principal>
+            <Dependent Role="Faktura">
+              <PropertyRef Name="IdOddzialu" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -558,14 +566,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Kontrahent_DaneKontaktowe">
-          <End Role="DaneKontaktowe" Type="Self.DaneKontaktowe" Multiplicity="1" />
-          <End Role="Kontrahent" Type="Self.Kontrahent" Multiplicity="0..1" />
+          <End Role="DaneKontaktowe" Type="Self.DaneKontaktowe" Multiplicity="0..1" />
+          <End Role="Kontrahent" Type="Self.Kontrahent" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DaneKontaktowe">
               <PropertyRef Name="IdDaneKontaktowe" />
             </Principal>
             <Dependent Role="Kontrahent">
-              <PropertyRef Name="IdKontrahenta" />
+              <PropertyRef Name="IdDaneKontaktowe" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -654,7 +662,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Pracownik_Adres">
-          <End Role="Adres" Type="Self.Adres" Multiplicity="1" />
+          <End Role="Adres" Type="Self.Adres" Multiplicity="0..1" />
           <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Adres">
@@ -701,7 +709,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Pracownik_Pracownik">
+        <Association Name="FK_Pracownik_Oddzial">
+          <End Role="Oddzial" Type="Self.Oddzial" Multiplicity="0..1" />
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Oddzial">
+              <PropertyRef Name="IdOddzialu" />
+            </Principal>
+            <Dependent Role="Pracownik">
+              <PropertyRef Name="IdOddzialu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pracownik_RachunekBankowy">
           <End Role="RachunekBankowy" Type="Self.RachunekBankowy" Multiplicity="0..1" />
           <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="*" />
           <ReferentialConstraint>
@@ -713,8 +733,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Pracownik_RodzajUmowy">
+          <End Role="RodzajUmowy" Type="Self.RodzajUmowy" Multiplicity="0..1" />
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RodzajUmowy">
+              <PropertyRef Name="IdRodzajuUmowy" />
+            </Principal>
+            <Dependent Role="Pracownik">
+              <PropertyRef Name="IdRodzajUmowy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Pracownik_SposobPlatnosci">
-          <End Role="SposobPlatnosci" Type="Self.SposobPlatnosci" Multiplicity="1" />
+          <End Role="SposobPlatnosci" Type="Self.SposobPlatnosci" Multiplicity="0..1" />
           <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SposobPlatnosci">
@@ -726,7 +758,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Towar_Grupa">
-          <End Role="Grupa" Type="Self.Grupa" Multiplicity="1" />
+          <End Role="Grupa" Type="Self.Grupa" Multiplicity="0..1" />
           <End Role="Towar" Type="Self.Towar" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Grupa">
@@ -762,7 +794,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Towar_StawkaVat">
-          <End Role="StawkaVat" Type="Self.StawkaVat" Multiplicity="1" />
+          <End Role="StawkaVat" Type="Self.StawkaVat" Multiplicity="0..1" />
           <End Role="Towar" Type="Self.Towar" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="StawkaVat">
@@ -774,7 +806,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Towar_Typ">
-          <End Role="Typ" Type="Self.Typ" Multiplicity="1" />
+          <End Role="Typ" Type="Self.Typ" Multiplicity="0..1" />
           <End Role="Towar" Type="Self.Towar" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Typ">
@@ -810,7 +842,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Wyplata_Pracownik">
-          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="1" />
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="0..1" />
           <End Role="Wyplata" Type="Self.Wyplata" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Pracownik">
@@ -822,7 +854,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Wyplata_SposobPlatnosci">
-          <End Role="SposobPlatnosci" Type="Self.SposobPlatnosci" Multiplicity="1" />
+          <End Role="SposobPlatnosci" Type="Self.SposobPlatnosci" Multiplicity="0..1" />
           <End Role="Wyplata" Type="Self.Wyplata" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SposobPlatnosci">
@@ -850,6 +882,7 @@
           <EntitySet Name="Pracownik" EntityType="Self.Pracownik" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RachunekBankowy" EntityType="Self.RachunekBankowy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RodzajDokumentu" EntityType="Self.RodzajDokumentu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RodzajUmowy" EntityType="Self.RodzajUmowy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SposobPlatnosci" EntityType="Self.SposobPlatnosci" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StawkaVat" EntityType="Self.StawkaVat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -861,12 +894,12 @@
             <End Role="Towar" EntitySet="Towar" />
             <End Role="Cena" EntitySet="Cena" />
           </AssociationSet>
-          <AssociationSet Name="FK_DaneKontaktowe_DaneKontaktowe" Association="Self.FK_DaneKontaktowe_DaneKontaktowe">
-            <End Role="DaneKontaktowe" EntitySet="DaneKontaktowe" />
-            <End Role="DaneKontaktowe1" EntitySet="DaneKontaktowe" />
-          </AssociationSet>
           <AssociationSet Name="FK_Faktura_Kontrahent" Association="Self.FK_Faktura_Kontrahent">
             <End Role="Kontrahent" EntitySet="Kontrahent" />
+            <End Role="Faktura" EntitySet="Faktura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faktura_Oddzial" Association="Self.FK_Faktura_Oddzial">
+            <End Role="Oddzial" EntitySet="Oddzial" />
             <End Role="Faktura" EntitySet="Faktura" />
           </AssociationSet>
           <AssociationSet Name="FK_Faktura_SposobPlatnosci" Association="Self.FK_Faktura_SposobPlatnosci">
@@ -925,8 +958,16 @@
             <End Role="KategoriaPracy" EntitySet="KategoriaPracy" />
             <End Role="Pracownik" EntitySet="Pracownik" />
           </AssociationSet>
-          <AssociationSet Name="FK_Pracownik_Pracownik" Association="Self.FK_Pracownik_Pracownik">
+          <AssociationSet Name="FK_Pracownik_Oddzial" Association="Self.FK_Pracownik_Oddzial">
+            <End Role="Oddzial" EntitySet="Oddzial" />
+            <End Role="Pracownik" EntitySet="Pracownik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pracownik_RachunekBankowy" Association="Self.FK_Pracownik_RachunekBankowy">
             <End Role="RachunekBankowy" EntitySet="RachunekBankowy" />
+            <End Role="Pracownik" EntitySet="Pracownik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pracownik_RodzajUmowy" Association="Self.FK_Pracownik_RodzajUmowy">
+            <End Role="RodzajUmowy" EntitySet="RodzajUmowy" />
             <End Role="Pracownik" EntitySet="Pracownik" />
           </AssociationSet>
           <AssociationSet Name="FK_Pracownik_SposobPlatnosci" Association="Self.FK_Pracownik_SposobPlatnosci">
@@ -991,8 +1032,8 @@
           <Property Name="Poczta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="KodKraju" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Kraj" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CzyAktywny" Type="Boolean" />
-          <Property Name="NazwaDodajacego" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CzyAktywny" Type="Boolean" Nullable="false" />
+          <Property Name="NazwaDodajacego" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DataDodania" Type="DateTime" />
           <Property Name="NazwaModyfikujacego" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DataModyfikacji" Type="DateTime" />
@@ -1012,8 +1053,11 @@
           <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TypCeny" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Marza" Type="Int32" />
-          <Property Name="Zaokraglenie" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Offset" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Zaokraglenie" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Offset" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CenaNetto" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CenaBrutto" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Waluta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CzyAktywny" Type="Boolean" />
           <Property Name="NazwaDodajacego" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DataDodania" Type="DateTime" />
@@ -1028,8 +1072,6 @@
             <PropertyRef Name="IdDaneKontaktowe" />
           </Key>
           <Property Name="IdDaneKontaktowe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="TelefonKomorkowy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TelefonDomowy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -1042,8 +1084,6 @@
           <Property Name="DataModyfikacji" Type="DateTime" />
           <Property Name="NazwaUsuwajacego" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DataUsuniecia" Type="DateTime" />
-          <NavigationProperty Name="DaneKontaktowe1" Relationship="Self.FK_DaneKontaktowe_DaneKontaktowe" FromRole="DaneKontaktowe" ToRole="DaneKontaktowe1" />
-          <NavigationProperty Name="DaneKontaktowe2" Relationship="Self.FK_DaneKontaktowe_DaneKontaktowe" FromRole="DaneKontaktowe1" ToRole="DaneKontaktowe" />
           <NavigationProperty Name="Kontrahent" Relationship="Self.FK_Kontrahent_DaneKontaktowe" FromRole="DaneKontaktowe" ToRole="Kontrahent" />
           <NavigationProperty Name="Pracownik" Relationship="Self.FK_Pracownik_DaneKontaktowe" FromRole="DaneKontaktowe" ToRole="Pracownik" />
         </EntityType>
@@ -1053,22 +1093,21 @@
           </Key>
           <Property Name="IdFaktury" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NumerFaktury" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IdKontrahenta" Type="Int32" Nullable="false" />
+          <Property Name="IdKontrahenta" Type="Int32" />
+          <Property Name="IdOddzialu" Type="Int32" />
           <Property Name="DataWystawienia" Type="DateTime" Nullable="false" />
           <Property Name="DataPrzyjecia" Type="DateTime" />
-          <Property Name="PoTerminie" Type="DateTime" />
+          <Property Name="PoTerminie" Type="Int32" />
           <Property Name="TypCeny" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Rabat" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="DataPlatnosci" Type="DateTime" />
-          <Property Name="Zadluzenie" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Zadluzenie" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="IdSposobuPlatnosci" Type="Int32" Nullable="false" />
-          <Property Name="DataZaksiegowania" Type="DateTime" />
-          <Property Name="Netto" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="Brutto" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="Zaplacono" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="Pozostalo" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Netto" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Brutto" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Zaplacono" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Pozostalo" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="CzyPodzielonaPlatnosc" Type="Boolean" Nullable="false" />
-          <Property Name="WartoscMPP" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="WartoscMPP" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="CzyAktywny" Type="Boolean" Nullable="false" />
           <Property Name="NazwaDodajacego" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DataDodania" Type="DateTime" />
@@ -1077,6 +1116,7 @@
           <Property Name="NazwaUsuwajacego" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DataUsuniecia" Type="DateTime" />
           <NavigationProperty Name="Kontrahent" Relationship="Self.FK_Faktura_Kontrahent" FromRole="Faktura" ToRole="Kontrahent" />
+          <NavigationProperty Name="Oddzial" Relationship="Self.FK_Faktura_Oddzial" FromRole="Faktura" ToRole="Oddzial" />
           <NavigationProperty Name="SposobPlatnosci" Relationship="Self.FK_Faktura_SposobPlatnosci" FromRole="Faktura" ToRole="SposobPlatnosci" />
           <NavigationProperty Name="PozycjaFaktury" Relationship="Self.FK_PozycjaFaktury_Faktura" FromRole="Faktura" ToRole="PozycjaFaktury" />
         </EntityType>
@@ -1166,10 +1206,9 @@
           <Property Name="DataWplywu" Type="DateTime" />
           <Property Name="DataPrzyjecia" Type="DateTime" />
           <Property Name="TypCeny" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Rabat" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Netto" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Razem" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="WartoscMPP" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Netto" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Razem" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="WartoscMPP" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="CzyAktywny" Type="Boolean" />
           <Property Name="NazwaDodajacego" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DataDodania" Type="DateTime" />
@@ -1197,13 +1236,15 @@
           <Property Name="NazwaUsuwajacego" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DataUsuniecia" Type="DateTime" />
           <NavigationProperty Name="Adres" Relationship="Self.FK_Oddzial_Adres" FromRole="Oddzial" ToRole="Adres" />
+          <NavigationProperty Name="Faktura" Relationship="Self.FK_Faktura_Oddzial" FromRole="Oddzial" ToRole="Faktura" />
           <NavigationProperty Name="Magazyn" Relationship="Self.FK_Magazyn_Oddzial" FromRole="Oddzial" ToRole="Magazyn" />
+          <NavigationProperty Name="Pracownik" Relationship="Self.FK_Pracownik_Oddzial" FromRole="Oddzial" ToRole="Pracownik" />
         </EntityType>
         <EntityType Name="OkresWyplaty">
           <Key>
             <PropertyRef Name="IdOkresuWyplaty" />
           </Key>
-          <Property Name="IdOkresuWyplaty" Type="Int32" Nullable="false" />
+          <Property Name="IdOkresuWyplaty" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="OdKiedy" Type="DateTime" Nullable="false" />
           <Property Name="DoKiedy" Type="DateTime" Nullable="false" />
@@ -1224,10 +1265,9 @@
           <Property Name="IdFaktury" Type="Int32" Nullable="false" />
           <Property Name="IdTowaru" Type="Int32" Nullable="false" />
           <Property Name="Ilosc" Type="Int32" Nullable="false" />
-          <Property Name="CenaPoczatkowa" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Rabat" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="Cena" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Wartosc" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CenaPoczatkowa" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Cena" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Wartosc" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="CzyAktywna" Type="Boolean" Nullable="false" />
           <Property Name="NazwaDodajacego" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DataDodania" Type="DateTime" />
@@ -1242,15 +1282,14 @@
           <Key>
             <PropertyRef Name="IdPozycjiMagazynu" />
           </Key>
-          <Property Name="IdPozycjiMagazynu" Type="Int32" Nullable="false" />
+          <Property Name="IdPozycjiMagazynu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdMagazynu" Type="Int32" Nullable="false" />
           <Property Name="IdTowaru" Type="Int32" Nullable="false" />
           <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Ilosc" Type="Int32" Nullable="false" />
-          <Property Name="CenaPoczatkowa" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Rabat" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Cena" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Wartosc" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CenaPoczatkowa" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Cena" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Wartosc" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="CzyAktywny" Type="Boolean" Nullable="false" />
           <Property Name="NazwaDodajacego" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DataDodania" Type="DateTime" />
@@ -1270,27 +1309,25 @@
           <Property Name="Imie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DrugieImie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PeselPracownika" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PeselPracownika" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Nip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DataUrodzenia" Type="DateTime" Nullable="false" />
-          <Property Name="MiejsceUrodzenia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DataUrodzenia" Type="DateTime" />
+          <Property Name="MiejsceUrodzenia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ImieOjca" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ImieMatki" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NazwiskoRodowe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NazwiskoRodoweMatki" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IdAdresu1" Type="Int32" Nullable="false" />
+          <Property Name="IdAdresu1" Type="Int32" />
           <Property Name="IdAdresu2" Type="Int32" />
-          <Property Name="UrzadSkarbowy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DataZatrudnienia" Type="DateTime" Nullable="false" />
-          <Property Name="IdSposobuPlatnosci" Type="Int32" Nullable="false" />
-          <Property Name="WspolczynnikKosztow" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="WspolczynnikUlgi" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="KodPracy" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="UrzadSkarbowy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DataZatrudnienia" Type="DateTime" />
+          <Property Name="IdSposobuPlatnosci" Type="Int32" />
+          <Property Name="IdOddzialu" Type="Int32" />
           <Property Name="IdDaneKontaktowe" Type="Int32" />
           <Property Name="IdRachunkuBankowego" Type="Int32" />
           <Property Name="IdKategoriiPracy" Type="Int32" />
-          <Property Name="Stawka" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="RodzajUmowy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Stawka" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IdRodzajUmowy" Type="Int32" />
           <Property Name="CzyAktywny" Type="Boolean" />
           <Property Name="NazwaDodajacego" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DataDodania" Type="DateTime" />
@@ -1302,7 +1339,9 @@
           <NavigationProperty Name="Adres1" Relationship="Self.FK_Pracownik_Adres1" FromRole="Pracownik" ToRole="Adres" />
           <NavigationProperty Name="DaneKontaktowe" Relationship="Self.FK_Pracownik_DaneKontaktowe" FromRole="Pracownik" ToRole="DaneKontaktowe" />
           <NavigationProperty Name="KategoriaPracy" Relationship="Self.FK_Pracownik_KategoriaPracy" FromRole="Pracownik" ToRole="KategoriaPracy" />
-          <NavigationProperty Name="RachunekBankowy" Relationship="Self.FK_Pracownik_Pracownik" FromRole="Pracownik" ToRole="RachunekBankowy" />
+          <NavigationProperty Name="Oddzial" Relationship="Self.FK_Pracownik_Oddzial" FromRole="Pracownik" ToRole="Oddzial" />
+          <NavigationProperty Name="RachunekBankowy" Relationship="Self.FK_Pracownik_RachunekBankowy" FromRole="Pracownik" ToRole="RachunekBankowy" />
+          <NavigationProperty Name="RodzajUmowy" Relationship="Self.FK_Pracownik_RodzajUmowy" FromRole="Pracownik" ToRole="RodzajUmowy" />
           <NavigationProperty Name="SposobPlatnosci" Relationship="Self.FK_Pracownik_SposobPlatnosci" FromRole="Pracownik" ToRole="SposobPlatnosci" />
           <NavigationProperty Name="Wyplata" Relationship="Self.FK_Wyplata_Pracownik" FromRole="Pracownik" ToRole="Wyplata" />
         </EntityType>
@@ -1322,7 +1361,7 @@
           <Property Name="DataModyfikacji" Type="DateTime" />
           <Property Name="NazwaUsuwajacego" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DataUsuniecia" Type="DateTime" />
-          <NavigationProperty Name="Pracownik" Relationship="Self.FK_Pracownik_Pracownik" FromRole="RachunekBankowy" ToRole="Pracownik" />
+          <NavigationProperty Name="Pracownik" Relationship="Self.FK_Pracownik_RachunekBankowy" FromRole="RachunekBankowy" ToRole="Pracownik" />
         </EntityType>
         <EntityType Name="RodzajDokumentu">
           <Key>
@@ -1339,6 +1378,22 @@
           <Property Name="NazwaUsuwajacego" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DataUsuniecia" Type="DateTime" />
           <NavigationProperty Name="Magazyn" Relationship="Self.FK_Magazyn_RodzajDokumentu" FromRole="RodzajDokumentu" ToRole="Magazyn" />
+        </EntityType>
+        <EntityType Name="RodzajUmowy">
+          <Key>
+            <PropertyRef Name="IdRodzajuUmowy" />
+          </Key>
+          <Property Name="IdRodzajuUmowy" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Opis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CzyAktywny" Type="Boolean" Nullable="false" />
+          <Property Name="NazwaDodajacego" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DataDodania" Type="DateTime" />
+          <Property Name="NazwaModyfikujacego" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DataModyfikacji" Type="DateTime" />
+          <Property Name="NazwaUsuwajacego" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DataUsuniecia" Type="DateTime" />
+          <NavigationProperty Name="Pracownik" Relationship="Self.FK_Pracownik_RodzajUmowy" FromRole="RodzajUmowy" ToRole="Pracownik" />
         </EntityType>
         <EntityType Name="SposobPlatnosci">
           <Key>
@@ -1363,7 +1418,7 @@
             <PropertyRef Name="IdVat" />
           </Key>
           <Property Name="IdVat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Stawka" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Stawka" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="CzyAktywna" Type="Boolean" Nullable="false" />
           <Property Name="NazwaDodajacego" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DataDodania" Type="DateTime" />
@@ -1390,11 +1445,11 @@
           <Property Name="IdTowaru" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="KodTowaru" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="NrKatalogowy" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="IdGrupy" Type="Int32" Nullable="false" />
-          <Property Name="IdTypu" Type="Int32" Nullable="false" />
+          <Property Name="IdGrupy" Type="Int32" />
+          <Property Name="IdTypu" Type="Int32" />
           <Property Name="EAN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PKWiU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IdVat" Type="Int32" Nullable="false" />
+          <Property Name="IdVat" Type="Int32" />
           <Property Name="NazwaTowaru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IdKategoriiSprzedazy" Type="Int32" />
           <Property Name="IdKategoriiZakupu" Type="Int32" />
@@ -1404,8 +1459,6 @@
           <Property Name="EdycjaNazwy" Type="Boolean" />
           <Property Name="EdycjaOpisu" Type="Boolean" />
           <Property Name="IdWydawcy" Type="Int32" />
-          <Property Name="TypKosztu" Type="Boolean" />
-          <Property Name="KosztUslugi" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="PLU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NazwaUrzadzenia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CzyAktywny" Type="Boolean" />
@@ -1463,14 +1516,15 @@
             <PropertyRef Name="IdWyplaty" />
           </Key>
           <Property Name="IdWyplaty" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdPracownika" Type="Int32" Nullable="false" />
-          <Property Name="NumerDokumentu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdPracownika" Type="Int32" />
+          <Property Name="NumerDokumentu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TytulPrzelewu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Skrot" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rodzaj" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Potracenie" Type="Boolean" />
           <Property Name="PrzychodPPK" Type="Boolean" />
-          <Property Name="IdSposobuPlatnosci" Type="Int32" Nullable="false" />
-          <Property Name="ProcentWynagrodzenia" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IdSposobuPlatnosci" Type="Int32" />
+          <Property Name="ProcentWynagrodzenia" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="RodzajWynagrodzenia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="AutomatyczneKorygowanie" Type="Boolean" />
           <Property Name="Urlop" Type="Boolean" />
@@ -1486,11 +1540,10 @@
           <Property Name="SposobNaliczaniaZus" Type="Int32" />
           <Property Name="SposobNaliczaniaUbezpieczenie" Type="Int32" />
           <Property Name="WliczacWynagrodzenieUrlop" Type="Int32" />
-          <Property Name="StalaOkresowa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DodatekOkresowy" Type="Boolean" Nullable="false" />
+          <Property Name="DodatekOkresowy" Type="Boolean" />
           <Property Name="WliczanieZasilkuChorobowego" Type="Int32" />
           <Property Name="WliczanieEkwiwalentuUrlopu" Type="Int32" />
-          <Property Name="Zaokraglenie" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Zaokraglenie" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="SposobZaokraglenia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PrzyrownajNajnizsze" Type="Boolean" />
           <Property Name="UwzglednijDoplatyNadgodzin" Type="Boolean" />
@@ -1511,7 +1564,7 @@
           <Property Name="TypWyplatyWskaznikiem" Type="Boolean" />
           <Property Name="PozycjaERP7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IdOkresuWyplaty" Type="Int32" />
-          <Property Name="Kwota" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Kwota" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="CzyAktywny" Type="Boolean" Nullable="false" />
           <Property Name="NazwaDodajacego" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DataDodania" Type="DateTime" />
@@ -1548,7 +1601,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Pracownik_Adres">
-          <End Role="Adres" Type="Self.Adres" Multiplicity="1" />
+          <End Role="Adres" Type="Self.Adres" Multiplicity="0..1" />
           <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Adres">
@@ -1583,27 +1636,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_DaneKontaktowe_DaneKontaktowe">
-          <End Role="DaneKontaktowe" Type="Self.DaneKontaktowe" Multiplicity="1" />
-          <End Role="DaneKontaktowe1" Type="Self.DaneKontaktowe" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="DaneKontaktowe">
-              <PropertyRef Name="IdDaneKontaktowe" />
-            </Principal>
-            <Dependent Role="DaneKontaktowe1">
-              <PropertyRef Name="IdDaneKontaktowe" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Kontrahent_DaneKontaktowe">
-          <End Role="DaneKontaktowe" Type="Self.DaneKontaktowe" Multiplicity="1" />
-          <End Role="Kontrahent" Type="Self.Kontrahent" Multiplicity="0..1" />
+          <End Role="DaneKontaktowe" Type="Self.DaneKontaktowe" Multiplicity="0..1" />
+          <End Role="Kontrahent" Type="Self.Kontrahent" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DaneKontaktowe">
               <PropertyRef Name="IdDaneKontaktowe" />
             </Principal>
             <Dependent Role="Kontrahent">
-              <PropertyRef Name="IdKontrahenta" />
+              <PropertyRef Name="IdDaneKontaktowe" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1620,7 +1661,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Faktura_Kontrahent">
-          <End Role="Kontrahent" Type="Self.Kontrahent" Multiplicity="1" />
+          <End Role="Kontrahent" Type="Self.Kontrahent" Multiplicity="0..1" />
           <End Role="Faktura" Type="Self.Faktura" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Kontrahent">
@@ -1628,6 +1669,18 @@
             </Principal>
             <Dependent Role="Faktura">
               <PropertyRef Name="IdKontrahenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faktura_Oddzial">
+          <End Role="Oddzial" Type="Self.Oddzial" Multiplicity="0..1" />
+          <End Role="Faktura" Type="Self.Faktura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Oddzial">
+              <PropertyRef Name="IdOddzialu" />
+            </Principal>
+            <Dependent Role="Faktura">
+              <PropertyRef Name="IdOddzialu" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1656,7 +1709,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Towar_Grupa">
-          <End Role="Grupa" Type="Self.Grupa" Multiplicity="1" />
+          <End Role="Grupa" Type="Self.Grupa" Multiplicity="0..1" />
           <End Role="Towar" Type="Self.Towar" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Grupa">
@@ -1739,6 +1792,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Pracownik_Oddzial">
+          <End Role="Oddzial" Type="Self.Oddzial" Multiplicity="0..1" />
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Oddzial">
+              <PropertyRef Name="IdOddzialu" />
+            </Principal>
+            <Dependent Role="Pracownik">
+              <PropertyRef Name="IdOddzialu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Wyplata_OkresWyplaty">
           <End Role="OkresWyplaty" Type="Self.OkresWyplaty" Multiplicity="0..1" />
           <End Role="Wyplata" Type="Self.Wyplata" Multiplicity="*" />
@@ -1775,7 +1840,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Pracownik_Pracownik">
+        <Association Name="FK_Pracownik_RachunekBankowy">
           <End Role="RachunekBankowy" Type="Self.RachunekBankowy" Multiplicity="0..1" />
           <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1787,8 +1852,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Pracownik_RodzajUmowy">
+          <End Role="RodzajUmowy" Type="Self.RodzajUmowy" Multiplicity="0..1" />
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RodzajUmowy">
+              <PropertyRef Name="IdRodzajuUmowy" />
+            </Principal>
+            <Dependent Role="Pracownik">
+              <PropertyRef Name="IdRodzajUmowy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Pracownik_SposobPlatnosci">
-          <End Role="SposobPlatnosci" Type="Self.SposobPlatnosci" Multiplicity="1" />
+          <End Role="SposobPlatnosci" Type="Self.SposobPlatnosci" Multiplicity="0..1" />
           <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SposobPlatnosci">
@@ -1800,7 +1877,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Wyplata_Pracownik">
-          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="1" />
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="0..1" />
           <End Role="Wyplata" Type="Self.Wyplata" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Pracownik">
@@ -1812,7 +1889,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Wyplata_SposobPlatnosci">
-          <End Role="SposobPlatnosci" Type="Self.SposobPlatnosci" Multiplicity="1" />
+          <End Role="SposobPlatnosci" Type="Self.SposobPlatnosci" Multiplicity="0..1" />
           <End Role="Wyplata" Type="Self.Wyplata" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SposobPlatnosci">
@@ -1824,7 +1901,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Towar_StawkaVat">
-          <End Role="StawkaVat" Type="Self.StawkaVat" Multiplicity="1" />
+          <End Role="StawkaVat" Type="Self.StawkaVat" Multiplicity="0..1" />
           <End Role="Towar" Type="Self.Towar" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="StawkaVat">
@@ -1836,7 +1913,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Towar_Typ">
-          <End Role="Typ" Type="Self.Typ" Multiplicity="1" />
+          <End Role="Typ" Type="Self.Typ" Multiplicity="0..1" />
           <End Role="Towar" Type="Self.Towar" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Typ">
@@ -1876,6 +1953,7 @@
           <EntitySet Name="Pracownik" EntityType="Self.Pracownik" />
           <EntitySet Name="RachunekBankowy" EntityType="Self.RachunekBankowy" />
           <EntitySet Name="RodzajDokumentu" EntityType="Self.RodzajDokumentu" />
+          <EntitySet Name="RodzajUmowy" EntityType="Self.RodzajUmowy" />
           <EntitySet Name="SposobPlatnosci" EntityType="Self.SposobPlatnosci" />
           <EntitySet Name="StawkaVat" EntityType="Self.StawkaVat" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
@@ -1903,10 +1981,6 @@
             <End Role="Towar" EntitySet="Towar" />
             <End Role="Cena" EntitySet="Cena" />
           </AssociationSet>
-          <AssociationSet Name="FK_DaneKontaktowe_DaneKontaktowe" Association="Self.FK_DaneKontaktowe_DaneKontaktowe">
-            <End Role="DaneKontaktowe" EntitySet="DaneKontaktowe" />
-            <End Role="DaneKontaktowe1" EntitySet="DaneKontaktowe" />
-          </AssociationSet>
           <AssociationSet Name="FK_Kontrahent_DaneKontaktowe" Association="Self.FK_Kontrahent_DaneKontaktowe">
             <End Role="DaneKontaktowe" EntitySet="DaneKontaktowe" />
             <End Role="Kontrahent" EntitySet="Kontrahent" />
@@ -1917,6 +1991,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Faktura_Kontrahent" Association="Self.FK_Faktura_Kontrahent">
             <End Role="Kontrahent" EntitySet="Kontrahent" />
+            <End Role="Faktura" EntitySet="Faktura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faktura_Oddzial" Association="Self.FK_Faktura_Oddzial">
+            <End Role="Oddzial" EntitySet="Oddzial" />
             <End Role="Faktura" EntitySet="Faktura" />
           </AssociationSet>
           <AssociationSet Name="FK_Faktura_SposobPlatnosci" Association="Self.FK_Faktura_SposobPlatnosci">
@@ -1955,6 +2033,10 @@
             <End Role="Magazyn" EntitySet="Magazyn" />
             <End Role="PozycjaMagazynu" EntitySet="PozycjaMagazynu" />
           </AssociationSet>
+          <AssociationSet Name="FK_Pracownik_Oddzial" Association="Self.FK_Pracownik_Oddzial">
+            <End Role="Oddzial" EntitySet="Oddzial" />
+            <End Role="Pracownik" EntitySet="Pracownik" />
+          </AssociationSet>
           <AssociationSet Name="FK_Wyplata_OkresWyplaty" Association="Self.FK_Wyplata_OkresWyplaty">
             <End Role="OkresWyplaty" EntitySet="OkresWyplaty" />
             <End Role="Wyplata" EntitySet="Wyplata" />
@@ -1967,8 +2049,12 @@
             <End Role="Towar" EntitySet="Towar" />
             <End Role="PozycjaMagazynu" EntitySet="PozycjaMagazynu" />
           </AssociationSet>
-          <AssociationSet Name="FK_Pracownik_Pracownik" Association="Self.FK_Pracownik_Pracownik">
+          <AssociationSet Name="FK_Pracownik_RachunekBankowy" Association="Self.FK_Pracownik_RachunekBankowy">
             <End Role="RachunekBankowy" EntitySet="RachunekBankowy" />
+            <End Role="Pracownik" EntitySet="Pracownik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pracownik_RodzajUmowy" Association="Self.FK_Pracownik_RodzajUmowy">
+            <End Role="RodzajUmowy" EntitySet="RodzajUmowy" />
             <End Role="Pracownik" EntitySet="Pracownik" />
           </AssociationSet>
           <AssociationSet Name="FK_Pracownik_SposobPlatnosci" Association="Self.FK_Pracownik_SposobPlatnosci">
@@ -2037,6 +2123,9 @@
                 <ScalarProperty Name="Marza" ColumnName="Marza" />
                 <ScalarProperty Name="Zaokraglenie" ColumnName="Zaokraglenie" />
                 <ScalarProperty Name="Offset" ColumnName="Offset" />
+                <ScalarProperty Name="CenaNetto" ColumnName="CenaNetto" />
+                <ScalarProperty Name="CenaBrutto" ColumnName="CenaBrutto" />
+                <ScalarProperty Name="Waluta" ColumnName="Waluta" />
                 <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
                 <ScalarProperty Name="NazwaDodajacego" ColumnName="NazwaDodajacego" />
                 <ScalarProperty Name="DataDodania" ColumnName="DataDodania" />
@@ -2051,8 +2140,6 @@
             <EntityTypeMapping TypeName="KsiegarniaModel.DaneKontaktowe">
               <MappingFragment StoreEntitySet="DaneKontaktowe">
                 <ScalarProperty Name="IdDaneKontaktowe" ColumnName="IdDaneKontaktowe" />
-                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
-                <ScalarProperty Name="Opis" ColumnName="Opis" />
                 <ScalarProperty Name="TelefonKomorkowy" ColumnName="TelefonKomorkowy" />
                 <ScalarProperty Name="TelefonDomowy" ColumnName="TelefonDomowy" />
                 <ScalarProperty Name="Email1" ColumnName="Email1" />
@@ -2074,15 +2161,14 @@
                 <ScalarProperty Name="IdFaktury" ColumnName="IdFaktury" />
                 <ScalarProperty Name="NumerFaktury" ColumnName="NumerFaktury" />
                 <ScalarProperty Name="IdKontrahenta" ColumnName="IdKontrahenta" />
+                <ScalarProperty Name="IdOddzialu" ColumnName="IdOddzialu" />
                 <ScalarProperty Name="DataWystawienia" ColumnName="DataWystawienia" />
                 <ScalarProperty Name="DataPrzyjecia" ColumnName="DataPrzyjecia" />
                 <ScalarProperty Name="PoTerminie" ColumnName="PoTerminie" />
                 <ScalarProperty Name="TypCeny" ColumnName="TypCeny" />
-                <ScalarProperty Name="Rabat" ColumnName="Rabat" />
                 <ScalarProperty Name="DataPlatnosci" ColumnName="DataPlatnosci" />
                 <ScalarProperty Name="Zadluzenie" ColumnName="Zadluzenie" />
                 <ScalarProperty Name="IdSposobuPlatnosci" ColumnName="IdSposobuPlatnosci" />
-                <ScalarProperty Name="DataZaksiegowania" ColumnName="DataZaksiegowania" />
                 <ScalarProperty Name="Netto" ColumnName="Netto" />
                 <ScalarProperty Name="Brutto" ColumnName="Brutto" />
                 <ScalarProperty Name="Zaplacono" ColumnName="Zaplacono" />
@@ -2181,7 +2267,6 @@
                 <ScalarProperty Name="DataWplywu" ColumnName="DataWplywu" />
                 <ScalarProperty Name="DataPrzyjecia" ColumnName="DataPrzyjecia" />
                 <ScalarProperty Name="TypCeny" ColumnName="TypCeny" />
-                <ScalarProperty Name="Rabat" ColumnName="Rabat" />
                 <ScalarProperty Name="Netto" ColumnName="Netto" />
                 <ScalarProperty Name="Razem" ColumnName="Razem" />
                 <ScalarProperty Name="WartoscMPP" ColumnName="WartoscMPP" />
@@ -2237,7 +2322,6 @@
                 <ScalarProperty Name="IdTowaru" ColumnName="IdTowaru" />
                 <ScalarProperty Name="Ilosc" ColumnName="Ilosc" />
                 <ScalarProperty Name="CenaPoczatkowa" ColumnName="CenaPoczatkowa" />
-                <ScalarProperty Name="Rabat" ColumnName="Rabat" />
                 <ScalarProperty Name="Cena" ColumnName="Cena" />
                 <ScalarProperty Name="Wartosc" ColumnName="Wartosc" />
                 <ScalarProperty Name="CzyAktywna" ColumnName="CzyAktywna" />
@@ -2259,7 +2343,6 @@
                 <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
                 <ScalarProperty Name="Ilosc" ColumnName="Ilosc" />
                 <ScalarProperty Name="CenaPoczatkowa" ColumnName="CenaPoczatkowa" />
-                <ScalarProperty Name="Rabat" ColumnName="Rabat" />
                 <ScalarProperty Name="Cena" ColumnName="Cena" />
                 <ScalarProperty Name="Wartosc" ColumnName="Wartosc" />
                 <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
@@ -2293,14 +2376,12 @@
                 <ScalarProperty Name="UrzadSkarbowy" ColumnName="UrzadSkarbowy" />
                 <ScalarProperty Name="DataZatrudnienia" ColumnName="DataZatrudnienia" />
                 <ScalarProperty Name="IdSposobuPlatnosci" ColumnName="IdSposobuPlatnosci" />
-                <ScalarProperty Name="WspolczynnikKosztow" ColumnName="WspolczynnikKosztow" />
-                <ScalarProperty Name="WspolczynnikUlgi" ColumnName="WspolczynnikUlgi" />
-                <ScalarProperty Name="KodPracy" ColumnName="KodPracy" />
+                <ScalarProperty Name="IdOddzialu" ColumnName="IdOddzialu" />
                 <ScalarProperty Name="IdDaneKontaktowe" ColumnName="IdDaneKontaktowe" />
                 <ScalarProperty Name="IdRachunkuBankowego" ColumnName="IdRachunkuBankowego" />
                 <ScalarProperty Name="IdKategoriiPracy" ColumnName="IdKategoriiPracy" />
                 <ScalarProperty Name="Stawka" ColumnName="Stawka" />
-                <ScalarProperty Name="RodzajUmowy" ColumnName="RodzajUmowy" />
+                <ScalarProperty Name="IdRodzajUmowy" ColumnName="IdRodzajUmowy" />
                 <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
                 <ScalarProperty Name="NazwaDodajacego" ColumnName="NazwaDodajacego" />
                 <ScalarProperty Name="DataDodania" ColumnName="DataDodania" />
@@ -2335,6 +2416,22 @@
                 <ScalarProperty Name="IdRodzajuDokumentu" ColumnName="IdRodzajuDokumentu" />
                 <ScalarProperty Name="Kod" ColumnName="Kod" />
                 <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+                <ScalarProperty Name="NazwaDodajacego" ColumnName="NazwaDodajacego" />
+                <ScalarProperty Name="DataDodania" ColumnName="DataDodania" />
+                <ScalarProperty Name="NazwaModyfikujacego" ColumnName="NazwaModyfikujacego" />
+                <ScalarProperty Name="DataModyfikacji" ColumnName="DataModyfikacji" />
+                <ScalarProperty Name="NazwaUsuwajacego" ColumnName="NazwaUsuwajacego" />
+                <ScalarProperty Name="DataUsuniecia" ColumnName="DataUsuniecia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RodzajUmowy">
+            <EntityTypeMapping TypeName="KsiegarniaModel.RodzajUmowy">
+              <MappingFragment StoreEntitySet="RodzajUmowy">
+                <ScalarProperty Name="IdRodzajuUmowy" ColumnName="IdRodzajuUmowy" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
                 <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
                 <ScalarProperty Name="NazwaDodajacego" ColumnName="NazwaDodajacego" />
                 <ScalarProperty Name="DataDodania" ColumnName="DataDodania" />
@@ -2407,8 +2504,6 @@
                 <ScalarProperty Name="EdycjaNazwy" ColumnName="EdycjaNazwy" />
                 <ScalarProperty Name="EdycjaOpisu" ColumnName="EdycjaOpisu" />
                 <ScalarProperty Name="IdWydawcy" ColumnName="IdWydawcy" />
-                <ScalarProperty Name="TypKosztu" ColumnName="TypKosztu" />
-                <ScalarProperty Name="KosztUslugi" ColumnName="KosztUslugi" />
                 <ScalarProperty Name="PLU" ColumnName="PLU" />
                 <ScalarProperty Name="NazwaUrzadzenia" ColumnName="NazwaUrzadzenia" />
                 <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
@@ -2462,6 +2557,7 @@
                 <ScalarProperty Name="NumerDokumentu" ColumnName="NumerDokumentu" />
                 <ScalarProperty Name="TytulPrzelewu" ColumnName="TytulPrzelewu" />
                 <ScalarProperty Name="Skrot" ColumnName="Skrot" />
+                <ScalarProperty Name="Rodzaj" ColumnName="Rodzaj" />
                 <ScalarProperty Name="Potracenie" ColumnName="Potracenie" />
                 <ScalarProperty Name="PrzychodPPK" ColumnName="PrzychodPPK" />
                 <ScalarProperty Name="IdSposobuPlatnosci" ColumnName="IdSposobuPlatnosci" />
@@ -2481,7 +2577,6 @@
                 <ScalarProperty Name="SposobNaliczaniaZus" ColumnName="SposobNaliczaniaZus" />
                 <ScalarProperty Name="SposobNaliczaniaUbezpieczenie" ColumnName="SposobNaliczaniaUbezpieczenie" />
                 <ScalarProperty Name="WliczacWynagrodzenieUrlop" ColumnName="WliczacWynagrodzenieUrlop" />
-                <ScalarProperty Name="StalaOkresowa" ColumnName="StalaOkresowa" />
                 <ScalarProperty Name="DodatekOkresowy" ColumnName="DodatekOkresowy" />
                 <ScalarProperty Name="WliczanieZasilkuChorobowego" ColumnName="WliczanieZasilkuChorobowego" />
                 <ScalarProperty Name="WliczanieEkwiwalentuUrlopu" ColumnName="WliczanieEkwiwalentuUrlopu" />

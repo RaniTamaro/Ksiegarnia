@@ -1,25 +1,103 @@
-﻿using Firma.Models.Entities;
+﻿using Firma.Helpers;
+using Firma.Models.Entities;
+using Firma.Models.EntitiesForView;
+using Firma.Models.Validators;
 using Firma.ViewModels.Abstract;
 using Firma.ViewResources;
+using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Firma.ViewModels
 {
-    public class NowaWyplataViewModel : NowyElementViewModel<Wyplata>
+    public class NowaWyplataViewModel : NowyElementViewModel<Wyplata>, IDataErrorInfo
     {
+        #region Command
+        private BaseCommand _ShowPracownicyCommand;
+        public ICommand ShowPracownicyCommand
+        {
+            get
+            {
+                if (_ShowPracownicyCommand == null)
+                {
+                    _ShowPracownicyCommand = new BaseCommand(() => showPracownicy());
+                }
+
+                return _ShowPracownicyCommand;
+            }
+        }
+
+        private void showPracownicy()
+        {
+            Messenger.Default.Send("PracownicyAll");
+        }
+        #endregion
+
         #region Konstruktor
         public NowaWyplataViewModel()
             :base(GlobalResources.Wyplata)
         {
             Item = new Wyplata();
+            Messenger.Default.Register<PracownicyForAllView>(this, getWybranyPracownik);
+            setInformation();
         }
         #endregion
 
         #region Properties
+        public int? IdPracownika
+        {
+            get
+            {
+                return Item.IdPracownika;
+            }
+            set
+            {
+                if (value != Item.IdPracownika)
+                {
+                    Item.IdPracownika = value;
+                    base.OnPropertyChanged(() => IdPracownika);
+                }
+            }
+        }
+
+        private string _DanePracownika;
+        public string DanePracownika
+        {
+            get
+            {
+                return _DanePracownika;
+            }
+            set
+            {
+                if (value != _DanePracownika)
+                {
+                    _DanePracownika = value;
+                    base.OnPropertyChanged(() => DanePracownika);
+                }
+            }
+        }
+
+        public string NumerDokumentu
+        {
+            get
+            {
+                return Item.NumerDokumentu;
+            }
+            set
+            {
+                if (value != Item.NumerDokumentu)
+                {
+                    Item.NumerDokumentu = value;
+                    base.OnPropertyChanged(() => NumerDokumentu);
+                }
+            }
+        }
+
         public string TytulPrzelewu
         {
             get
@@ -84,7 +162,23 @@ namespace Firma.ViewModels
             }
         }
 
-        public int IdSposobuPlatnosci
+        public IQueryable<KeyAndValue> SposobPlatnosciComboboxItems
+        {
+            get
+            {
+                return Db.SposobPlatnosci
+                    .Where(x => x.CzyAktywny == true)
+                    .Select(sposob =>
+                        new KeyAndValue
+                        {
+                            Key = sposob.IdSposobuPlatnosci,
+                            Value = sposob.Nazwa
+                        }
+                    ).ToList().AsQueryable();
+            }
+        }
+
+        public int? IdSposobuPlatnosci
         {
             get
             {
@@ -113,6 +207,14 @@ namespace Firma.ViewModels
                     Item.ProcentWynagrodzenia = value;
                     base.OnPropertyChanged(() => ProcentWynagrodzenia);
                 }
+            }
+        }
+
+        public IQueryable RodzajWyplatyComboboxItems
+        {
+            get
+            {
+                return Enum.GetValues(typeof(Tools.Constants.RodzajWyplaty)).AsQueryable();
             }
         }
 
@@ -356,39 +458,7 @@ namespace Firma.ViewModels
             }
         }
 
-        public string StalaOkresowa
-        {
-            get
-            {
-                return Item.StalaOkresowa;
-            }
-            set
-            {
-                if (value != Item.StalaOkresowa)
-                {
-                    Item.StalaOkresowa = value;
-                    base.OnPropertyChanged(() => StalaOkresowa);
-                }
-            }
-        }
-
-        public int? IdOkresuWyplaty
-        {
-            get
-            {
-                return Item.IdOkresuWyplaty;
-            }
-            set
-            {
-                if (value != Item.IdOkresuWyplaty)
-                {
-                    Item.IdOkresuWyplaty = value;
-                    base.OnPropertyChanged(() => IdOkresuWyplaty);
-                }
-            }
-        }
-
-        public bool DodatekOkresowy
+        public bool? DodatekOkresowy
         {
             get
             {
@@ -620,6 +690,7 @@ namespace Firma.ViewModels
             }
             set
             {
+
                 if (value != Item.WskazZUSJakoWyplacany)
                 {
                     Item.WskazZUSJakoWyplacany = value;
@@ -756,7 +827,55 @@ namespace Firma.ViewModels
             }
         }
 
-        public string NazwaDodajacego
+        public IQueryable<KeyAndValue> OkresWyplatyComboboxItems
+        {
+            get
+            {
+                return Db.OkresWyplaty
+                    .Where(x => x.CzyAktywny == true)
+                    .Select(sposob =>
+                        new KeyAndValue
+                        {
+                            Key = sposob.IdOkresuWyplaty,
+                            Value = sposob.Nazwa
+                        }
+                    ).ToList().AsQueryable();
+            }
+        }
+
+        public int? IdOkresuWyplaty
+        {
+            get
+            {
+                return Item.IdOkresuWyplaty;
+            }
+            set
+            {
+                if (value != Item.IdOkresuWyplaty)
+                {
+                    Item.IdOkresuWyplaty = value;
+                    base.OnPropertyChanged(() => IdOkresuWyplaty);
+                }
+            }
+        }
+
+        public decimal Kwota
+        {
+            get
+            {
+                return Item.Kwota;
+            }
+            set
+            {
+                if (value != Item.Kwota)
+                {
+                    Item.Kwota = value;
+                    base.OnPropertyChanged(() => Kwota);
+                }
+            }
+        }
+
+        public override string NazwaDodajacego
         {
             get
             {
@@ -772,7 +891,7 @@ namespace Firma.ViewModels
             }
         }
 
-        public DateTime? DataDodania
+        public override DateTime? DataDodania
         {
             get
             {
@@ -788,7 +907,7 @@ namespace Firma.ViewModels
             }
         }
 
-        public string NazwaModyfikujacego
+        public override string NazwaModyfikujacego
         {
             get
             {
@@ -804,7 +923,7 @@ namespace Firma.ViewModels
             }
         }
 
-        public DateTime? DataModyfikacji
+        public override DateTime? DataModyfikacji
         {
             get
             {
@@ -824,7 +943,90 @@ namespace Firma.ViewModels
         #region Helpers
         public override void Save()
         {
-            throw new NotImplementedException();
+            Item.CzyAktywny = true;
+            Db.Wyplata.AddObject(Item);
+            Db.SaveChanges();
+        }
+
+        private void setInformation()
+        {
+            Potracenie = false;
+            PrzychodPPK = false;
+            AutomatyczneKorygowanie = false;
+            Urlop = false;
+            ZwolnienieLekarskie = false;
+            NieobecnoscUsprawiedliwiona = false;
+            NieobecnoscNieusprawiedliwiona = false;
+            OdchylekNormy = false;
+            PomniejszenieZwolnienie = false;
+            NaliczajUlge = false;
+            DodatekOkresowy = false;
+            PrzyrownajNajnizsze = false;
+            UwzglednijDoplatyNadgodzin = false;
+            WplywaNaWyplate = false;
+            WplywaNaZaliczkePodatku = false;
+            WliczajWynagrodzeniePFRON = false;
+            StanowiKosztPracownika = false;
+            OpisAnalitycznyZgodny = false;
+            NieZapisujZerowychElementow = false;
+            DoliczanyPoOgraniczeniuPotracen = false;
+            WskazZUSJakoWyplacany = false;
+            TypWyplatyWskaznikiem = false;
+            SetAddedInformation();
+        }
+
+        private void getWybranyPracownik(PracownicyForAllView pracownik)
+        {
+            IdPracownika = pracownik.IdPracownika;
+            DanePracownika = pracownik.Nazwisko + " " +
+                pracownik.Imie + " " +
+                pracownik.PeselPracownika + "\t Adres: " +
+                pracownik.AdresGlowny;
+            Kwota = pracownik.Stawka != null ? (decimal)pracownik.Stawka : 0;
+        }
+        #endregion
+
+        #region Validation
+        public string Error
+        {
+            get
+            {
+                return null;
+            }
+        }
+
+        public string this[string name]
+        {
+            get
+            {
+                string komunikat = null;
+                if (name == "TytulPrzelewu")
+                {
+                    komunikat = BussinessValidator.SprawdzUzupelnienie(TytulPrzelewu) == null ? StringValidator.SprawdzCzyZaczynaSieOdDuzej(TytulPrzelewu) : BussinessValidator.SprawdzUzupelnienie(TytulPrzelewu);
+                }
+
+                if (name == "Kwota")
+                {
+                    komunikat = BussinessValidator.SprawdzUzupelnienie(Kwota) == null ? BussinessValidator.SprawdzNieujemnosc(Kwota) : BussinessValidator.SprawdzUzupelnienie(Kwota);
+                }
+
+                if (name == "Zaokraglenie")
+                {
+                    komunikat = BussinessValidator.SprawdzNieujemnosc(Zaokraglenie);
+                }
+
+                return komunikat;
+            }
+        }
+
+        public override bool IsValid()
+        {
+            if (this["TytulPrzelewu"] == null && this["Kwota"] == null)
+            {
+                return true;
+            }
+
+            return false;
         }
         #endregion
     }

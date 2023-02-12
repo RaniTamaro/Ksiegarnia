@@ -1,4 +1,6 @@
-﻿using Firma.Helpers;
+﻿using AutoMapper;
+using Firma.Helpers;
+using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,7 +18,16 @@ namespace Firma.ViewModels
 {
     public class MainWindowViewModel : BaseViewModel
     {
+        #region Kontruktor
+        public MainWindowViewModel(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
+        #endregion
+
         #region Pola i Wlasciwosci
+        private IMapper _mapper;
+
         private int _szerokoscKolumnyMenu = 35;
         private bool _dostepnoscPrzycisku = true;
 
@@ -72,7 +83,7 @@ namespace Firma.ViewModels
         {
             get
             {
-                return new BaseCommand(() => createView(new NowaFakturaViewModel()));
+                return new BaseCommand(() => createView(new NowaFakturaViewModel(_mapper)));
             }
         }
         public ICommand FakturyCommand
@@ -143,7 +154,7 @@ namespace Firma.ViewModels
         {
             get
             {
-                return new BaseCommand(() => createView(new PrzyjecieViewModel()));
+                return new BaseCommand(() => createView(new PrzyjecieViewModel(_mapper)));
             }
         }
 
@@ -159,7 +170,7 @@ namespace Firma.ViewModels
         {
             get
             {
-                return new BaseCommand(() => createView(new WydanieViewModel()));
+                return new BaseCommand(() => createView(new WydanieViewModel(_mapper)));
             }
         }
 
@@ -255,7 +266,7 @@ namespace Firma.ViewModels
         {
             get
             {
-                return new BaseCommand(() => createView(new RaportSprzedazyViewModel()));
+                return new BaseCommand(showRaportSprzedazy);
             }
         }
 
@@ -263,7 +274,15 @@ namespace Firma.ViewModels
         {
             get
             {
-                return new BaseCommand(() => createView(new KosztyPracowniczeViewModel()));
+                return new BaseCommand(showKosztyPracownicze);
+            }
+        }
+
+        public ICommand RaportPrzyjecWydanCommand
+        {
+            get
+            {
+                return new BaseCommand(showRaportPrzyjecWydan);
             }
         }
 
@@ -293,13 +312,14 @@ namespace Firma.ViewModels
 
         private List<CommandViewModel> CreateCommands()
         {
+            Messenger.Default.Register<string>(this, open);
             return new List<CommandViewModel>
             {
                 new CommandViewModel("IconNowyTowar.png","Dodaj Towar",new BaseCommand(()=>createView(new NowyTowarViewModel()))),
-                new CommandViewModel("IconPrzyjecie.png","Nowe Przyjęcie",new BaseCommand(()=>createView(new PrzyjecieViewModel()))),
-                new CommandViewModel("IconWydanie.png","Nowe Wydanie",new BaseCommand(()=>createView(new WydanieViewModel()))),
+                new CommandViewModel("IconPrzyjecie.png","Nowe Przyjęcie",new BaseCommand(()=>createView(new PrzyjecieViewModel(_mapper)))),
+                new CommandViewModel("IconWydanie.png","Nowe Wydanie",new BaseCommand(()=>createView(new WydanieViewModel(_mapper)))),
                 new CommandViewModel("IconPracownicy.png","Pracownicy",new BaseCommand(showAllPracownicy)),
-                new CommandViewModel("IconNowaFaktura.png","Dodaj Fakturę",new BaseCommand(()=>createView(new NowaFakturaViewModel()))),
+                new CommandViewModel("IconNowaFaktura.png","Dodaj Fakturę",new BaseCommand(()=>createView(new NowaFakturaViewModel(_mapper)))),
                 new CommandViewModel("IconFaktury.png","Wyświetl Faktury",new BaseCommand(showAllFaktury)),
                 new CommandViewModel("IconZamknij.png","Zamknij",new BaseCommand(closeWindow))
             };
@@ -508,6 +528,42 @@ namespace Firma.ViewModels
             this.setActiveWorkspace(workspace);
         }
 
+        private void showRaportSprzedazy()
+        {
+            RaportSprzedazyViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is RaportSprzedazyViewModel) as RaportSprzedazyViewModel;
+            if (workspace == null)
+            {
+                workspace = new RaportSprzedazyViewModel();
+                this.Workspaces.Add(workspace);
+            }
+
+            this.setActiveWorkspace(workspace);
+        }
+
+        private void showKosztyPracownicze()
+        {
+            KosztyPracowniczeViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is KosztyPracowniczeViewModel) as KosztyPracowniczeViewModel;
+            if (workspace == null)
+            {
+                workspace = new KosztyPracowniczeViewModel();
+                this.Workspaces.Add(workspace);
+            }
+
+            this.setActiveWorkspace(workspace);
+        }
+
+        private void showRaportPrzyjecWydan()
+        {
+            RaportPrzyjecWydanViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is RaportPrzyjecWydanViewModel) as RaportPrzyjecWydanViewModel;
+            if (workspace == null)
+            {
+                workspace = new RaportPrzyjecWydanViewModel();
+                this.Workspaces.Add(workspace);
+            }
+
+            this.setActiveWorkspace(workspace);
+        }
+
         private void closeWindow()
         {
             App.Current.Shutdown();
@@ -520,6 +576,100 @@ namespace Firma.ViewModels
             if (collectionView != null) 
                 collectionView.MoveCurrentTo(workspace); 
         }
+
+        private void open(string name)
+        {
+            if (name == "TowaryAdd")
+            {
+                createView(new NowyTowarViewModel());
+            }
+
+            if (name == "FakturyAdd")
+            {
+                createView(new NowaFakturaViewModel(_mapper));
+            }
+
+            if (name == "KontrahenciAdd")
+            {
+                createView(new NowyKontrahentViewModel());
+            }
+
+            if (name == "PrzyjęciaAdd")
+            {
+                createView(new PrzyjecieViewModel(_mapper));
+            }
+
+            if (name == "WydaniaAdd")
+            {
+                createView(new WydanieViewModel(_mapper));
+            }
+
+            if (name == "PracownicyAdd")
+            {
+                createView(new NowyPracownikViewModel());
+            }
+
+            if (name == "WypłatyAdd")
+            {
+                createView(new NowaWyplataViewModel());  
+            }
+
+            if (name == "WydawcyAdd")
+            {
+                createView(new NowyWydawcaViewModel());
+            }
+
+            if (name == "GrupyAdd")
+            {
+                createView(new NowaGrupaViewModel());
+            }
+
+            if (name == "OddziałyAdd")
+            {
+                createView(new NowyOddzialViewModel());
+            }
+
+            if (name == "KategorieAdd")
+            {
+                createView(new NowaKategoriaTowaruViewModel());
+            }
+
+            if (name == "Kategorie PracyAdd")
+            {
+                createView(new NowaKategoriaPracyViewModel());
+            }
+
+            if (name == "GrupyAll")
+            {
+                showAllGrupy();
+            }
+
+            if (name == "WydawcyAll")
+            {
+                showAllWydawcy();
+            }
+
+            if (name == "OddziałyAll")
+            {
+                showAllOddzialy();
+            }
+
+            if (name == "KontrahenciAll")
+            {
+                showAllKontrahenci();
+            }
+
+            if (name == "PracownicyAll")
+            {
+                showAllPracownicy();
+            }
+
+            if (name == "TowaryAll")
+            {
+                showAllTowar();
+            }
+        }
         #endregion
+
     }
 }

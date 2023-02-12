@@ -15,6 +15,7 @@ namespace Firma.ViewModels
             : base("Typ")
         {
             Item = new Typ();
+            SetAddedInformation();
         }
         #endregion
 
@@ -50,13 +51,76 @@ namespace Firma.ViewModels
                 }
             }
         }
+
+        public override string NazwaDodajacego
+        {
+            get
+            {
+                return Item.NazwaDodajacego;
+            }
+            set
+            {
+                if (value != Item.NazwaDodajacego)
+                {
+                    Item.NazwaDodajacego = value;
+                    base.OnPropertyChanged(() => NazwaDodajacego);
+                }
+            }
+        }
+
+        public override DateTime? DataDodania
+        {
+            get
+            {
+                return Item.DataDodania;
+            }
+            set
+            {
+                if (value != Item.DataDodania)
+                {
+                    Item.DataDodania = value;
+                    base.OnPropertyChanged(() => DataDodania);
+                }
+            }
+        }
+
+        public override string NazwaModyfikujacego
+        {
+            get
+            {
+                return Item.NazwaModyfikujacego;
+            }
+            set
+            {
+                if (value != Item.NazwaModyfikujacego)
+                {
+                    Item.NazwaModyfikujacego = value;
+                    base.OnPropertyChanged(() => NazwaModyfikujacego);
+                }
+            }
+        }
+
+        public override DateTime? DataModyfikacji
+        {
+            get
+            {
+                return Item.DataModyfikacji;
+            }
+            set
+            {
+                if (value != Item.DataModyfikacji)
+                {
+                    Item.DataModyfikacji = value;
+                    base.OnPropertyChanged(() => DataModyfikacji);
+                }
+            }
+        }
         #endregion
 
         #region Helpers
         public override void Save()
         {
             Item.CzyAktywny = true;
-            Item.NazwaDodajacego = Environment.UserName;
             Db.Typ.AddObject(Item);
             Db.SaveChanges();
         }

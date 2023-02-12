@@ -1,22 +1,75 @@
-﻿using Firma.Models.Entities;
+﻿using Firma.Helpers;
+using Firma.Models.Entities;
+using Firma.Models.EntitiesForView;
+using Firma.Models.Validators;
+using Firma.Tools.Constants;
 using Firma.ViewModels.Abstract;
 using Firma.ViewResources;
+using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Data;
+using System.Data.Objects.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Firma.ViewModels
 {
-    internal class NowyTowarViewModel : NowyElementViewModel<Towar>
+    public class NowyTowarViewModel : NowyElementViewModel<Towar>, IDataErrorInfo
     {
+        #region Command
+        private BaseCommand _ShowWydawcyCommand;
+        public ICommand ShowWydawcyCommand
+        {
+            get
+            {
+                if (_ShowWydawcyCommand == null)
+                {
+                    _ShowWydawcyCommand = new BaseCommand(() => showWydawcy());
+                }
+
+                return _ShowWydawcyCommand;
+            }
+        }
+
+        private BaseCommand _ShowGrupyCommand;
+        public ICommand ShowGrupyCommand
+        {
+            get
+            {
+                if (_ShowGrupyCommand == null)
+                {
+                    _ShowGrupyCommand = new BaseCommand(() => showGrupy());
+                }
+
+                return _ShowGrupyCommand;
+            }
+        }
+
+        private void showWydawcy()
+        {
+            Messenger.Default.Send("WydawcyAll");
+        }
+
+        private void showGrupy()
+        {
+            Messenger.Default.Send("GrupyAll");
+        }
+        #endregion
+
         #region Konstruktor
         public NowyTowarViewModel()
             :base("Towar")
         {
             Item = new Towar();
+            Messenger.Default.Register<Wydawca>(this, getWybranyWydawca);
+            Messenger.Default.Register<Grupa>(this, getWybranaGrupa);
+            setInformation();
         }
         #endregion
 
@@ -53,7 +106,25 @@ namespace Firma.ViewModels
             }
         }
 
-        public int IdGrupy
+        private string _GrupaNazwa;
+        public string GrupaNazwa
+        {
+            get
+            {
+                return _GrupaNazwa;
+            }
+
+            set
+            {
+                if (value != _GrupaNazwa)
+                {
+                    _GrupaNazwa = value;
+                    base.OnPropertyChanged(() => GrupaNazwa);
+                }
+            }
+        }
+
+        public int? IdGrupy
         {
             get
             {
@@ -69,7 +140,23 @@ namespace Firma.ViewModels
             }
         }
 
-        public int IdTypu
+        public IQueryable<KeyAndValue> TypComboboxItems
+        {
+            get
+            {
+                return Db.Typ
+                    .Where(x => x.CzyAktywny == true)
+                    .Select(typ =>
+                        new KeyAndValue
+                        {
+                            Key = typ.IdTypu,
+                            Value = typ.Zlozonosc
+                        }
+                    ).ToList().AsQueryable();
+            }
+        }
+
+        public int? IdTypu
         {
             get
             {
@@ -117,7 +204,23 @@ namespace Firma.ViewModels
             }
         }
 
-        public int IdVat
+        public IQueryable<KeyAndValue> StawkaVatComboboxItems
+        {
+            get
+            {
+                return Db.StawkaVat
+                    .Where(x => x.CzyAktywna == true)
+                    .Select(vat =>
+                        new KeyAndValue
+                        {
+                            Key = vat.IdVat,
+                            Value = SqlFunctions.StringConvert(vat.Stawka).Trim()+"%"
+                        }
+                    ).ToList().AsQueryable();
+            }
+        }
+
+        public int? IdVat
         {
             get
             {
@@ -146,6 +249,22 @@ namespace Firma.ViewModels
                     Item.NazwaTowaru = value;
                     base.OnPropertyChanged(() => NazwaTowaru);
                 }
+            }
+        }
+
+        public IQueryable<KeyAndValue> KategoriaComboboxItems
+        {
+            get
+            {
+                return Db.KategoriaTowaru
+                    .Where(x => x.CzyAktywny == true)
+                    .Select(kategoria =>
+                        new KeyAndValue
+                        {
+                            Key = kategoria.IdKategoriiTowaru,
+                            Value = kategoria.Nazwa
+                        }
+                    ).ToList().AsQueryable();
             }
         }
 
@@ -277,34 +396,20 @@ namespace Firma.ViewModels
             }
         }
 
-        public bool? TypKosztu
+        private string _WydawcaNazwa;
+        public string WydawcaNazwa
         {
             get
             {
-                return Item.TypKosztu;
+                return _WydawcaNazwa;
             }
-            set
-            {
-                if (value != Item.TypKosztu)
-                {
-                    Item.TypKosztu = value;
-                    base.OnPropertyChanged(() => TypKosztu);
-                }
-            }
-        }
 
-        public decimal? KosztUslugi
-        {
-            get
-            {
-                return Item.KosztUslugi;
-            }
             set
             {
-                if (value != Item.KosztUslugi)
+                if (value != _WydawcaNazwa)
                 {
-                    Item.KosztUslugi = value;
-                    base.OnPropertyChanged(() => KosztUslugi);
+                    _WydawcaNazwa = value;
+                    base.OnPropertyChanged(() => WydawcaNazwa);
                 }
             }
         }
@@ -340,12 +445,258 @@ namespace Firma.ViewModels
                 }
             }
         }
+
+        private ObservableCollection<Cena> _ListaCen = new ObservableCollection<Cena>();
+        public ObservableCollection<Cena> ListaCen
+        {
+            get
+            {
+                return _ListaCen;
+            }
+            set
+            {
+                if (_ListaCen != value)
+                {
+                    _ListaCen = value;
+                    liczCeny(_ListaCen);
+                    base.OnPropertyChanged(() => ListaCen);
+                }
+            }
+        }
+
+        public override string NazwaDodajacego
+        {
+            get
+            {
+                return Item.NazwaDodajacego;
+            }
+            set
+            {
+                if (value != Item.NazwaDodajacego)
+                {
+                    Item.NazwaDodajacego = value;
+                    base.OnPropertyChanged(() => NazwaDodajacego);
+                }
+            }
+        }
+
+        public override DateTime? DataDodania
+        {
+            get
+            {
+                return Item.DataDodania;
+            }
+            set
+            {
+                if (value != Item.DataDodania)
+                {
+                    Item.DataDodania = value;
+                    base.OnPropertyChanged(() => DataDodania);
+                }
+            }
+        }
+
+        public override string NazwaModyfikujacego
+        {
+            get
+            {
+                return Item.NazwaModyfikujacego;
+            }
+            set
+            {
+                if (value != Item.NazwaModyfikujacego)
+                {
+                    Item.NazwaModyfikujacego = value;
+                    base.OnPropertyChanged(() => NazwaModyfikujacego);
+                }
+            }
+        }
+
+        public override DateTime? DataModyfikacji
+        {
+            get
+            {
+                return Item.DataModyfikacji;
+            }
+            set
+            {
+                if (value != Item.DataModyfikacji)
+                {
+                    Item.DataModyfikacji = value;
+                    base.OnPropertyChanged(() => DataModyfikacji);
+                }
+            }
+        }
         #endregion
 
         #region Helpers
         public override void Save()
         {
-            throw new NotImplementedException();
+            Item.CzyAktywny = true;
+            Db.Towar.AddObject(Item);
+            Db.SaveChanges();
+
+            addIdTowaruCena(Item.IdTowaru);
+            foreach(var cena in _ListaCen)
+            {
+                Db.Cena.AddObject(cena);
+            }
+
+            Db.SaveChanges();
+        }
+
+        private void getWybranyWydawca(Wydawca wydawca)
+        {
+            IdWydawcy = wydawca.IdWydawcy;
+            WydawcaNazwa = wydawca.Nazwa;
+        }
+
+        private void getWybranaGrupa(Grupa grupa)
+        {
+            IdGrupy = grupa.IdGrupy;
+            GrupaNazwa = grupa.Nazwa;
+        }
+
+        private void addIdTowaruCena(int idTowaru)
+        {
+            foreach(var cena in _ListaCen)
+            {
+                cena.IdTowaru = idTowaru;
+            }
+        }
+        
+        private void setInformation()
+        {
+            SetAddedInformation();
+            KopiujOpis = false;
+            EdycjaNazwy = false;
+            EdycjaOpisu = false;
+            createCeny();
+        }
+
+        private void createCeny()
+        {
+            _ListaCen.Add(new Cena 
+            {
+                Nazwa = NazwaCeny.CenaZakupu,
+                TypCeny = "Netto",
+                Zaokraglenie = 0.01m,
+                Offset = 0,
+                CenaNetto = 0,
+                CenaBrutto = 0,
+                Waluta = "PLN",
+                CzyAktywny = true,
+                NazwaDodajacego = Environment.UserName,
+                DataDodania = DateTime.Now
+            });
+
+            _ListaCen.Add(new Cena
+            {
+                Nazwa = NazwaCeny.CenaHurtowa2,
+                TypCeny = "Netto",
+                Marza = 5,
+                Zaokraglenie = 0.01m,
+                Offset = 0,
+                CenaNetto = 0,
+                CenaBrutto = 0,
+                Waluta = "PLN",
+                CzyAktywny = true,
+                NazwaDodajacego = Environment.UserName,
+                DataDodania = DateTime.Now
+            });
+
+            _ListaCen.Add(new Cena
+            {
+                Nazwa = NazwaCeny.CenaHurtowa2,
+                TypCeny = "Netto",
+                Marza = 10,
+                Zaokraglenie = 0.01m,
+                Offset = 0,
+                CenaNetto = 0,
+                CenaBrutto = 0,
+                Waluta = "PLN",
+                CzyAktywny = true,
+                NazwaDodajacego = Environment.UserName,
+                DataDodania = DateTime.Now
+            });
+
+            _ListaCen.Add(new Cena
+            {
+                Nazwa = NazwaCeny.CenaDetaliczna,
+                TypCeny = "Brutton",
+                Marza = 15,
+                Zaokraglenie = 0.01m,
+                Offset = 0,
+                CenaNetto = 0,
+                CenaBrutto = 0,
+                Waluta = "PLN",
+                CzyAktywny = true,
+                NazwaDodajacego = Environment.UserName,
+                DataDodania = DateTime.Now
+            });
+        }
+
+        private void liczCeny(IEnumerable<Cena> ceny)
+        {
+            foreach (var cena in ceny)
+            {
+                decimal notNullMarza = cena.Marza != null ? (decimal)cena.Marza : 0;
+
+                if (cena.CenaNetto != 0 && notNullMarza != 0)
+                {
+                    cena.CenaBrutto = cena.CenaNetto * (notNullMarza / 100);
+                }
+
+                if (cena.CenaBrutto != 0 && notNullMarza != 0)
+                {
+                    cena.CenaNetto = cena.CenaBrutto * (1 + (notNullMarza) / 100);
+
+                }
+            }
+        }
+        #endregion
+
+        #region Validation
+        public string Error
+        {
+            get
+            {
+                return null;
+            }
+        }
+
+        public string this[string name]
+        {
+            get
+            {
+                string komunikat = null;
+                if (name == "NazwaTowaru")
+                {
+                    komunikat = BussinessValidator.SprawdzUzupelnienie(NazwaTowaru) == null ? StringValidator.SprawdzCzyZaczynaSieOdDuzej(NazwaTowaru) : BussinessValidator.SprawdzUzupelnienie(NazwaTowaru);
+                }
+
+                if (name == "KodTowaru")
+                {
+                    komunikat = BussinessValidator.SprawdzUzupelnienie(KodTowaru);
+                }
+
+                if (name == "EAN")
+                {
+                    komunikat = BussinessValidator.SprawdzUzupelnienie(EAN);
+                }
+
+                return komunikat;
+            }
+        }
+
+        public override bool IsValid()
+        {
+            if (this["KodTowaru"] == null && this["EAN"] == null && this["NazwaTowaru"] == null)
+            {
+                return true;
+            }
+
+            return false;
         }
         #endregion
     }

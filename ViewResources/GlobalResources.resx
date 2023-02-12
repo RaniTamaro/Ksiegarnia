@@ -121,13 +121,13 @@
     <value>Dodaj Fakturę</value>
   </data>
   <data name="FakturyWyswietl" xml:space="preserve">
-    <value>Wszystkie Faktury</value>
+    <value>Faktury</value>
   </data>
   <data name="PracodwnikDodaj" xml:space="preserve">
     <value>Dodaj Pracownika</value>
   </data>
   <data name="PracownicyWyswietl" xml:space="preserve">
-    <value>Wszyscy Pracownicy</value>
+    <value>Pracownicy</value>
   </data>
   <data name="PracownikEdytuj" xml:space="preserve">
     <value>Edytuj</value>
@@ -139,7 +139,7 @@
     <value>Dodaj Towar</value>
   </data>
   <data name="TowaryWyswietl" xml:space="preserve">
-    <value>Wszystkie Towary</value>
+    <value>Towary</value>
   </data>
   <data name="Wydanie" xml:space="preserve">
     <value>Nowe wydanie</value>

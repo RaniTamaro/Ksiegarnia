@@ -14,7 +14,7 @@ namespace Firma.ViewModels
     {
         #region Konstruktor
         public WszystkieWyplatyViewModel()
-            :base("Wyplaty")
+            :base("Wypłaty")
         {
         }
         #endregion
@@ -26,7 +26,6 @@ namespace Firma.ViewModels
                 (
                     from wyplata in Db.Wyplata
                     where wyplata.CzyAktywny == true
-                    //select wyplata
                     select new WyplatyForAllView
                     {
                         OkresOd = wyplata.OkresWyplaty.OdKiedy,
@@ -36,6 +35,54 @@ namespace Firma.ViewModels
                         Kwota = wyplata.Kwota
                     }
                 );
+        }
+        #endregion
+
+        #region FindAndSort
+        public override void Sort()
+        {
+            if (SortField == "Okres Od")
+            {
+                List = new ObservableCollection<WyplatyForAllView>(List.OrderBy(item => item.OkresOd));
+            }
+
+            if (SortField == "Okres Do")
+            {
+                List = new ObservableCollection<WyplatyForAllView>(List.OrderBy(item => item.OkresDo));
+            }
+
+            if (SortField == "Numer Dokumentu")
+            {
+                List = new ObservableCollection<WyplatyForAllView>(List.OrderBy(item => item.NumerDokumentu));
+            }
+
+            if (SortField == "Nazwa Pracownika")
+            {
+                List = new ObservableCollection<WyplatyForAllView>(List.OrderBy(item => item.NazwaPracownika));
+            }
+        }
+
+        public override List<string> GetComboboxSortList()
+        {
+            return new List<string> { "Okres Od", "Okres Do", "Numer Dokumentu", "Nazwa Pracownika" };
+        }
+
+        public override void Find()
+        {
+            if (FindField == "Numer Dokumentu")
+            {
+                List = new ObservableCollection<WyplatyForAllView>(List.Where(item => item.NumerDokumentu != null && item.NumerDokumentu.StartsWith(FindTextBox)));
+            }
+
+            if (FindField == "Nazwa Pracownika")
+            {
+                List = new ObservableCollection<WyplatyForAllView>(List.Where(item => item.NazwaPracownika != null && item.NazwaPracownika.StartsWith(FindTextBox)));
+            }
+        }
+
+        public override List<string> GetComboboxFindList()
+        {
+            return new List<string> { "Numer Dokumentu", "Nazwa Pracownika" };
         }
         #endregion
     }

@@ -43,7 +43,7 @@
 
                     <Label Content="Opis:" Grid.Row="1" Style="{StaticResource LabelStandardowy}"/>
                     <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" Style="{StaticResource TBRozciągnięty}" Text="{Binding Path=Opis, UpdateSourceTrigger=PropertyChanged}"/>
-                    
+
                 </Grid>
             </Expander>
         </Grid>

@@ -70,7 +70,7 @@ namespace Firma.ViewResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wszystkie Faktury.
+        ///   Looks up a localized string similar to Faktury.
         /// </summary>
         internal static string FakturyWyswietl {
             get {
@@ -88,7 +88,7 @@ namespace Firma.ViewResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wszyscy Pracownicy.
+        ///   Looks up a localized string similar to Pracownicy.
         /// </summary>
         internal static string PracownicyWyswietl {
             get {
@@ -124,7 +124,7 @@ namespace Firma.ViewResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wszystkie Towary.
+        ///   Looks up a localized string similar to Towary.
         /// </summary>
         internal static string TowaryWyswietl {
             get {
